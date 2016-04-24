@@ -100,10 +100,10 @@
                                             <f:selectItem itemValue="0" itemLabel="Seleccione un tipo de vidrio"/>
                                             <f:selectItems value="#{mbVidrios.all}" var="vidrio" itemLabel="#{vidrio.calibre}" itemValue="#{vidrio.idvidrios}"/>
                                         </h:selectOneMenu>
-                                     <h:selectOneMenu value="#{mbCalcularVitrina.tipoVentana}" styleClass="form-control">
+                                <!--     <h:selectOneMenu value="# {mbCalcularVitrina.tipoVentana}" styleClass="form-control">
                                             <f:selectItem itemValue="0" itemLabel="Seleccione un tipo de Vitrina"/>
                                             <f:selectItem itemValue="1" itemLabel="Normal"/>
-                                        </h:selectOneMenu>
+                                        </h:selectOneMenu> -->
                                         <h:selectOneMenu value="#{mbCalcularVitrina.tipoEntrepanos}" styleClass="form-control">
                                             <f:selectItem itemValue="0" itemLabel="Seleccione un tipo de Vitrina"/>
                                             <f:selectItem itemValue="1" itemLabel="3 entrepaños"/>

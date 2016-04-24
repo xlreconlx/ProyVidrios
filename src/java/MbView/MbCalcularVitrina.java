@@ -37,7 +37,6 @@ public class MbCalcularVitrina {
     private Session session;
     private Transaction transaccion;
     private ArrayList<Vitrinas> lista;
-
     private int total;
     private int idVidrio;
     private int precioVidrio;
@@ -75,17 +74,27 @@ public class MbCalcularVitrina {
     private String mensajeVidrioAnchoFondo;
     private String mensajeEntrepano;
 
+    public MbCalcularVitrina() {
+              this.alto = "";
+            this.ancho = "";
+            this.ganancia = 0;
+            this.manObra = 0;
+            this.idVidrio = 0;
+        this.tipoEntrepanos=0;
+        this.precioTotal=0;
+        this.lista= new ArrayList<>();
+    }
+
+    
+    
+    
     public void calcularCosto() {
         this.session = null;
         this.transaccion = null;
         try {
             DaoVitrinas daoVitrinas = new DaoVitrinas();
 
-            if (this.tipoVentana == 0) {
-                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Error:", "Seleccione un tipo de ventana"));
-                return;
-            }
-
+            
             this.session = HibernateUtil.getSessionFactory().openSession();
             this.transaccion = this.session.beginTransaction();
 
@@ -95,7 +104,7 @@ public class MbCalcularVitrina {
                     this.lista.get(2).getPreciocot(), this.lista.get(4).getPreciocot(), this.lista.get(5).getPreciocot(),
                     this.lista.get(6).getPreciocot(), this.lista.get(3).getPreciocot(),
                     this.lista.get(7).getPreciocot(),
-                    this.lista.get(8).getPreciocot(), this.tipoVentana);
+                    this.lista.get(8).getPreciocot(), 1);
 
             if (this.idVidrio != 0) {
                 int vidrioEntrepano = 0;
@@ -105,9 +114,14 @@ public class MbCalcularVitrina {
 //                   FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Correcto:", "El precio1 del vidrio es: " + this.precioVidrio));
 
                 vidrioEntrepano = daoVidrio.getById(this.session, 6).getPreciocost();
-
-                this.precioVidrio = this.precioVidrio * ((vitrina.getAlto() * vitrina.getAncho()) * 2 + (vitrina.getAlto() * vitrina.getFondo() * 2 +(vitrina.getAncho()*vitrina.getFondo())*2));
-
+                int precFondos=this.precioVidrio*(vitrina.getAlto()*vitrina.getFondo());
+                precFondos= precFondos*2;
+                int precFondoAncho = this.precioVidrio*(vitrina.getAncho()*vitrina.getFondo());
+                precFondoAncho=precFondoAncho*2;
+                this.precioVidrio= this.precioVidrio*(vitrina.getAlto()*vitrina.getAncho());
+                this.precioVidrio=this.precioVidrio*2;
+                this.precioVidrio=this.precioVidrio+precFondos+precFondoAncho;
+              
                 if (this.tipoEntrepanos == 1) {
                     vidrioEntrepano = vidrioEntrepano * (vitrina.getAncho() * vitrina.getFondo() * 3);
                 } else {
@@ -130,19 +144,19 @@ public class MbCalcularVitrina {
                 }
             }
 
-            if (this.tipoVentana == 4) {
-                this.nombreProducto = "Vidrio " + this.alto + " * " + this.ancho;
-                this.precioTotal = this.precioVidrio;
+            if (this.tipoEntrepanos == 1) {
+                this.nombreProducto = "Vitrina de 3 entrepaños " + this.alto + " * " + this.ancho +" Fondo: "+this.fondo;
+                this.precioTotal = vitrina.getSumaTotal()+this.precioVidrio;
             } else {
-                this.nombreProducto = "ventana " + this.alto + " * " + this.ancho;
-                this.precioTotal = vitrina.getSumaTotal();
+              this.nombreProducto = "Vitrina de 4 entrepaños " + this.alto + " * " + this.ancho +" Fondo: "+this.fondo;
+              this.precioTotal = vitrina.getSumaTotal()+this.precioVidrio;
             }
 
-            if (this.tipoVentana == 1) {
+         
 //                this.recorte3=material.getAncho()/2;
                 this.recorteAncho = Double.valueOf(this.getAncho());
                 this.recorteAlto = Double.valueOf(this.getAlto());
-                this.recorteAlto = Double.valueOf(this.getFondo());
+                this.recorteFondo = Double.valueOf(this.getFondo());
 
                 this.cantidadCuartoCirculoAncho = 4;
                 this.cantidadCuartoCirculoAlto = 4;
@@ -154,38 +168,35 @@ public class MbCalcularVitrina {
                 this.cantidadVidrio = 2;
                 this.cantidadVidrioEntrepanos=4;
                 
-                this.mensajeCuartoCirculoAlto = "" + this.cantidadCuartoCirculoAlto + " Aluminio CuartoCirculo Alto de:" + (this.recorteAlto - 8);
-                this.mensajeCuartoCirculoAncho = "" + this.cantidadCuartoCirculoAncho + "Alumininio CuartoCirculo Ancho de: " + (this.recorteAncho - 8);
-                this.mensajeCuartoCirculoFondo = "" + this.cantidadCuartoCirculoFondo + "Alumininio CuartoCirculo Fondo de: " + (this.recorteFondo - 8);
+                this.mensajeCuartoCirculoAlto = "" + this.cantidadCuartoCirculoAlto + " Aluminio CuartoCirculo Alto de:" + (this.recorteAlto-8.0);
+                this.mensajeCuartoCirculoAncho = "" + this.cantidadCuartoCirculoAncho + "Alumininio CuartoCirculo Ancho de: " + (this.recorteAncho - 8.0);
+                this.mensajeCuartoCirculoFondo = "" + this.cantidadCuartoCirculoFondo + "Alumininio CuartoCirculo Fondo de: " + (this.recorteFondo - 8.0);
                 this.mensajeAnguloMediaAlto = "" + this.cantidadAnguloMediaAlto + "  AnguloMedia Alto de " + (this.recorteAlto - 8);
                 this.mensajeAnguloMediaAncho = "" + this.cantidadAnguloMediaAncho + " AnguloMedia Ancho de:  " + (this.recorteAncho - 10);
                 this.mensajeAnguloMediaFondo = "" + this.cantidadAnguloMediaFondo + " AnguloMedia Fondo de:  " + (this.recorteFondo - 10);
                 this.mensajeNaveDivisionAncho = "" + this.cantidadNaveDivisionAncho + "Nave DivisionBano Ancho de:  " + (this.recorteAncho / 2);
-                this.mensajeVidrioAltoAncho= "" + this.cantidadVidrio + "  Vidrios ALto * Ancho:" + (this.recorteAlto - 10.5) * (this.recorteVidrioAncho - 10.5);
-            this.mensajeVidrioAltoFondo= "" + this.cantidadVidrio + "  Vidrios ALto * Fondo:" + (this.recorteAlto - 10.5) * (this.recorteFondo - 10.5);
-               this.mensajeVidrioAnchoFondo= "" + this.cantidadVidrioEntrepanos + "  Vidrios de 6mm Ancho * Fondo:" + (this.recorteAncho - 1) * (this.recorteVidrioFondo - 8.5);
+                this.mensajeVidrioAltoAncho= "" + this.cantidadVidrio + "  Vidrios ALto" + (this.recorteAlto - 10.5) + " recorte ancho  " +(this.recorteAncho - 10.5);
+                this.mensajeVidrioAltoFondo= "" + this.cantidadVidrio + "  Vidrios ALto" + (this.recorteAlto - 10.5)+ "Recorte fondo" +(this.recorteFondo - 10.5);
+                this.mensajeVidrioAnchoFondo= "" + this.cantidadVidrioEntrepanos + "  Vidrios de 6mm Ancho " + (this.recorteAncho - 1) +"recorte fondo"+ (this.recorteFondo - 8.5);
 
 
-//                this.recorteVidrioAncho = Integer.valueOf(this.getAncho()) - 5.5;
-//                this.recorteVidrioAlto = vitrina.getAlto() - 10;
-//                this.recorteVidrioAlto = Integer.valueOf(this.getAlto()) - 5.5;
 
-            }
-
-            this.precioVidrio = 0;
+            
+            this.transaccion.commit();
+         
             this.alto = "";
             this.ancho = "";
             this.ganancia = 0;
             this.manObra = 0;
             this.idVidrio = 0;
-            this.tipoVentana = 0;
+         
 
         } catch (Exception ex) {
             if (this.transaccion != null) {
                 this.transaccion.rollback();
             }
 
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Error fatal:", "Por favor contacte con su administrador " + ex.getMessage()));
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Error fatal:", ex.getCause() + "Por favor contacte con su administrador " + ex.getMessage()));
 
         } finally {
             if (this.session != null) {
