@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../../layaut/TemplateAdmin.xhtml">
+
+            <ui:define name="top">
+                <div class="container" style="margin-top: 30px;">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-xs-12 col-sm-6">
+                            <div id="imprimeDiv">
+                                <p:outputLabel value="hola" rendered="false"></p:outputLabel>
+
+                                <div  class="panel panel-default div2">
+                                    <div class="panel-heading color">Vidrios</div>
+                                    <div class="panel-body">
+                                        <h:form  styleClass="form-group" >
+
+      <h4><a href="http://localhost:8080/ProyVidrios/faces/administrador/vidrios/registrarVidrios.xhtml" style="color:#419641">Registrar Vidrio</a></h4>
+      <h4><a href="http://localhost:8080/ProyVidrios/faces/administrador/vidrios/listaVidrios.xhtml" style="color:#419641;">Lista Vidrios</a></h4>
+      <h4><a href="http://localhost:8080/ProyVidrios/faces/administrador/vidrios/vidriosFiltrados.xhtml" style="color:#419641;">Lista Vidrio Filtrado</a></h4>
+
+
+
+                                        </h:form>
+                                    </div>
+                                </div>
+
+
+                                <div class="panel panel-default div2">
+                                    <div class="panel-heading color">Ventanas</div>
+                                    <div class="panel-body">
+                                        <h:form  styleClass="form-group" >
+
+                        <h4><a href="http://localhost:8080/ProyVidrios/faces/administrador/materiales/registrarMateriales.xhtml" style="color:#ec971f;">Registrar Materiales Ventanas</a></h4>
+                       <h4><a href="http://localhost:8080/ProyVidrios/faces/administrador/materiales/listaMateriales.xhtml" style="color:#ec971f;">Lista Materiales Ventanas</a></h4>
+                       <h4><a href="http://localhost:8080/ProyVidrios/faces/administrador/materiales/materialesFiltardos.xhtml" style="color:#ec971f;">Lista Materiales VentanaFiltrado</a></h4>
+
+
+                                        </h:form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-xs-12 col-sm-6">
+                            <div class="panel panel-default div2">
+                                <div class="panel-heading color">Puertas</div>
+                                <div class="panel-body">
+                                    <h:form  styleClass="form-group" >
+                                        <p:growl id="growl" showDetail="true" sticky="true" /> 
+                     <h4><a href="http://localhost:8080/ProyVidrios/faces/administrador/puertas/registrarPuerta.xhtml" style="color:#00B0FF;">Registrar Materiales Puerta</a></h4>
+                     <h4><a href="http://localhost:8080/ProyVidrios/faces/administrador/puertas/listaPuerta.xhtml" style="color:#00B0FF;">Lista Materiales Puerta</a></h4>
+                     <h4><a href="http://localhost:8080/ProyVidrios/faces/administrador/puertas/puertasFiltrados.xhtml" style="color:#00B0FF;">Lista Puerta Filtrado</a></h4>
+
+
+                                    </h:form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-xs-12 col-sm-6">
+                            <div class="panel panel-default div2">
+                                <div class="panel-heading color">Vitrinas</div>
+                                <div class="panel-body">
+                                    <h:form  styleClass="form-group" >
+                                        <p:growl id="growl" showDetail="true" sticky="true" /> 
+                       <h4><a href="http://localhost:8080/ProyVidrios/faces/administrador/vitrinas/registrarVitrinas.xhtml" style="color:#c9302c;">Registrar Materiales Vitrinas</a></h4>
+                        <h4><a href="http://localhost:8080/ProyVidrios/faces/administrador/vitrinas/listaVitrinas.xhtml" style="color:#c9302c;">Lista Materiales Vitrinas</a></h4>
+                       <h4><a href="http://localhost:8080/ProyVidrios/faces/administrador/vitrinas/vitrinasFiltrados.xhtml" style="color:#c9302c;">Lista Materiales Vitrinas Filtrado</a></h4>
+
+
+                                    </h:form>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+                </div>
+            </ui:define>
+
+            <ui:define name="bottom">
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

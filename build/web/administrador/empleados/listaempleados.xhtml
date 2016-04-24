@@ -1,0 +1,154 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../../layaut/TemplateAdmin.xhtml">
+
+            <ui:define name="top">
+
+                <h:form id="frmListaEmpleado">
+                    <p:growl id="mensajeGeneral" showDetail="true" sticky="false" />
+                    <div class="container">
+                        <div class="row">
+                            <h1 style="color: #ffffff;">Lista de Empleados</h1>
+                            <hr></hr>
+                            <div style="overflow-y: scroll; height: 500px;" class="col-lg-12">
+                                <table class="table table-condensed">
+                                    <tr class="danger">
+                                        <th style="margin-left: 20px;">Codigo</th>
+                                        <th style="margin-left: 20px;">Rol</th>
+                                        <th style="margin-left: 20px; ">Ciudad</th>
+                                        <th style="margin-left: 20px;">Tipo Documento</th>
+                                        <th style="margin-left: 20px;">Numero Documento</th>
+                                        <th style="margin-left: 20px;">Nombre</th>
+                                        <th style="margin-left: 20px; ">Apellido</th>
+                                        <th style="margin-left: 20px; ">Edad</th>
+                                        <th style="margin-left: 20px; ">Genero</th>
+                                        <th style="margin-left: 20px; ">Fecha Nacimiento</th>
+                                        <th style="margin-left: 20px;">Correo Electronnico</th>
+                                        <th style="margin-left: 20px;">Direccion </th>
+                                        <th style="margin-left: 20px;">Fecha Ingreso</th>  
+                                        <th style="margin-left: 20px;">Cambios</th>
+
+
+
+
+                                    </tr>
+                                    <tbody style="color: #ffffff;">
+                                        <ui:repeat var="item" value="#{beanEmpleado.all}" varStatus="status">
+                                            <h:panelGroup>
+                                                <tr>
+                                                    <td>#{item.idempleado}</td>
+                                                    <td>#{beanRol.getById(item.rol.idrol).getNombreRol()}</td>
+                                                    <td>#{beanCiudad.getById(item.ciudad.idciudad).getNombreCiu()}</td>
+                                                    <td>#{item.tipodocumento.idtipodocumento}</td>
+                                                    <td>#{item.numeroDocumento}</td>
+                                                    <td>#{item.nombre}</td>
+                                                    <td>#{item.apellidos}</td>
+                                                    <td>#{item.edad}</td>
+                                                    <td>#{item.genero}</td>
+                                                    <td>#{item.fechaNacimiento}</td>
+                                                    <td>#{item.correoElectronico}</td>
+                                                    <td>#{item.direccion}</td>
+                                                    <td>#{item.fechaIngreso}</td>
+                                                    <td>  <p:commandButton value="Editar" actionListener="#{beanEmpleado.cargarEmpleadoEditar(item.idempleado)}"/></td>
+
+                                                </tr>
+                                            </h:panelGroup>
+
+
+                                        </ui:repeat>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </h:form>
+
+
+                <h:form id="frmEditarEmpleado">
+                    <p:dialog header="Datos del Empleado" widgetVar="dialogoEditarEmpleado" modal="true">
+                        <h:panelGrid id="panelEditarEmpleado" columns="3">
+                            
+                            <p:outputLabel value="Rol"/>
+                            <p:selectOneMenu  value="#{beanEmpleado.codigoRol}"  required="true" >
+                                <f:selectItem itemLabel="rol" itemValue="1" />
+                                <f:selectItems value="#{beanRol.all}" var="rol" itemLabel="#{rol.nombreRol}" itemValue="#{rol.idrol}" />
+                            </p:selectOneMenu>
+                            <h:panelGroup></h:panelGroup>
+                            <p:outputLabel value="ciudad"/>
+                            <p:selectOneMenu  value="#{beanEmpleado.codigoCiudad}"  required="true" >
+                                <f:selectItem itemLabel="ciudad" itemValue="1" />
+                                <f:selectItems value="#{beanCiudad.all}" var="ciudad" itemLabel="#{ciudad.nombreCiu}" itemValue="#{ciudad.idciudad}" />
+                            </p:selectOneMenu>
+                            <h:panelGroup></h:panelGroup>
+                            <p:outputLabel value="Tipo Documento"/>
+                            <p:selectOneMenu  value="#{beanEmpleado.codigotipoDocumento}"  required="true" >
+                                <f:selectItem itemLabel="TIPO DE DOCUMENTO" itemValue="0" />
+                                <f:selectItem itemLabel="Cedula" itemValue="1" />
+                                <f:selectItem itemLabel="NIT" itemValue="2" />
+                                <f:selectItem itemLabel="RUNT" itemValue="3" />
+
+                            </p:selectOneMenu>
+                            <h:panelGroup></h:panelGroup>
+                            <p:outputLabel value="Nombre" for="txtNombre"/>
+                            <p:inputText id="txtNombre" label="Nombre" size="50" value="#{beanEmpleado.empleado.nombre}">
+                                <f:validator validatorId="validatorVacio"/>
+                            </p:inputText>
+                            <p:message for="txtNombre"/>
+                            <p:outputLabel value="Apellidos " for="txtApellidos"/>
+                            <p:inputText id="txtApellidos" label="Apellidos" size="50" value="#{beanEmpleado.empleado.apellidos}">
+                                <f:validator validatorId="validatorVacio"/>
+                            </p:inputText>
+                            <p:message for="txtApellidos"/>
+                            <p:outputLabel value="Edad " for="txtEdad"/>
+                            <p:inputText id="txtEdad" label="Edad" size="50" value="#{beanEmpleado.empleado.edad}">
+                                <f:validator validatorId="validatorVacio"/>
+                            </p:inputText>
+                            <p:message for="txtEdad"/>
+                            <p:outputLabel value="Sexo " />
+                            <p:selectOneRadio id="radioSexo" label="Sexo" value="#{beanEmpleado.empleado.genero}">
+                                <f:selectItem itemLabel="Masculino" itemValue="true"/>
+                                <f:selectItem itemLabel="Femenino" itemValue="false"/>
+                            </p:selectOneRadio>
+                            <h:panelGroup></h:panelGroup>
+                            <p:outputLabel value="Fecha Nacimiento "/>
+                            <p:calendar id="Fecha" label="yyyy/mm/dd" pattern="yyyy/MM/dd" showOn="button" value="#{beanEmpleado.empleado.fechaNacimiento}"/>
+                            <p:message for="Fecha"/>
+
+                            <p:outputLabel value="Correo electrónico" for="txtCorreoElectronico"/>
+                            <p:inputText id="txtCorreoElectronico" label="Correo electrónico" size="50" title="Ejemplo: william@gmail.com" value="#{beanEmpleado.empleado.correoElectronico}">
+                                <f:validator validatorId="validatorVacio"/>
+                                <f:validator validatorId="validatorEmail"/>
+                            </p:inputText>
+
+                            <h:panelGroup>
+                                <p:tooltip for="txtCorreoElectronico" showEvent="focus" hideEvent="blur"/>
+                                <p:message for="txtCorreoElectronico"/>
+                            </h:panelGroup>
+
+
+
+                            <h:panelGroup></h:panelGroup>
+                            <p:commandButton value="Guardar cambios" ajax="false" actionListener="#{beanEmpleado.actualizar()}"/>
+                        </h:panelGrid>
+                    </p:dialog>
+                </h:form>
+            </ui:define>
+
+
+
+            <ui:define name="content">
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

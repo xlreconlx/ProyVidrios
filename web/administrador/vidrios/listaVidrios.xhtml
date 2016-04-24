@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../../layaut/TemplateAdmin.xhtml">
+
+            <ui:define name="top">
+                     <h:form id="frmListaVidrios">
+                    <p:growl id="mensajeGeneral" showDetail="true" sticky="false" />
+                   <div class="container">
+                    <div class="row">
+                        <h1 style="color: #ffffff;">Lista de Vidrios</h1>
+                        <hr></hr>
+
+                        <div style="overflow-y: scroll; height: 400px;" class="col-lg-12">
+                            <table class="table table-condensed">
+                                <tr class="danger">
+                                         <p:outputLabel value="hola" rendered="false"></p:outputLabel>
+                                   <th style="margin-left: 20px;">Codigo</th>
+                                     
+                                    <th style="margin-left: 20px;">Nombre</th>
+                                    <th style="margin-left: 20px; ">Precio</th>
+                                     
+                                           
+                                         <th style="margin-left: 20px;">Cambios</th>
+                                         
+                                   
+                                  
+
+                                </tr>
+                                <tbody style="color:#ffffff;">
+                                    <ui:repeat var="item" value="#{mbVidrios.all}" varStatus="status">
+                                        <h:panelGroup>
+                                            <tr>
+                                                <td>#{item.idvidrios}</td>
+                                            
+                                                <td>#{item.calibre}</td>
+                                                <td>#{item.preciocost}</td>
+                                             
+                                             
+                                                <td>  <p:commandButton value="Editar datos" actionListener="#{mbVidrios.cargarVidriosEditar(item.idvidrios)}"/></td>
+                                             </tr>
+                                        </h:panelGroup>
+
+
+                                    </ui:repeat>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                    </h:form>
+                
+                
+               <h:form id="frmEditarVidrios">
+                    <p:dialog header="Datos del Vidrio" widgetVar="dialogoEditarVidrios" modal="true">
+                        <h:panelGrid id="panelEditarVidrios" columns="3">
+                            <p:outputLabel value="Nombre" for="txtNombre"/>
+                            <p:inputText id="txtNombre" label="Nombre" size="50" value="#{mbVidrios.vidrios.calibre}">
+                                <f:validator validatorId="validatorVacio"/>
+                            </p:inputText>
+                            <p:message for="txtNombre"/>
+                            <p:outputLabel value="Precio " for="txtPrecio"/>
+                            <p:inputText id="txtPrecio" label="txtPrecio" size="50" value="#{mbVidrios.vidrios.preciocost}">
+                                <f:validator validatorId="validatorVacio"/>
+                            </p:inputText>
+                            <p:message for="txtPrecio"/>
+                           <h:panelGroup></h:panelGroup>
+                           <p:commandButton value="Guardar cambios" ajax="false" actionListener="#{mbVidrios.actualizar()}"/>
+                        </h:panelGrid>
+                    </p:dialog>
+                </h:form>
+            </ui:define>
+
+            <ui:define name="bottom">
+          
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
