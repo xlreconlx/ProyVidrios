@@ -111,9 +111,7 @@ public class MbCalcularVitrina {
                 DaoVidrio daoVidrio = new DaoVidrio();
 
                 this.precioVidrio = daoVidrio.getById(this.session, this.idVidrio).getPreciocost();
-//                   FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Correcto:", "El precio1 del vidrio es: " + this.precioVidrio));
-
-                vidrioEntrepano = daoVidrio.getById(this.session, 6).getPreciocost();
+               vidrioEntrepano = daoVidrio.getById(this.session, 6).getPreciocost();
                 int precFondos=this.precioVidrio*(vitrina.getAlto()*vitrina.getFondo());
                 precFondos= precFondos*2;
                 int precFondoAncho = this.precioVidrio*(vitrina.getAncho()*vitrina.getFondo());

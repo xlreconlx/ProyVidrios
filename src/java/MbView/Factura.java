@@ -79,6 +79,7 @@ public class Factura {
     private Cliente cliente;
     private Long montoDinero;
     private Long saldoDevuelta;
+    private int tipoEntrepanos;
 
     /**
      * Creates a new instance of VentanaDetalle
@@ -99,6 +100,7 @@ public class Factura {
         this.tipoVidrio = 0;
         this.tipoVitrina = 0;
         this.fondo = "";
+        this.tipoEntrepanos=0;
 
     }
 
@@ -139,13 +141,33 @@ public class Factura {
                     this.listaVitrinas.get(8).getPreciocot(), 1);
 
             if (this.idVidrio != 0) {
+                  int vidrioEntrepano = 0;
                 DaoVidrio daoVidrio = new DaoVidrio();
 
                 this.precioVidrio = daoVidrio.getById(this.session, this.idVidrio).getPreciocost();
-                this.precioVidrio = this.precioVidrio * (vitrina.getAlto() * vitrina.getAncho());
+                vidrioEntrepano = daoVidrio.getById(this.session, 6).getPreciocost();
+                 long precFondos=this.precioVidrio*(vitrina.getAlto()*vitrina.getFondo());
+                precFondos= precFondos*2;
+                long precFondoAncho = this.precioVidrio*(vitrina.getAncho()*vitrina.getFondo());
+                precFondoAncho=precFondoAncho*2;
+                this.precioVidrio= this.precioVidrio*(vitrina.getAlto()*vitrina.getAncho());
+                this.precioVidrio=this.precioVidrio*2;
+                this.precioVidrio=this.precioVidrio+precFondos+precFondoAncho;
+                
+                  if (this.tipoEntrepanos == 1) {
+                    vidrioEntrepano = vidrioEntrepano * (vitrina.getAncho() * vitrina.getFondo() * 3);
+                } else {
+                    if (this.tipoEntrepanos == 2) {
+                        vidrioEntrepano = vidrioEntrepano * (vitrina.getAncho() * vitrina.getFondo() * 4);
+                    }
+                }
+                
+                 this.precioVidrio = this.precioVidrio + vidrioEntrepano;
                 this.precioVidrio = this.precioVidrio + (this.precioVidrio / 2);
+
                 int espacios = String.valueOf(this.precioVidrio).length();
                 this.precioVidrio = Integer.valueOf(String.valueOf(this.precioVidrio).substring(0, espacios - 4));
+         
 
             } else {
                 if (this.idVidrio == 0) {
@@ -888,4 +910,15 @@ public class Factura {
         this.saldoDevuelta = saldoDevuelta;
     }
 
+    public int getTipoEntrepanos() {
+        return tipoEntrepanos;
+    }
+
+    public void setTipoEntrepanos(int tipoEntrepanos) {
+        this.tipoEntrepanos = tipoEntrepanos;
+    }
+
+    
+    
+    
 }
