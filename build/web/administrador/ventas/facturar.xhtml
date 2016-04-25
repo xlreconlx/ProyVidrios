@@ -29,8 +29,10 @@
                                 <h:selectOneMenu value="#{factura.productoTipo}" styleClass="input-sm col-sm-4 derecha" style="margin-top: 10px;">
                                     <f:selectItem itemValue="0" itemLabel="Seleccione un tipo de Producto"/>
                                     <f:selectItem itemValue="1" itemLabel="ventana"/>
-                                    <f:selectItem itemValue="2" itemLabel="Puerta aluminio"/>
-                                    <f:selectItem itemValue="4" itemLabel="Puerta entamborada"/>
+                                    <f:selectItem itemValue="2" itemLabel="Puerta 2 Aluminio T87 y Vidrio"/>
+                                    <f:selectItem itemValue="4" itemLabel="Puerta 3 Emtamborada T103"/>
+                                    <f:selectItem itemValue="5" itemLabel="Puerta 4 Aluminio T87 y Entamborado F06"/>
+                                    <f:selectItem itemValue="6" itemLabel="Puerta 5 Aluminio T103 y vidrio"/>
                                     <f:selectItem itemValue="3" itemLabel="Vitrina"/>
                                 </h:selectOneMenu>
                                 <br></br>
@@ -47,6 +49,10 @@
                                     <f:selectItem itemValue="0" itemLabel="Seleccione un tipo de vidrio"/>
                                     <f:selectItems value="#{mbVidrios.all}" var="vidrio" itemLabel="#{vidrio.calibre}" itemValue="#{vidrio.idvidrios}"/>
                                 </h:selectOneMenu>
+                                 <h:selectOneMenu value="#{factura.tipoEntrepanos}" styleClass="form-control">
+                                            <f:selectItem itemValue="0" itemLabel="Seleccione un tipo de Vitrina"/>
+                                            <f:selectItem itemValue="1" itemLabel="3 entrepaños"/>
+                                           <f:selectItem itemValue="2" itemLabel="4 entrepaños"/>
                                 <br></br>
                                 <br></br>
                                 <h:commandButton styleClass="btn btn-primary col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top: 10px;" value="Agregar" actionListener="#{factura.agregarProducto()}">
@@ -163,13 +169,13 @@
                                 <p:dataTable id="tbl" var="lista" value="#{factura.listaFactura}">
                                     <f:facet   name="header">
                                         <a>
-                                            <img class="logotipo" alt="Brand" src="/ProyVidrios/resources/imagenes/imgVP.jpg" width="50" height="25" style="background: #fff;"></img>
+                                            <img class="logotipo" alt="Brand" src="/ProyVidrios/resources/imagenes/imgdv.jpg" width="50" height="25" style="background: #fff;"></img>
                                         </a>
-                                     <h3>Vidrios Palmira</h3> Alberto Jimenez Guzman.
-                                        NIT: 6'645.506-5.
+                                        <h3>Decorvidrio</h3> Elio Fabio Peñaloza.
+                                        NIT: 16280385-9.
                                         <br></br>
-                                        Telefono:2726887  2726801  2871472.
-                                        Direccion: Carrera 35 #28-45.
+                                        Telefono:2723025 2759959.
+                                        Direccion: calle 30 # 30-54.
                                     </f:facet>
 
                                     <p:columnGroup  type="header">

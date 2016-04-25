@@ -14,10 +14,10 @@ import org.hibernate.Session;
  * @author William Sanchez
  */
 public interface CotizacionDetalle {
-       public boolean registar(Session session,Cotizaciondetalle cotizacionDetalle)throws Exception;
+    public boolean registar(Session session,Cotizaciondetalle cotizacionDetalle)throws Exception;
     public boolean actualizar(Session session,Cotizaciondetalle cotizacionDetalle)throws Exception;
     public boolean eliminar(Session session,Cotizaciondetalle cotizacionDetalle)throws Exception;
     public Cotizaciondetalle getById(Session session,int id)throws Exception;
     public List<Cotizaciondetalle> getAll(Session session)throws Exception;  
-        public List<Cotizaciondetalle> getAllByIdCotizacion(Session session,int idCotizacion)throws Exception;
+    public List<Cotizaciondetalle> getAllByIdCotizacion(Session session,int idCotizacion)throws Exception;
 }
