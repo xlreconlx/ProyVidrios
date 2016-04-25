@@ -23,11 +23,11 @@
                                 <h:form  styleClass="form-group" >
                                     <p:growl id="growl" showDetail="true" sticky="true" />  
 
-                                    <h:outputLabel  value="Fecha Inicio" style="margin-left: 10px;"/>                                
+                                    <h:outputLabel  value="Fecha Inicio" style="margin-left: 10px; color: #3e8f3e;"/>                                
                                     <p:calendar id="FechaInicio" label="yyyy/mm/dd" pattern="yyyy/MM/dd" showOn="button" value="#{mbAbonos.fechaInicio}" />
 
 
-                                    <h:outputLabel  value="FechaFin" style="margin-left: 10px;"/>                                
+                                    <h:outputLabel  value="FechaFin" style="margin-left: 10px;   color: #D20005;"/>                                
                                     <p:calendar id="FechaFinal" label="yyyy/mm/dd" pattern="yyyy/MM/dd" showOn="button" value="#{mbAbonos.fechaFin}" />
 
 
@@ -46,12 +46,13 @@
                             <div id="imprimeDiv">
                             <p:dataTable id="tbl" var="lista" value="#{mbAbonos.listVentasByFecha}">
                                 <f:facet   name="header">
+                                            <img class="logotipo" alt="Brand" src="/ProyVidrios/resources/imagenes/imgVP.jpg" width="50" height="25" style="background: #fff;"></img>
 
-                                    <h3>DECORVIDRIOS</h3> ELIOT FABIO PEÑALOSA.
-                                    NIT: 891304175-9.
-                                    <br></br>
-                                    Telefono:2722978.
-                                    Direccion: calle 30 # 30-54.
+                                 <h3>Vidrios Palmira</h3> Alberto Jimenez Guzman.
+                                        NIT: 6'645.506-5.
+                                        <br></br>
+                                        Telefono:2726887  2726801  2871472.
+                                        Direccion: Carrera 35 #28-45.
 
 
                                 </f:facet>

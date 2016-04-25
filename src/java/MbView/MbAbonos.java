@@ -194,13 +194,23 @@ public class MbAbonos {
             DaoProductos daoProductos = new DaoProductos();
             DaoPuertas daoPuertas = new DaoPuertas();
             this.listaPuertas.addAll(daoPuertas.getAll(this.session));
-           int codigoPuerta=0;
-            if(this.productoTipo==2){
-                this.tipoPuerta=1;
-                codigoPuerta=5;
-            }else{
-                this.tipoPuerta=2;
-                codigoPuerta=6;
+            int codigoPuerta = 0;
+            if (this.productoTipo == 2) {
+                this.tipoPuerta = 1;
+                codigoPuerta = 5;
+            } else {
+                if (this.productoTipo == 2) {
+                    this.tipoPuerta = 2;
+                    codigoPuerta = 6;
+                } else {
+                    if (this.productoTipo == 2) {
+                        this.tipoPuerta = 3;
+                        codigoPuerta = 8;
+                    } else {
+                        this.tipoPuerta = 4;
+                        codigoPuerta = 9;
+                    }
+                }
             }
             
             Puerta puertas = new Puerta(this.ancho, this.alto, this.manObra, this.ganancia,
