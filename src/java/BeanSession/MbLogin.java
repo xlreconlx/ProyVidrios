@@ -30,6 +30,7 @@ public class MbLogin {
     private Session session;
     private Transaction transaccion;
     private boolean sessionIniciada;
+    private String mensaje;
 
     /**
      * Creates a new instance of MbLogin
@@ -37,14 +38,14 @@ public class MbLogin {
     public MbLogin() {
         HttpSession miSession = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
         miSession.setMaxInactiveInterval(5000);
-        
+        this.mensaje="";
     }
 
     public String login() {
 
         this.session = null;
         this.transaccion = null;
-
+        this.mensaje="";
         try {
             DaoEmpleado daoempleado = new DaoEmpleado();
 
@@ -83,8 +84,7 @@ public class MbLogin {
             this.correoElectronico = null;
             this.password = null;
 
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error de acceso:", "Correo o contraseña incorrecto"));
-
+           this.mensaje="Usuario o Contraseña Incorrectos";
             return "/index";
 
         } catch (Exception ex) {
@@ -139,5 +139,16 @@ public class MbLogin {
     public void setSessionIniciada(boolean sessionIniciada) {
         this.sessionIniciada = sessionIniciada;
     }
+
+    public String getMensaje() {
+        return mensaje;
+    }
+
+    public void setMensaje(String mensaje) {
+        this.mensaje = mensaje;
+    }
+    
+    
+    
 }
 

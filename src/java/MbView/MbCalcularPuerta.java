@@ -120,7 +120,7 @@ public class MbCalcularPuerta {
                             this.tipoVentana, this.lista.get(9).getPreciocot(), 0);
 
                 } else {
-                    if (this.tipoVentana == 1) {
+                    if (this.tipoVentana == 3) {
                         puertas = new Puerta(this.ancho, this.alto, this.manObra, this.ganancia,
                                 this.lista.get(1).getPreciocot(), this.lista.get(0).getPreciocot(),
                                 this.lista.get(2).getPreciocot(), this.lista.get(3).getPreciocot(), this.lista.get(5).getPreciocot(),

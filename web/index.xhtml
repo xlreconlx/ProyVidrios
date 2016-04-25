@@ -9,103 +9,38 @@
       xmlns:jsf="http://xmlns.jcp.org/jsf">
     <h:head>
         <title>Decorvidrio</title>
-       <link type="text/css" rel="stylesheet" href="#{request.contextPath}/resources/css/bootstrap.min.css"></link>
-       <link type="text/javascript" rel="stylesheet" href="#{request.contextPath}/resources/js/bootstrap.min.js"></link>
-       <link type="text/css" rel="stylesheet" href="#{request.contextPath}/resources/css/index.css"></link>
-
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"></meta>
+       <link type="text/css" rel="stylesheet" href="#{request.contextPath}/resources/css/style.css"></link>
+       <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Open+Sans'></link>
+       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"></link>
     </h:head>
     <h:body>
 
 
-   
-
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-xs-12 col-sm-6">
-
-
-
-                    <div class="panel-body">
-
-                        <h:form  styleClass="form-group col-sm-9" >
-                                    <p:outputLabel value="hola" rendered="false"></p:outputLabel>
-
-                            <p:growl id="growl" showDetail="true" sticky="true" />  
-
-
-                            <center><h1>Almacen DecorVidrio</h1></center>
-
-
-                            <div class="form-group">
-                                <label>Correo Electronico</label>
-                                <input type="email" id="inputSuccess1" class="form-control" jsf:id="email" placeholder="Introduce tu email"
-                                       title="Introduce tu email" jsf:value="#{mbLogin.correoElectronico}" required="true"/>
-                            </div>
-                            <div class="form-group">
-
-                                <label class="bajar">Contraseña</label>
-                                <input type="password" class="form-control" jsf:id="password" placeholder="Contraseña" title="Contraseña" jsf:value="#{mbLogin.password}" required="true"/>
-                            </div>
-                            <p:commandButton ajax="false" styleClass="btn btn-info col-lg-12 col-md-12 col-sm-12 col-xs-12 bajar" value="Iniciar Sesion" action="#{mbLogin.login()}">
-                            </p:commandButton>
-                            <br></br>
-                            <br></br>
-                            <br></br>
-
-
-                        </h:form>
-                    </div>
-                </div>
-
-
-                <div class="col-lg-6 col-md-6 col-xs-12 col-sm-6">
-                    <div>
-
-                    <div id="carousel" class="carousel slide" data-ride="carousel">
-                        <ol class="carousel-indicators">
-                            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                             <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-
-                        </ol>
-
-                        <div class="carousel-inner" role="listbox">
-                            <div class="item active">
-                                <img src="/ProyVidrios/resources/imagenes/imgdv2.jpg" class="img-responsive" alt="Responsive"> </img>
-                                    <div class="carousel-caption">
-                                        <h3> SERVICIOS </h3>
-                                    </div>
-                            </div>
-
-                            <div class="item">
-                                <img src="/ProyVidrios/resources/imagenes/cortador.jpg" class="img-responsive" alt="Responsive"> </img>     
-                                    <div class="carousel-caption">
-                                        <h3>Servicio Tecnico</h3>
-                                    </div>
-                            </div>   
-                            <div class="item">
-                                <img src="/ProyVidrios/resources/imagenes/ventanaAl2.jpg" class="img-responsive" alt="Responsive"> </img>                                          
-                                    <div class="carousel-caption">
-                                        <h3>ARQUITETURA EN ALUMINIO</h3>
-                                    </div>
-                            </div> 
-                             <div class="item">
-                                 <img src="/ProyVidrios/resources/imagenes/cuadroBarroco2.jpg" class="img-responsive" alt="Responsive"> </img>                                          
-                                    <div class="carousel-caption">
-                                        <h3>MARQUETERIA</h3>
-                                    </div>
-                            </div>
-                        </div>
-                    </div>
-                      </div>
-                </div>
-            </div>
+   <h:form styleClass="cont">
+  <div class="demo">
+    <div class="login">
+      <div class="login__check"></div>
+      <div class="login__form">
+          <h:outputLabel styleClass="login_error" value="#{mbLogin.mensaje}"></h:outputLabel>
+        <div class="login__row">
+          <i class="material-icons color">account_circle</i>
+          <h:inputText pa:type="email" value="#{mbLogin.correoElectronico}" styleClass="login__input name" pa:placeholder="Correo Electronico">
+          </h:inputText>
         </div>
-   
-        <!-- Latest compiled and minified JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-      
+        <div class="login__row">
+        <i class="material-icons color">lock</i>
+        <h:inputSecret  value="#{mbLogin.password}" styleClass="login__input pass" pa:placeholder="Contraseña">
+          </h:inputSecret>
+        </div>
+          <h:commandButton styleClass="login__submit" value="Ingresar" action="#{mbLogin.login()}">
+           </h:commandButton>
+      </div>
+    </div>
+  </div>
+</h:form>
+
+     
 
     </h:body>
 </html>
