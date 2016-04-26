@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.7.9, for Win64 (x86_64)
+﻿-- MySQL dump 10.13  Distrib 5.6.23, for Win64 (x86_64)
 --
 -- Host: localhost    Database: vidrieria
 -- ------------------------------------------------------
--- Server version	5.7.10-log
+-- Server version	5.6.25-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -40,7 +40,7 @@ CREATE TABLE `abonodetalle` (
   KEY `fk_abonoDetalle_productos1_idx` (`idproductos`),
   CONSTRAINT `fk_abonoDetalle_abonos1` FOREIGN KEY (`idabonos`) REFERENCES `abonos` (`idabonos`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_abonoDetalle_productos1` FOREIGN KEY (`idproductos`) REFERENCES `productos` (`idproductos`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -49,7 +49,7 @@ CREATE TABLE `abonodetalle` (
 
 LOCK TABLES `abonodetalle` WRITE;
 /*!40000 ALTER TABLE `abonodetalle` DISABLE KEYS */;
-INSERT INTO `abonodetalle` VALUES (1,1,2,'3 cuerpos 120*150',4,320255,1281020,50000,50,'120','150',NULL),(2,2,2,'3 cuerpos 120*150',1,359415,359415,60000,50,'120','150',NULL),(3,3,1,'2 cuerpos 210*234',1,389081,389081,45000,50,'210','234',NULL),(4,4,1,'2 cuerpos 123*123',1,236713,236713,45000,50,'123','123',NULL),(5,5,5,'Puerta 155*050',1,333150,333150,30000,50,'155','050',''),(6,5,5,'Puerta 155*050',1,333150,333150,30000,50,'155','050',''),(7,5,3,'4 cuerpos 155*150',1,400496,400496,30000,50,'155','150',''),(8,6,3,'4 cuerpos 155*150',1,400496,400496,30000,50,'155','150',''),(9,7,3,'4 cuerpos 155*150',1,400496,400496,30000,50,'155','150',''),(10,8,2,'3 cuerpos 155*150',1,351560,351560,30000,50,'155','150','');
+INSERT INTO `abonodetalle` VALUES (1,1,2,'3 cuerpos 120*150',4,320255,1281020,50000,50,'120','150',NULL),(2,2,2,'3 cuerpos 120*150',1,359415,359415,60000,50,'120','150',NULL),(3,3,1,'2 cuerpos 210*234',1,389081,389081,45000,50,'210','234',NULL),(4,4,1,'2 cuerpos 123*123',1,236713,236713,45000,50,'123','123',NULL),(5,5,7,'vitrina 123*200 fondo: 50',1,787400,787400,50000,50,'123','200','50');
 /*!40000 ALTER TABLE `abonodetalle` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -73,7 +73,7 @@ CREATE TABLE `abonos` (
   KEY `fk_abonos_empleado1_idx` (`idempleado`),
   CONSTRAINT `fk_abonos_cliente1` FOREIGN KEY (`idcliente`) REFERENCES `cliente` (`idcliente`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_abonos_empleado1` FOREIGN KEY (`idempleado`) REFERENCES `empleado` (`idempleado`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -82,7 +82,7 @@ CREATE TABLE `abonos` (
 
 LOCK TABLES `abonos` WRITE;
 /*!40000 ALTER TABLE `abonos` DISABLE KEYS */;
-INSERT INTO `abonos` VALUES (1,1,2,1281020,145500,1135520,'2016-03-23 02:02:56'),(2,1,2,359415,245000,93315,'2016-03-23 14:03:07'),(3,2,2,389081,34000,355081,'2016-04-12 19:45:51'),(4,1,2,236713,34000,-51887,'2016-04-14 05:00:54'),(5,1,2,1066796,50000,1016796,'2016-04-17 23:52:55'),(6,2,2,400496,30000,370496,'2016-04-17 23:57:11'),(7,2,2,400496,30000,370496,'2016-04-17 23:58:40'),(8,1,2,351560,50000,301560,'2016-04-18 00:04:33');
+INSERT INTO `abonos` VALUES (1,1,2,1281020,145500,1135520,'2016-03-23 02:02:56'),(2,1,2,359415,245000,93315,'2016-03-23 14:03:07'),(3,2,2,389081,34000,355081,'2016-04-12 19:45:51'),(4,1,2,236713,34000,-51887,'2016-04-14 05:00:54'),(5,1,2,787400,400000,387400,'2016-04-18 23:41:18');
 /*!40000 ALTER TABLE `abonos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -338,7 +338,7 @@ CREATE TABLE `facturas` (
   KEY `fk_ventas_empleado1_idx` (`idempleado`),
   CONSTRAINT `fk_ventas_cliente` FOREIGN KEY (`idcliente`) REFERENCES `cliente` (`idcliente`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_ventas_empleado1` FOREIGN KEY (`idempleado`) REFERENCES `empleado` (`idempleado`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -347,7 +347,7 @@ CREATE TABLE `facturas` (
 
 LOCK TABLES `facturas` WRITE;
 /*!40000 ALTER TABLE `facturas` DISABLE KEYS */;
-INSERT INTO `facturas` VALUES (19,1,2,2833660,539744,3373404,'2016-03-22 22:35:56'),(20,2,2,2466597,469827,2936424,'2016-03-23 14:02:01'),(21,1,2,2977890,567216,3545106,'2016-04-14 23:34:01');
+INSERT INTO `facturas` VALUES (19,1,2,2833660,539744,3373404,'2016-03-22 22:35:56'),(20,2,2,2466597,469827,2936424,'2016-03-23 14:02:01'),(21,1,2,2977890,567216,3545106,'2016-04-14 23:34:01'),(22,1,2,1473804,280724,1754528,'2016-04-23 22:41:54'),(23,1,2,1473804,280724,1754528,'2016-04-23 22:44:15'),(24,1,2,1072434,204272,1276706,'2016-04-26 00:14:59');
 /*!40000 ALTER TABLE `facturas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -363,7 +363,7 @@ CREATE TABLE `materiales` (
   `nombre` varchar(45) DEFAULT NULL,
   `preciocost` int(11) DEFAULT NULL,
   PRIMARY KEY (`idmateriales`)
-) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -388,7 +388,7 @@ CREATE TABLE `productos` (
   `nombre` varchar(45) NOT NULL,
   `tipo` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`idproductos`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -397,7 +397,7 @@ CREATE TABLE `productos` (
 
 LOCK TABLES `productos` WRITE;
 /*!40000 ALTER TABLE `productos` DISABLE KEYS */;
-INSERT INTO `productos` VALUES (1,'2 cuerpos','ventana'),(2,'3 cuerpos','ventana'),(3,'4 cuerpos','ventana'),(4,'vidrio','vidrio'),(5,'Puerta','aluminio'),(6,'Puerta','entamborada'),(7,'vitrina','vitrina');
+INSERT INTO `productos` VALUES (1,'2 cuerpos','ventana'),(2,'3 cuerpos','ventana'),(3,'4 cuerpos','ventana'),(4,'vidrio','vidrio'),(5,'Puerta Aluminio T87 con Vidrio','aluminio'),(6,'Puerta Aluminio T103 con entamborado U71','entamborada'),(7,'vitrina','vitrina'),(8,'Puerta Aluminio T87  con entamborado F06','aluminio y entamborado'),(9,'puerta Aluminio T103 con vidrio','aluminio y vidrio');
 /*!40000 ALTER TABLE `productos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -413,7 +413,7 @@ CREATE TABLE `puertas` (
   `nombre` varchar(45) NOT NULL,
   `preciocot` int(11) DEFAULT NULL,
   PRIMARY KEY (`idpuertas`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -422,7 +422,7 @@ CREATE TABLE `puertas` (
 
 LOCK TABLES `puertas` WRITE;
 /*!40000 ALTER TABLE `puertas` DISABLE KEYS */;
-INSERT INTO `puertas` VALUES (1,'aluminio3conAleta',10000),(2,'aluminioT87',10000),(3,'partidorT103',10000),(4,'pisavidrios',10000),(5,'chapa',20000),(6,'pibotesAmericanos',10000),(7,'varillaTensora',5000),(8,'escuadras',500),(9,'perfilU71',10000);
+INSERT INTO `puertas` VALUES (1,'aluminio3conAleta',7334),(2,'aluminioT87',5333),(3,'partidorT103',12833),(4,'pisavidrios',4000),(5,'chapa',45000),(6,'pibotesAmericanos',10000),(7,'varillaTensora',5000),(8,'escuadras',500),(9,'perfilU71',10000),(10,'entamborado',10000),(11,'entamboradoF06',10000);
 /*!40000 ALTER TABLE `puertas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -531,7 +531,7 @@ CREATE TABLE `ventanadetalle` (
   KEY `fk_ventanaDetalle_productos1_idx` (`idproductos`),
   CONSTRAINT `fk_ventanaDetalle_facturas1` FOREIGN KEY (`idfacturas`) REFERENCES `facturas` (`idfacturas`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_ventanaDetalle_productos1` FOREIGN KEY (`idproductos`) REFERENCES `productos` (`idproductos`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -540,7 +540,7 @@ CREATE TABLE `ventanadetalle` (
 
 LOCK TABLES `ventanadetalle` WRITE;
 /*!40000 ALTER TABLE `ventanadetalle` DISABLE KEYS */;
-INSERT INTO `ventanadetalle` VALUES (39,19,2,'3 cuerpos 440*340',3,1124468,3373404,67000,50,'440','340',NULL),(40,20,3,'4 cuerpos 440*240',3,978808,2936424,55000,45,'440','240',NULL),(41,21,3,'4 cuerpos 123*345',4,501229,2004916,34400,50,'123','345',NULL),(42,21,3,'4 cuerpos 254*345',2,770095,1540190,34400,50,'254','345',NULL);
+INSERT INTO `ventanadetalle` VALUES (39,19,2,'3 cuerpos 440*340',3,1124468,3373404,67000,50,'440','340',NULL),(40,20,3,'4 cuerpos 440*240',3,978808,2936424,55000,45,'440','240',NULL),(41,21,3,'4 cuerpos 123*345',4,501229,2004916,34400,50,'123','345',NULL),(42,21,3,'4 cuerpos 254*345',2,770095,1540190,34400,50,'254','345',NULL),(43,22,2,'3 cuerpos 345*354',2,877264,1754528,50000,50,'345','354',''),(44,23,2,'3 cuerpos 345*354',2,877264,1754528,50000,50,'345','354',''),(45,24,1,'2 cuerpos 345*354',2,638353,1276706,50000,50,'345','354','');
 /*!40000 ALTER TABLE `ventanadetalle` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -565,7 +565,7 @@ CREATE TABLE `vidrios` (
 
 LOCK TABLES `vidrios` WRITE;
 /*!40000 ALTER TABLE `vidrios` DISABLE KEYS */;
-INSERT INTO `vidrios` VALUES (1,'2mm',9624),(2,'2mm Antireflejo',20400),(3,'3mm',10684),(4,'4mm',16000),(5,'5mm ',22552),(6,'6mm ',26168),(7,'grabado',26800),(8,'azul ',25488),(9,'3mm Espejo',19850),(10,'4mm Espejo',22630),(11,'entamborado',20000);
+INSERT INTO `vidrios` VALUES (1,'2mm',9624),(2,'2mm Antireflejo',20400),(3,'3mm',10684),(4,'4mm',16000),(5,'5mm ',22552),(6,'6mm ',26168),(7,'grabado',26800),(8,'azul ',25488),(9,'3mm Espejo',19850),(10,'4mm Espejo',22630);
 /*!40000 ALTER TABLE `vidrios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -590,9 +590,13 @@ CREATE TABLE `vitrinas` (
 
 LOCK TABLES `vitrinas` WRITE;
 /*!40000 ALTER TABLE `vitrinas` DISABLE KEYS */;
-INSERT INTO `vitrinas` VALUES (1,'cuartoCirculo',10000),(2,'anguloMedia',10000),(3,'acoples',2000),(4,'carrileras',5000),(5,'tiañas',500),(6,'rodamientosPiso',10000),(7,'naveDivisionDucha',5000),(8,'rodamientosDucha',5000),(9,'empaque',2000);
+INSERT INTO `vitrinas` VALUES (1,'cuartoCirculo',5750),(2,'anguloMedia',1334),(3,'acoples',3500),(4,'carrileras',4417),(5,'Piañas',300),(6,'rodamientosPiso',11250),(7,'naveDivisionDucha',3250),(8,'rodamientosDucha',1000),(9,'empaque',1400);
 /*!40000 ALTER TABLE `vitrinas` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Dumping routines for database 'vidrieria'
+--
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -603,4 +607,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-04-23 20:21:58
+-- Dump completed on 2016-04-25 21:32:17

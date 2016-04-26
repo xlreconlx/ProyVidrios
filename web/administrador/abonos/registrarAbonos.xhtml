@@ -24,9 +24,9 @@
                                 <h:inputText styleClass="input-sm col-sm-4 derecha" pa:placeholder="Digite el ancho cm." value="#{mbAbonos.ancho}"></h:inputText>
                                 <h:inputText styleClass="input-sm col-sm-4 derecha" pa:placeholder="Digite el fondo cm." value="#{mbAbonos.fondo}"></h:inputText>
 
-                                <h:inputText styleClass="input-sm col-sm-6 derecha" pa:placeholder="Digite ganancia %." value="#{mbAbonos.ganancia}" style="margin-top: 10px;"></h:inputText>
-                                <h:inputText styleClass="input-sm col-sm-6 derecha" pa:placeholder="Precio trabajo $." value="#{mbAbonos.manObra}" style="margin-top: 10px;"></h:inputText>
-                                <h:selectOneMenu value="#{mbAbonos.productoTipo}" styleClass="input-sm col-sm-6 derecha" style="margin-top: 10px;">
+                                <h:inputText styleClass="input-sm col-sm-4 derecha" pa:placeholder="Digite ganancia %." value="#{mbAbonos.ganancia}" style="margin-top: 10px;"></h:inputText>
+                                <h:inputText styleClass="input-sm col-sm-4 derecha" pa:placeholder="Precio trabajo $." value="#{mbAbonos.manObra}" style="margin-top: 10px;"></h:inputText>
+                                <h:selectOneMenu value="#{mbAbonos.productoTipo}" styleClass="input-sm col-sm-4 derecha" style="margin-top: 10px;">
                                     <f:selectItem itemValue="0" itemLabel="Seleccione un tipo de Producto"/>
                                     <f:selectItem itemValue="1" itemLabel="ventana"/>
                                     <f:selectItem itemValue="2" itemLabel="Puerta aluminio"/>
@@ -35,7 +35,7 @@
                                 </h:selectOneMenu>
                                 <br></br>
                                 <br></br>
-                                <h:selectOneMenu value="#{mbAbonos.tipoVentana}" styleClass="input-sm col-sm-6 derecha" style="margin-top: 10px;">
+                                <h:selectOneMenu value="#{mbAbonos.tipoVentana}" styleClass="input-sm col-sm-4 derecha" style="margin-top: 10px;">
                                     <f:selectItem itemValue="0" itemLabel="Seleccione un tipo de ventana"/>
                                     <f:selectItem itemValue="1" itemLabel="ventana 2 Cuerpos"/>
                                     <f:selectItem itemValue="2" itemLabel="ventana 3 Cuerpos"/>
@@ -43,10 +43,15 @@
                                     <f:selectItem itemValue="4" itemLabel="Vidrio individual"/>
                          
                                 </h:selectOneMenu>
-                                <h:selectOneMenu value="#{mbAbonos.idVidrio}" styleClass="input-sm derecha col-sm-6" style="margin-top: 10px;">
+                                <h:selectOneMenu value="#{mbAbonos.idVidrio}" styleClass="input-sm derecha col-sm-4" style="margin-top: 10px;">
                                     <f:selectItem itemValue="0" itemLabel="Seleccione un tipo de vidrio"/>
                                     <f:selectItems value="#{mbVidrios.all}" var="vidrio" itemLabel="#{vidrio.calibre}" itemValue="#{vidrio.idvidrios}"/>
                                 </h:selectOneMenu>
+                                  <h:selectOneMenu value="#{mbAbonos.tipoEntrepanos}" styleClass="input-sm derecha col-sm-4" style="margin-top: 10px;">
+                                            <f:selectItem itemValue="0" itemLabel="Seleccione un tipo de Vitrina"/>
+                                            <f:selectItem itemValue="1" itemLabel="3 entrepaños"/>
+                                           <f:selectItem itemValue="2" itemLabel="4 entrepaños"/>
+                                              </h:selectOneMenu>
                                 <br></br>
                                 <br></br>
                                 <h:commandButton styleClass="btn btn-primary col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top: 10px;" value="Agregar" actionListener="#{mbAbonos.agregarProducto()}">
@@ -122,14 +127,14 @@
                             <h:form  styleClass="form-group" >
                                 <p:dataTable id="tbl" var="lista" value="#{mbAbonos.listaFactura}">
                                     <f:facet   name="header">
-                                        <a>
-                                            <img class="logotipo" alt="Brand" src="/ProyVidrios/resources/imagenes/imgdv.jpg" width="50" height="25" style="background: #fff;"></img>
+                                       <a>
+                                            <img class="logotipo" alt="Brand" src="/ProyVidrios/resources/imagenes/imgVP.jpg" width="50" height="25" style="background: #fff;"></img>
                                         </a>
-                                       <h3>Decorvidrio</h3> Elio Fabio Peñaloza.
-                                        NIT: 16280385-9.
+                                       <h3>Vidrios Palmira</h3> Alberto Jimenez Guzman.
+                                        NIT: 6'645.506-5.
                                         <br></br>
-                                        Telefono:2723025 2759959.
-                                        Direccion: calle 30 # 30-54.
+                                        Telefono:2726887  2726801  2871472.
+                                        Direccion: Carrera 35 # 28-45.
                                     
                                     </f:facet>
 
