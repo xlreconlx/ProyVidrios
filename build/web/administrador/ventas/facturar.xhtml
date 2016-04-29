@@ -12,11 +12,11 @@
         <ui:composition template="./../../layaut/TemplateAdmin.xhtml">
 
             <ui:define name="top">
-           <div class="row">
+                <div class="row">
                     <div class="col-lg-6 col-md-6 col-xs-12 col-sm-6">
-      <center> <h1 style="color: #fff;">Ventas.</h1></center>
-      <hr></hr>
-                             <div class="panel-body">
+                        <center> <h1 style="color: #fff;">Ventas.</h1></center>
+                        <hr></hr>
+                        <div class="panel-body">
                             <h:form  styleClass="form-group" >
                                 <p:growl id="growl" showDetail="true" sticky="true" />  
                                 <h:inputText styleClass="input-sm col-sm-4 derecha" pa:placeholder="Digite el alto cm." value="#{factura.alto}"></h:inputText>
@@ -25,7 +25,7 @@
 
                                 <h:inputText styleClass="input-sm col-sm-4 derecha" pa:placeholder="Digite ganancia %." value="#{factura.ganancia}" style="margin-top: 10px;"></h:inputText>
                                 <h:inputText styleClass="input-sm col-sm-4 derecha" pa:placeholder="Precio trabajo $." value="#{factura.manObra}" style="margin-top: 10px;"></h:inputText>
-                                
+
                                 <h:selectOneMenu value="#{factura.productoTipo}" styleClass="input-sm col-sm-4 derecha" style="margin-top: 10px;">
                                     <f:selectItem itemValue="0" itemLabel="Seleccione un tipo de Producto"/>
                                     <f:selectItem itemValue="1" itemLabel="ventana"/>
@@ -33,7 +33,10 @@
                                     <f:selectItem itemValue="4" itemLabel="Puerta 3 Emtamborada T103"/>
                                     <f:selectItem itemValue="5" itemLabel="Puerta 4 Aluminio T87 y Entamborado F06"/>
                                     <f:selectItem itemValue="6" itemLabel="Puerta 5 Aluminio T103 y vidrio"/>
-                                    <f:selectItem itemValue="3" itemLabel="Vitrina"/>
+                                    <f:selectItem itemValue="3" itemLabel="Vitrina Elio"/>
+                                    <f:selectItem itemValue="7" itemLabel="Puerta 6 Alberto "/>
+                                    <f:selectItem itemValue="8" itemLabel="Vitrina Alberto"/>
+                                    <f:selectItem itemValue="9" itemLabel="Vitrina Alberto Grande"/>
                                 </h:selectOneMenu>
                                 <br></br>
                                 <br></br>
@@ -43,17 +46,17 @@
                                     <f:selectItem itemValue="2" itemLabel="ventana 3 Cuerpos"/>
                                     <f:selectItem itemValue="3" itemLabel="ventana 4 Cuerpos"/>
                                     <f:selectItem itemValue="4" itemLabel="Vidrio individual"/>
-                         
+
                                 </h:selectOneMenu>
                                 <h:selectOneMenu value="#{factura.idVidrio}" styleClass="input-sm derecha col-sm-4" style="margin-top: 10px;">
                                     <f:selectItem itemValue="0" itemLabel="Seleccione un tipo de vidrio"/>
                                     <f:selectItems value="#{mbVidrios.all}" var="vidrio" itemLabel="#{vidrio.calibre}" itemValue="#{vidrio.idvidrios}"/>
                                 </h:selectOneMenu>
-                                 <h:selectOneMenu value="#{factura.tipoEntrepanos}" styleClass="input-sm derecha col-sm-4" style="margin-top: 10px;">
-                                            <f:selectItem itemValue="0" itemLabel="Seleccione un tipo de Vitrina"/>
-                                            <f:selectItem itemValue="1" itemLabel="3 entrepaños"/>
-                                           <f:selectItem itemValue="2" itemLabel="4 entrepaños"/>
-                                              </h:selectOneMenu>
+                                <h:selectOneMenu value="#{factura.tipoEntrepanos}" styleClass="input-sm derecha col-sm-4" style="margin-top: 10px;">
+                                    <f:selectItem itemValue="0" itemLabel="Seleccione un tipo de Vitrina"/>
+                                    <f:selectItem itemValue="1" itemLabel="3 entrepaños"/>
+                                    <f:selectItem itemValue="2" itemLabel="4 entrepaños"/>
+                                </h:selectOneMenu>
                                 <br></br>
                                 <br></br>
                                 <h:commandButton styleClass="btn btn-primary col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top: 10px;" value="Agregar" actionListener="#{factura.agregarProducto()}">
@@ -70,10 +73,10 @@
                         <br></br>
                         <h:form id="frmRealizarVentas">
                             <p:growl id="mensajeGeneral" showDetail="true"/>
-                         
+
                             <h:dataTable id="tablaListaProductosVenta" value="#{factura.listaVentana}" var="item" styleClass="table table-condensed" style="color: #fff;">
-                             
-                                
+
+
                                 <p:column headerText="Nombre">
                                     <h:outputText value="#{item.nombrepro}"/>
                                 </p:column>
@@ -124,41 +127,41 @@
                             <br></br>
                             <h:commandButton styleClass="btn btn-success col-lg-4 col-md-4 col-sm-4 col-xs-4 bajar" value="Generar Factura" actionListener="#{factura.generarFactura()}">
                             </h:commandButton>
-                     <a onclick="imprimir()" class="btn btn-warning col-lg-4 col-md-4 col-sm-4 col-xs-4 bajar">Imprimir</a>
- 
-                     
-                    <!-- boton para calcular devueltas-->
-                      <h:commandButton styleClass="btn btn-primary col-lg-4 col-md-4 col-sm-4 col-xs-4 bajar" value="Calcular devueltas" onclick="PF('wdialogo').show();"/>
+                            <a onclick="imprimir()" class="btn btn-warning col-lg-4 col-md-4 col-sm-4 col-xs-4 bajar">Imprimir</a>
 
-                      
-                                   
+
+                            <!-- boton para calcular devueltas-->
+                            <h:commandButton styleClass="btn btn-primary col-lg-4 col-md-4 col-sm-4 col-xs-4 bajar" value="Calcular devueltas" onclick="PF('wdialogo').show();"/>
+
+
+
                         </h:form>
 
-                      <!--  <h4><a href="http://localhost:8080/ProyVidrios/faces/administrador/impresiones/imprimirVenta.xhtml" style="color:#c9302c;">Imprimir Factura</a></h4>-->
+                        <!--  <h4><a href="http://localhost:8080/ProyVidrios/faces/administrador/impresiones/imprimirVenta.xhtml" style="color:#c9302c;">Imprimir Factura</a></h4>-->
 
-                      
-                      <div>
-                          <h:form>
+
+                        <div>
+                            <h:form>
                                 <p:dialog header="Devueltas" widgetVar="wdialogo" resizable="false" modal="true" hideEffect="explode" style="background-color: #FFFF99;">                            
 
-                                            <h:panelGrid id="panelDetalleUsuario" columns="2">
-                                                <h:outputLabel value="Total Venta"/>
-                                                <h:outputText value="#{factura.factura.preciototal}"/>
-                                                <h:outputLabel value="Dinero Efecivo"/>
-                                                <h:inputText value="#{factura.montoDinero}">
-                                                    <p:ajax  event="keyup" update="outi" listener="#{factura.calcularDevueltas(monto, precioVenta)}" />
+                                    <h:panelGrid id="panelDetalleUsuario" columns="2">
+                                        <h:outputLabel value="Total Venta"/>
+                                        <h:outputText value="#{factura.factura.preciototal}"/>
+                                        <h:outputLabel value="Dinero Efecivo"/>
+                                        <h:inputText value="#{factura.montoDinero}">
+                                            <p:ajax  event="keyup" update="outi" listener="#{factura.calcularDevueltas(monto, precioVenta)}" />
 
-                                                </h:inputText>
-                                                <h:outputLabel value="Saldo Dinero"/>
-                                                <h:inputText  id="outi" value="#{factura.saldoDevuelta}"/>
-                                            </h:panelGrid>
+                                        </h:inputText>
+                                        <h:outputLabel value="Saldo Dinero"/>
+                                        <h:inputText  id="outi" value="#{factura.saldoDevuelta}"/>
+                                    </h:panelGrid>
 
-                                        </p:dialog>
-                          </h:form>
-                      </div>
-                      
-                      
-                      
+                                </p:dialog>
+                            </h:form>
+                        </div>
+
+
+
                     </div>
 
 
@@ -169,10 +172,10 @@
                             <h:form  styleClass="form-group" >
                                 <p:dataTable id="tbl" var="lista" value="#{factura.listaFactura}">
                                     <f:facet   name="header">
-                                       <a>
+                                        <a>
                                             <img class="logotipo" alt="Brand" src="/ProyVidrios/resources/imagenes/imgVP.jpg" width="50" height="25" style="background: #fff;"></img>
                                         </a>
-                                       <h3>Vidrios Palmira</h3> Alberto Jimenez Guzman.
+                                        <h3>Vidrios Palmira</h3> Alberto Jimenez Guzman.
                                         NIT: 6'645.506-5.
                                         <br></br>
                                         Telefono:2726887  2726801  2871472.

@@ -109,7 +109,7 @@ public class MbCalcularPuerta {
                         this.lista.get(2).getPreciocot(), this.lista.get(3).getPreciocot(), this.lista.get(5).getPreciocot(),
                         this.lista.get(6).getPreciocot(), this.lista.get(4).getPreciocot(), this.lista.get(7).getPreciocot(),
                         this.lista.get(8).getPreciocot(),
-                        this.tipoVentana, 0, 0);
+                        this.tipoVentana, 0, 0,0,0,this.lista.get(13).getPreciocot());
             } else {
                 if (this.tipoVentana == 2) {
                     puertas = new Puerta(this.ancho, this.alto, this.manObra, this.ganancia,
@@ -117,7 +117,7 @@ public class MbCalcularPuerta {
                             this.lista.get(1).getPreciocot(), this.lista.get(2).getPreciocot(), this.lista.get(5).getPreciocot(),
                             this.lista.get(6).getPreciocot(), this.lista.get(4).getPreciocot(), this.lista.get(7).getPreciocot(),
                             this.lista.get(8).getPreciocot(),
-                            this.tipoVentana, this.lista.get(9).getPreciocot(), 0);
+                            this.tipoVentana, this.lista.get(9).getPreciocot(), 0,0,0,0);
 
                 } else {
                     if (this.tipoVentana == 3) {
@@ -126,7 +126,7 @@ public class MbCalcularPuerta {
                                 this.lista.get(2).getPreciocot(), this.lista.get(3).getPreciocot(), this.lista.get(5).getPreciocot(),
                                 this.lista.get(6).getPreciocot(), this.lista.get(4).getPreciocot(), this.lista.get(7).getPreciocot(),
                                 this.lista.get(8).getPreciocot(),
-                                this.tipoVentana, 0, this.lista.get(9).getPreciocot());
+                                this.tipoVentana, 0, this.lista.get(9).getPreciocot(),0,0,0);
                     } else {
                         if (this.tipoVentana == 4) {
                             puertas = new Puerta(this.ancho, this.alto, this.manObra, this.ganancia,
@@ -134,10 +134,21 @@ public class MbCalcularPuerta {
                                     this.lista.get(1).getPreciocot(), this.lista.get(2).getPreciocot(), this.lista.get(5).getPreciocot(),
                                     this.lista.get(6).getPreciocot(), this.lista.get(4).getPreciocot(), this.lista.get(7).getPreciocot(),
                                     this.lista.get(8).getPreciocot(),
-                                    this.tipoVentana, this.lista.get(9).getPreciocot(), 0);
+                                    this.tipoVentana, this.lista.get(9).getPreciocot(), 0,0,0,this.lista.get(13).getPreciocot());
+
+                        
+                         } else {
+                        if (this.tipoVentana == 5) {
+                            puertas = new Puerta(this.ancho, this.alto, this.manObra, this.ganancia,
+                                    this.lista.get(1).getPreciocot(), 0,
+                                    this.lista.get(2).getPreciocot(), 0, 0,
+                                    this.lista.get(6).getPreciocot(), this.lista.get(4).getPreciocot(), this.lista.get(7).getPreciocot(),
+                                    this.lista.get(8).getPreciocot(),
+                                    this.tipoVentana, 0, 0,this.lista.get(11).getPreciocot(),this.lista.get(12).getPreciocot(),this.lista.get(13).getPreciocot());
 
                         }
                     }
+                }
                 }
             }
 

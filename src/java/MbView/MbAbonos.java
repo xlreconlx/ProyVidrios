@@ -83,6 +83,8 @@ public class MbAbonos {
     private List<Vitrinas> listaVitrinas;
     private int tipoVitrina;
       private int tipoEntrepanos;
+        private String nombreProducto;
+       private long precioTotal;
     
     public MbAbonos() {
         this.lista = new ArrayList<>();
@@ -110,89 +112,181 @@ public class MbAbonos {
     
        public void agregarProducto() {
      switch(this.productoTipo){
-         case 1:calcularVentana();
-             break;
-         case 2:calcularPuerta();
-             break;
-         case 3: calcularVitrina();
-             break;
-         case 4: calcularPuerta();
-             break;
-         case 0: 
-             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Error:", "Escoja un tipo de producto"));
-             break;
+         case 1:
+                calcularVentana();
+                break;
+            case 2:
+                calcularPuerta();
+                break;
+            case 3:
+                calcularVitrina();
+                break;
+            case 4:
+                calcularPuerta();
+                break;
+            case 5:
+                calcularPuerta();
+                break;
+            case 6:
+                calcularPuerta();
+                break;
+                 case 7:
+                calcularPuerta();
+                break;
+                 case 8:
+                calcularPuerta();
+                break;
+            case 0:
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Error:", "Escoja un tipo de producto"));
+                break;
       }
     }
 
-    public void calcularVitrina() {
+     public void calcularVitrina() {
         this.session = null;
         this.transaccion = null;
+        Vitrina vitrina = new Vitrina();
         try {
             this.session = HibernateUtil.getSessionFactory().openSession();
             this.transaccion = this.session.beginTransaction();
             DaoProductos daoProductos = new DaoProductos();
             DaoVitrinas daoVitrinas = new DaoVitrinas();
             this.listaVitrinas.addAll(daoVitrinas.getAll(this.session));
-            Vitrina vitrina = new Vitrina(this.ancho, this.alto, this.fondo, this.manObra, this.ganancia,
-                    this.listaVitrinas.get(0).getPreciocot(), this.listaVitrinas.get(1).getPreciocot(),
-                    this.listaVitrinas.get(2).getPreciocot(), this.listaVitrinas.get(4).getPreciocot(), this.listaVitrinas.get(5).getPreciocot(),
-                    this.listaVitrinas.get(6).getPreciocot(), this.listaVitrinas.get(3).getPreciocot(),
-                    this.listaVitrinas.get(7).getPreciocot(),
-                    this.listaVitrinas.get(8).getPreciocot(), 1);
-
-            if (this.idVidrio != 0) {
-                  int vidrioEntrepano = 0;
+               int codigoVitrina = 0;
+               
+                if (this.productoTipo == 3) {
+                  if (this.idVidrio != 0) {
+                int vidrioEntrepano = 0;
                 DaoVidrio daoVidrio = new DaoVidrio();
 
                 this.precioVidrio = daoVidrio.getById(this.session, this.idVidrio).getPreciocost();
                 vidrioEntrepano = daoVidrio.getById(this.session, 6).getPreciocost();
-                 long precFondos=this.precioVidrio*(vitrina.getAlto()*vitrina.getFondo());
-                precFondos= precFondos*2;
-                long precFondoAncho = this.precioVidrio*(vitrina.getAncho()*vitrina.getFondo());
-                precFondoAncho=precFondoAncho*2;
-                this.precioVidrio= this.precioVidrio*(vitrina.getAlto()*vitrina.getAncho());
-                this.precioVidrio=this.precioVidrio*2;
-                this.precioVidrio=this.precioVidrio+precFondos+precFondoAncho;
-                
-                  if (this.tipoEntrepanos == 1) {
+                long precFondos = this.precioVidrio * (vitrina.getAlto() * vitrina.getFondo());
+                precFondos = precFondos * 2;
+                long precFondoAncho = this.precioVidrio * (vitrina.getAncho() * vitrina.getFondo());
+                precFondoAncho = precFondoAncho * 2;
+                this.precioVidrio = this.precioVidrio * (vitrina.getAlto() * vitrina.getAncho());
+                this.precioVidrio = this.precioVidrio * 2;
+                this.precioVidrio = this.precioVidrio + precFondos + precFondoAncho;
+
+                if (this.tipoEntrepanos == 1) {
                     vidrioEntrepano = vidrioEntrepano * (vitrina.getAncho() * vitrina.getFondo() * 3);
                 } else {
                     if (this.tipoEntrepanos == 2) {
                         vidrioEntrepano = vidrioEntrepano * (vitrina.getAncho() * vitrina.getFondo() * 4);
                     }
                 }
-                
-                 this.precioVidrio = this.precioVidrio + vidrioEntrepano;
+
+                // this.precioVidrio=this.precioVidrio+(this.precioVidrio*50/100);
+                this.precioVidrio = this.precioVidrio + vidrioEntrepano;
                 this.precioVidrio = this.precioVidrio + (this.precioVidrio / 2);
 
                 int espacios = String.valueOf(this.precioVidrio).length();
                 this.precioVidrio = Integer.valueOf(String.valueOf(this.precioVidrio).substring(0, espacios - 4));
-           
+                //        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Correcto:", "El precio del vidrio es: " + String.valueOf(this.precioVidrio).substring(0, espacios-4)));
+
             } else {
                 if (this.idVidrio == 0) {
                     this.precioVidrio = 0;
                 }
             }
 
+            if (this.tipoEntrepanos == 1) {
+                this.nombreProducto = "Vitrina de 3 entrepaños " + this.alto + " * " + this.ancho + " Fondo: " + this.fondo;
+                this.precioTotal = vitrina.getSumaTotal() + this.precioVidrio;
+            } else {
+                this.nombreProducto = "Vitrina de 4 entrepaños " + this.alto + " * " + this.ancho + " Fondo: " + this.fondo;
+                this.precioTotal = vitrina.getSumaTotal() + this.precioVidrio;
+            }
+                     
+                
+                codigoVitrina = 3;
+               vitrina = new Vitrina(this.ancho, this.alto, this.fondo, this.manObra, this.ganancia,
+                    this.listaVitrinas.get(0).getPreciocot(), this.listaVitrinas.get(1).getPreciocot(),
+                    this.listaVitrinas.get(2).getPreciocot(), this.listaVitrinas.get(4).getPreciocot(), this.listaVitrinas.get(5).getPreciocot(),
+                    this.listaVitrinas.get(6).getPreciocot(), this.listaVitrinas.get(3).getPreciocot(),
+                    this.listaVitrinas.get(7).getPreciocot(),
+                    this.listaVitrinas.get(8).getPreciocot(), 1,0,0,0,0);
+
+            } else {
+                if (this.productoTipo == 12) {
+                    codigoVitrina = 6;
+                        vitrina = new Vitrina(this.ancho, this.alto, this.fondo, this.manObra, this.ganancia,
+                            0, this.listaVitrinas.get(1).getPreciocot(),
+                            0, this.listaVitrinas.get(4).getPreciocot(), 0,
+                            this.listaVitrinas.get(6).getPreciocot(), 0,
+                            this.listaVitrinas.get(8).getPreciocot(),
+                            0, this.tipoVitrina, this.listaVitrinas.get(9).getPreciocot(), this.listaVitrinas.get(10).getPreciocot(),
+                            this.listaVitrinas.get(11).getPreciocot(), this.listaVitrinas.get(12).getPreciocot());
+
+                } else {
+                    if (this.productoTipo == 11) {
+                        codigoVitrina = 8;
+                          vitrina = new Vitrina(this.ancho, this.alto, this.fondo, this.manObra, this.ganancia,
+                                0, this.listaVitrinas.get(1).getPreciocot(),
+                                0, this.listaVitrinas.get(4).getPreciocot(), 0,
+                                this.listaVitrinas.get(6).getPreciocot(), 0,
+                                this.listaVitrinas.get(8).getPreciocot(),
+                                0, this.tipoVitrina, this.listaVitrinas.get(9).getPreciocot(), this.listaVitrinas.get(10).getPreciocot(),
+                                this.listaVitrinas.get(11).getPreciocot(), this.listaVitrinas.get(12).getPreciocot());
+                    }  
+                }
+                    
+
+
+//            if (this.idVidrio != 0) {
+//                int vidrioEntrepano = 0;
+//                DaoVidrio daoVidrio = new DaoVidrio();
+//
+//                this.precioVidrio = daoVidrio.getById(this.session, this.idVidrio).getPreciocost();
+//                vidrioEntrepano = daoVidrio.getById(this.session, 6).getPreciocost();
+//                long precFondos = this.precioVidrio * (vitrina.getAlto() * vitrina.getFondo());
+//                precFondos = precFondos * 2;
+//                long precFondoAncho = this.precioVidrio * (vitrina.getAncho() * vitrina.getFondo());
+//                precFondoAncho = precFondoAncho * 2;
+//                this.precioVidrio = this.precioVidrio * (vitrina.getAlto() * vitrina.getAncho());
+//                this.precioVidrio = this.precioVidrio * 2;
+//                this.precioVidrio = this.precioVidrio + precFondos + precFondoAncho;
+//
+//                if (this.tipoEntrepanos == 1) {
+//                    vidrioEntrepano = vidrioEntrepano * (vitrina.getAncho() * vitrina.getFondo() * 3);
+//                } else {
+//                    if (this.tipoEntrepanos == 2) {
+//                        vidrioEntrepano = vidrioEntrepano * (vitrina.getAncho() * vitrina.getFondo() * 4);
+//                    }
+//                }
+//
+//                this.precioVidrio = this.precioVidrio + vidrioEntrepano;
+//                this.precioVidrio = this.precioVidrio + (this.precioVidrio / 2);
+//
+//                int espacios = String.valueOf(this.precioVidrio).length();
+//                this.precioVidrio = Integer.valueOf(String.valueOf(this.precioVidrio).substring(0, espacios - 4));
+//
+//            } else {
+//                if (this.idVidrio == 0) {
+//                    this.precioVidrio = 0;
+//                }
+//            }
+                }         
             this.listaAbono.add(new Abonodetalle(null, daoProductos.getById(this.session, 7),
                     daoProductos.getById(this.session, 7).getNombre() + " " + this.alto + "*" + this.ancho + " fondo: " + this.fondo,
                     1, vitrina.getSumaTotal() + this.precioVidrio, 1 * vitrina.getSumaTotal()
                     + this.precioVidrio, this.manObra, this.ganancia, this.alto, this.ancho, this.fondo));
-            
-                  this.transaccion.commit();
-                      this.idVidrio = 0;
-        this.ganancia = 0;
-        this.alto = "";
-        this.ancho = "";
-        this.manObra = 0;
-        this.tipoVentana = 0;
-        this.tipoVidrio = 0;
-        this.tipoVitrina = 0;
-        this.fondo = "";
-          this.productoTipo=0;
+
+            this.transaccion.commit();
+            this.idVidrio = 0;
+            this.ganancia = 0;
+            this.alto = "";
+            this.ancho = "";
+            this.manObra = 0;
+            this.tipoVentana = 0;
+            this.tipoVidrio = 0;
+            this.tipoVitrina = 0;
+            this.fondo = "";
+            this.productoTipo = 0;
         } catch (Exception ex) {
 
-                if (this.transaccion != null) {
+            if (this.transaccion != null) {
                 this.transaccion.rollback();
             }
 
@@ -204,11 +298,10 @@ public class MbAbonos {
             }
         }
     }
-
     public void calcularPuerta() {
         this.session = null;
         this.transaccion = null;
-         Puerta puertas = new Puerta();
+        Puerta puertas = new Puerta();
 
         try {
             this.session = HibernateUtil.getSessionFactory().openSession();
@@ -216,69 +309,110 @@ public class MbAbonos {
             DaoProductos daoProductos = new DaoProductos();
             DaoPuertas daoPuertas = new DaoPuertas();
             this.listaPuertas.addAll(daoPuertas.getAll(this.session));
-               int codigoPuerta = 0;
+            int codigoPuerta = 0;
+
             if (this.productoTipo == 2) {
-                this.tipoPuerta = 1;
+                if (this.idVidrio != 0) {
+                    DaoVidrio daoVidrio = new DaoVidrio();
+
+                    this.precioVidrio = daoVidrio.getById(this.session, this.idVidrio).getPreciocost();
+//                   FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Correcto:", "El precio1 del vidrio es: " + this.precioVidrio));
+
+                    this.precioVidrio = this.precioVidrio * (puertas.getAlto() * puertas.getAncho());
+                    // this.precioVidrio=this.precioVidrio+(this.precioVidrio*50/100);
+                    this.precioVidrio = this.precioVidrio + (this.precioVidrio / 2);
+                    int espacios = String.valueOf(this.precioVidrio).length();
+                
+                } else {
+                    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "seleccione:", "por favor selecione un vidrio: "));
+                    return;
+                }
                 codigoPuerta = 5;
-            } else {
-                this.tipoPuerta = 2;
-                codigoPuerta = 6;
-            }
-            
-                 if (this.tipoVentana == 2) {
                 puertas = new Puerta(this.ancho, this.alto, this.manObra, this.ganancia,
                         this.listaPuertas.get(1).getPreciocot(), this.listaPuertas.get(0).getPreciocot(),
                         this.listaPuertas.get(2).getPreciocot(), this.listaPuertas.get(3).getPreciocot(), this.listaPuertas.get(5).getPreciocot(),
                         this.listaPuertas.get(6).getPreciocot(), this.listaPuertas.get(4).getPreciocot(), this.listaPuertas.get(7).getPreciocot(),
                         this.listaPuertas.get(8).getPreciocot(),
-                        1, 0, 0);
+                        1, 0, 0,0,0,this.listaPuertas.get(13).getPreciocot());
+
             } else {
-                if (this.tipoVentana == 4) {
+                if (this.productoTipo == 4) {
+                    codigoPuerta = 6;
                     puertas = new Puerta(this.ancho, this.alto, this.manObra, this.ganancia,
                             this.listaPuertas.get(1).getPreciocot(), this.listaPuertas.get(0).getPreciocot(),
                             this.listaPuertas.get(1).getPreciocot(), this.listaPuertas.get(2).getPreciocot(), this.listaPuertas.get(5).getPreciocot(),
                             this.listaPuertas.get(6).getPreciocot(), this.listaPuertas.get(4).getPreciocot(), this.listaPuertas.get(7).getPreciocot(),
                             this.listaPuertas.get(8).getPreciocot(),
-                            2, this.listaPuertas.get(9).getPreciocot(), 0);
+                             2, this.listaPuertas.get(9).getPreciocot(), 0,0,0,0);
 
                 } else {
-                    if (this.tipoVentana == 5) {
+                    if (this.productoTipo == 5) {
+                        codigoPuerta = 8;
                         puertas = new Puerta(this.ancho, this.alto, this.manObra, this.ganancia,
                                 this.listaPuertas.get(1).getPreciocot(), this.listaPuertas.get(0).getPreciocot(),
                                 this.listaPuertas.get(2).getPreciocot(), this.listaPuertas.get(3).getPreciocot(), this.listaPuertas.get(5).getPreciocot(),
                                 this.listaPuertas.get(6).getPreciocot(), this.listaPuertas.get(4).getPreciocot(), this.listaPuertas.get(7).getPreciocot(),
                                 this.listaPuertas.get(8).getPreciocot(),
-                                3, 0, this.listaPuertas.get(9).getPreciocot());
+                             3, 0, this.listaPuertas.get(9).getPreciocot(),0,0,0);
                     } else {
-                        if (this.tipoVentana == 6) {
+                        if (this.productoTipo == 6) {
+                            if (this.idVidrio != 0) {
+                                DaoVidrio daoVidrio = new DaoVidrio();
+
+                                this.precioVidrio = daoVidrio.getById(this.session, this.idVidrio).getPreciocost();
+//                   FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Correcto:", "El precio1 del vidrio es: " + this.precioVidrio));
+
+                                this.precioVidrio = this.precioVidrio * (puertas.getAlto() * puertas.getAncho());
+                                // this.precioVidrio=this.precioVidrio+(this.precioVidrio*50/100);
+                                this.precioVidrio = this.precioVidrio + (this.precioVidrio / 2);
+                                int espacios = String.valueOf(this.precioVidrio).length();
+                            
+                            } else {
+                                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "seleccione:", "por favor selecione un vidrio: "));
+                                return;
+
+                            }
+
+                            
+                            codigoPuerta = 9;
                             puertas = new Puerta(this.ancho, this.alto, this.manObra, this.ganancia,
                                     this.listaPuertas.get(1).getPreciocot(), this.listaPuertas.get(0).getPreciocot(),
                                     this.listaPuertas.get(1).getPreciocot(), this.listaPuertas.get(2).getPreciocot(), this.listaPuertas.get(5).getPreciocot(),
                                     this.listaPuertas.get(6).getPreciocot(), this.listaPuertas.get(4).getPreciocot(), this.listaPuertas.get(7).getPreciocot(),
                                     this.listaPuertas.get(8).getPreciocot(),
-                                    4, this.listaPuertas.get(9).getPreciocot(), 0);
+                                4, this.listaPuertas.get(9).getPreciocot(), 0,0,0,this.listaPuertas.get(13).getPreciocot());
+  } else {
+                        if (this.productoTipo == 7) {
+                            if (this.idVidrio != 0) {
+                                DaoVidrio daoVidrio = new DaoVidrio();
+
+                                this.precioVidrio = daoVidrio.getById(this.session, this.idVidrio).getPreciocost();
+//                   FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Correcto:", "El precio1 del vidrio es: " + this.precioVidrio));
+
+                                this.precioVidrio = this.precioVidrio * (puertas.getAlto() * puertas.getAncho());
+                                // this.precioVidrio=this.precioVidrio+(this.precioVidrio*50/100);
+                                this.precioVidrio = this.precioVidrio + (this.precioVidrio / 2);
+                                int espacios = String.valueOf(this.precioVidrio).length();
+                            
+                            } else {
+                                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "seleccione:", "por favor selecione un vidrio: "));
+                                return;
+
+                            }
+
+                            
+                            codigoPuerta = 10;
+                             puertas = new Puerta(this.ancho, this.alto, this.manObra, this.ganancia,
+                                    this.listaPuertas.get(1).getPreciocot(), 0,
+                                    this.listaPuertas.get(2).getPreciocot(), 0, 0,
+                                    this.listaPuertas.get(6).getPreciocot(), this.listaPuertas.get(4).getPreciocot(), this.listaPuertas.get(7).getPreciocot(),
+                                    this.listaPuertas.get(8).getPreciocot(),
+                                    this.tipoVentana, 0, 0,this.listaPuertas.get(11).getPreciocot(),this.listaPuertas.get(12).getPreciocot(),this.listaPuertas.get(13).getPreciocot());
 
                         }
                     }
                 }
             }
-            if (this.idVidrio != 0) {
-                DaoVidrio daoVidrio = new DaoVidrio();
-
-                this.precioVidrio = daoVidrio.getById(this.session, this.idVidrio).getPreciocost();
-//                   FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Correcto:", "El precio1 del vidrio es: " + this.precioVidrio));
-
-                this.precioVidrio = this.precioVidrio * (puertas.getAlto() * puertas.getAncho());
-                // this.precioVidrio=this.precioVidrio+(this.precioVidrio*50/100);
-                this.precioVidrio = this.precioVidrio + (this.precioVidrio / 2);
-                int espacios = String.valueOf(this.precioVidrio).length();
-                this.precioVidrio = Integer.valueOf(String.valueOf(this.precioVidrio).substring(0, espacios - 4));
-                //        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Correcto:", "El precio del vidrio es: " + String.valueOf(this.precioVidrio).substring(0, espacios-4)));
-
-            } else {
-                if (this.idVidrio == 0) {
-                    this.precioVidrio = 0;
-                }
             }
 
             this.listaAbono.add(new Abonodetalle(null, daoProductos.getById(this.session, codigoPuerta),
@@ -304,7 +438,6 @@ public class MbAbonos {
         }
 
     }
-
     public void calcularVentana() {
         this.session = null;
         this.transaccion = null;

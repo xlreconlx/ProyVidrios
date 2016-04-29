@@ -20,7 +20,10 @@ public class Puerta {
     private int varillaTensora;
     private int escuadras;
     private int entamborado;
+    private int alamoUnoMedia;
     private int entamboradoF06;
+    private int bisagras;
+    private int empaque;
     private int precioAluminioT87;
     private int precioAluminio3;
     private int precioPartidorT103;
@@ -33,10 +36,14 @@ public class Puerta {
     private int precioPerfilU71;
     private int precioEntamborado;
     private int precioEntamboradoF06;
+    private int precioAlamoUnoMedia;
+    private int precioBisagras;
+    private int precioEmpaque;
 
     public Puerta(String ancho, String alto, int preTrabajo, int preDescuento, int preAluminiot87, int preAluminio3,
             int prePartidorT103, int prePisavidrios, int prePibotesAmericanos,
-            int preVarillaTensora, int preChapaPuerta, int preEscuadras, int prePerfilU71, int tipoPuerta, int preEntamborado, int preEntamboradoF06) {
+            int preVarillaTensora, int preChapaPuerta, int preEscuadras, int prePerfilU71, int tipoPuerta,
+            int preEntamborado, int preEntamboradoF06, int preAlamoUnoMedia, int preBisagras, int preEmpaque) {
         switch (alto.substring(2)) {
             case "1":
                 this.alto = Integer.valueOf(alto) + 9;
@@ -111,20 +118,20 @@ public class Puerta {
                 //marco puerta
                 this.aluminioT87 = this.alto * 2 + this.ancho * 2;
                 this.partidorT103 = this.ancho;
-            //  this.partidorT103=recortar(String.valueOf(partidorT103));
-
+                //  this.partidorT103=recortar(String.valueOf(partidorT103));
+                this.empaque = (this.alto * 2) + (this.ancho * 4);
                 this.precioAluminio3 = this.aluminio3 * preAluminio3;
                 this.precioAluminioT87 = this.aluminioT87 * preAluminiot87;
                 this.precioPartidorT103 = this.partidorT103 * prePartidorT103;
-                this.pisavidrios = (this.ancho * 4 + this.alto * 4) * prePisavidrios;
-
+                this.pisavidrios = ((this.ancho * 4) + (this.alto * 4)) * prePisavidrios;
+                this.precioEmpaque = this.empaque * preEmpaque;
                 this.pibotesAmericanos = prePibotesAmericanos;
                 this.chapaPuerta = preChapaPuerta;
                 this.varillaTensora = (preVarillaTensora * 100) * 2;
                 this.precioEscuadras = (preEscuadras * 100) * 12;
 
                 this.sumaTotal = this.precioAluminio3 + this.precioAluminioT87
-                        + this.precioPartidorT103 + this.pisavidrios + this.chapaPuerta
+                        + this.precioPartidorT103 + this.pisavidrios + this.precioEmpaque + this.chapaPuerta
                         + this.pibotesAmericanos + this.varillaTensora + this.precioEscuadras;
 
                 this.subTotal = this.sumaTotal;
@@ -176,7 +183,7 @@ public class Puerta {
                 this.aluminioT87 = this.alto * 2 + this.ancho * 2;
                 this.partidorT103 = this.ancho;
                 this.entamboradoF06 = ((this.ancho / 8) * this.alto);
-            //  this.partidorT103=recortar(String.valueOf(partidorT103));
+                //  this.partidorT103=recortar(String.valueOf(partidorT103));
 
                 this.precioAluminio3 = this.aluminio3 * preAluminio3;
                 this.precioAluminioT87 = this.aluminioT87 * preAluminiot87;
@@ -212,18 +219,46 @@ public class Puerta {
                 this.perfilU71 = (this.ancho * 4 + this.alto * 4) * prePerfilU71;
 
                 this.precioPerfilU71 = this.perfilU71;
-
+                this.empaque = (this.alto * 2) + (this.ancho * 4);
                 this.precioAluminio3 = this.aluminio3 * preAluminio3;
                 this.precioAluminioT87 = this.aluminioT87 * preAluminiot87;
-
+                this.precioEmpaque = this.empaque * preEmpaque;
                 this.pibotesAmericanos = prePibotesAmericanos * 2;
                 this.chapaPuerta = preChapaPuerta;
                 this.varillaTensora = (preVarillaTensora * 100) * 2;
                 this.escuadras = (preEscuadras * 100) * 12;
 
                 this.sumaTotal = this.precioAluminio3 + this.precioAluminioT87
-                        + this.precioPartidorT103 + this.pisavidrios + this.chapaPuerta
+                        + this.precioPartidorT103 + this.pisavidrios + this.precioEmpaque + this.chapaPuerta
                         + this.pibotesAmericanos + this.varillaTensora + this.escuadras + this.precioPerfilU71;
+
+                this.subTotal = this.sumaTotal;
+
+                this.sumaTotal = this.sumaTotal + (this.sumaTotal * preDescuento / 100);
+                preTrabajo = (preTrabajo * 100);
+                this.sumaTotal = this.sumaTotal + preTrabajo;
+                this.sumaTotal = recortar(String.valueOf(sumaTotal));
+
+                break;
+
+            case 5:
+                this.aluminio3 = this.alto * 2 + this.ancho * 2;
+                this.alamoUnoMedia = this.alto * 2 + this.ancho * 2;
+
+                this.partidorT103 = this.ancho;
+                this.empaque = (this.alto * 2) + (this.ancho * 4);
+                this.precioAluminio3 = this.aluminio3 * preAluminio3;
+                this.precioPartidorT103 = this.partidorT103 * prePartidorT103;
+
+                this.precioAlamoUnoMedia = this.alamoUnoMedia * preAlamoUnoMedia;
+                this.precioEmpaque = this.empaque * preEmpaque;
+                this.bisagras = (preBisagras * 100) * 2;
+                this.chapaPuerta = preChapaPuerta;
+                this.varillaTensora = (preVarillaTensora * 100) * 2;
+                this.escuadras = (preEscuadras * 100) * 12;
+
+                this.sumaTotal = this.precioAluminio3 + this.precioPartidorT103 + this.precioAlamoUnoMedia
+                        + this.precioBisagras + this.chapaPuerta + this.varillaTensora + this.precioEmpaque + this.escuadras;
 
                 this.subTotal = this.sumaTotal;
 
@@ -420,6 +455,86 @@ public class Puerta {
 
     public void setSubTotal(long subTotal) {
         this.subTotal = subTotal;
+    }
+
+    public int getEntamborado() {
+        return entamborado;
+    }
+
+    public void setEntamborado(int entamborado) {
+        this.entamborado = entamborado;
+    }
+
+    public int getAlamoUnoMedia() {
+        return alamoUnoMedia;
+    }
+
+    public void setAlamoUnoMedia(int alamoUnoMedia) {
+        this.alamoUnoMedia = alamoUnoMedia;
+    }
+
+    public int getEntamboradoF06() {
+        return entamboradoF06;
+    }
+
+    public void setEntamboradoF06(int entamboradoF06) {
+        this.entamboradoF06 = entamboradoF06;
+    }
+
+    public int getBisagras() {
+        return bisagras;
+    }
+
+    public void setBisagras(int bisagras) {
+        this.bisagras = bisagras;
+    }
+
+    public int getPrecioEntamborado() {
+        return precioEntamborado;
+    }
+
+    public void setPrecioEntamborado(int precioEntamborado) {
+        this.precioEntamborado = precioEntamborado;
+    }
+
+    public int getPrecioEntamboradoF06() {
+        return precioEntamboradoF06;
+    }
+
+    public void setPrecioEntamboradoF06(int precioEntamboradoF06) {
+        this.precioEntamboradoF06 = precioEntamboradoF06;
+    }
+
+    public int getPrecioAlamoUnoMedia() {
+        return precioAlamoUnoMedia;
+    }
+
+    public void setPrecioAlamoUnoMedia(int precioAlamoUnoMedia) {
+        this.precioAlamoUnoMedia = precioAlamoUnoMedia;
+    }
+
+    public int getPrecioBisagras() {
+        return precioBisagras;
+    }
+
+    public void setPrecioBisagras(int precioBisagras) {
+        this.precioBisagras = precioBisagras;
+    }
+
+    public int getEmpaque() {
+        return empaque;
+    }
+
+    public void setEmpaque(int empaque) {
+        this.empaque = empaque;
+    }
+
+    public int getPrecioEmpaque() {
+        return precioEmpaque;
+    }
+
+    public void setPrecioEmpaque(int precioEmpaque) {
+        this.precioEmpaque = precioEmpaque;
     }
 
 }
