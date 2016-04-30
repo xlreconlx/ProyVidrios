@@ -62,13 +62,13 @@
                                         </h:outputText>
                                         <br></br>
                                   
-                                        <h:outputText value="  Recorte vidrio ancho:  #{mbCalcularVitrina.mensajeVidrioAltoAncho}">
+                                        <h:outputText value="  Recorte :  #{mbCalcularVitrina.mensajeVidrioAltoAncho}">
                                         </h:outputText>
                                         <br></br>
-                                        <h:outputText value="  Recorte vidrio alto:  #{mbCalcularVitrina.mensajeVidrioAltoFondo}">
+                                        <h:outputText value="  Recorte :  #{mbCalcularVitrina.mensajeVidrioAltoFondo}">
                                         </h:outputText>
                                          <br></br>
-                                         <h:outputText value="  Recorte vidrio alto:  #{mbCalcularVitrina.mensajeVidrioAnchoFondo}">
+                                         <h:outputText value="  Recorte :  #{mbCalcularVitrina.mensajeVidrioAnchoFondo}">
                                         </h:outputText>
 
                                     </h:form>
@@ -95,17 +95,19 @@
                                         <h:inputText value="#{mbCalcularVitrina.ganancia}" styleClass="form-control"></h:inputText>
                                         <label class="bajar">Digite el costo de la mano de obra</label>
                                         <h:inputText value="#{mbCalcularVitrina.manObra}"  styleClass="form-control"></h:inputText>
-                                        <label class="bajar">Seleccione un tipo de vidrio</label>
-                                        <h:selectOneMenu value="#{mbCalcularVitrina.idVidrio}" styleClass="form-control">
+                                        
+                                        <h:selectOneMenu value="#{mbCalcularVitrina.idVidrio}" styleClass="form-control" style="margin-top: 10px;">
                                             <f:selectItem itemValue="0" itemLabel="Seleccione un tipo de vidrio"/>
                                             <f:selectItems value="#{mbVidrios.all}" var="vidrio" itemLabel="#{vidrio.calibre}" itemValue="#{vidrio.idvidrios}"/>
                                         </h:selectOneMenu>
-                                <!--     <h:selectOneMenu value="# {mbCalcularVitrina.tipoVentana}" styleClass="form-control">
+                                        <h:selectOneMenu value="#{mbCalcularVitrina.tipoVitrina}" styleClass="form-control" style="margin-top: 10px;">
                                             <f:selectItem itemValue="0" itemLabel="Seleccione un tipo de Vitrina"/>
-                                            <f:selectItem itemValue="1" itemLabel="Normal"/>
-                                        </h:selectOneMenu> -->
-                                        <h:selectOneMenu value="#{mbCalcularVitrina.tipoEntrepanos}" styleClass="form-control">
-                                            <f:selectItem itemValue="0" itemLabel="Seleccione un tipo de Vitrina"/>
+                                            <f:selectItem itemValue="1" itemLabel="Vitrina CuartoCirculo 1 1/2"/>
+                                             <f:selectItem itemValue="1" itemLabel="Vitrina Perfil Esquinero 1"/>
+                                              <f:selectItem itemValue="1" itemLabel="Vitrina Pefil Esquinero 1 Larga"/>
+                                        </h:selectOneMenu> 
+                                        <h:selectOneMenu value="#{mbCalcularVitrina.tipoEntrepanos}" styleClass="form-control" style="margin-top: 10px;">
+                                            <f:selectItem itemValue="0" itemLabel="Seleccione Cantidad Entrepaños"/>
                                             <f:selectItem itemValue="1" itemLabel="3 entrepaños"/>
                                            <f:selectItem itemValue="2" itemLabel="4 entrepaños"/>
 

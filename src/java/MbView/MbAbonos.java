@@ -112,7 +112,7 @@ public class MbAbonos {
     
        public void agregarProducto() {
      switch(this.productoTipo){
-         case 1:
+             case 1:
                 calcularVentana();
                 break;
             case 2:
@@ -134,7 +134,10 @@ public class MbAbonos {
                 calcularPuerta();
                 break;
                  case 8:
-                calcularPuerta();
+                calcularVitrina();
+                break;
+                      case 9:
+                calcularVitrina();
                 break;
             case 0:
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Error:", "Escoja un tipo de producto"));

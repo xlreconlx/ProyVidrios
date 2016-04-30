@@ -5,8 +5,9 @@
         <group>
             <file>file:/D:/proyecto/ProyVidrios/src/java/MbView/Factura.java</file>
             <file>file:/D:/proyecto/ProyVidrios/web/administrador/ventas/facturar.xhtml</file>
-            <file>file:/D:/proyecto/ProyVidrios/src/java/Clases/Vitrina.java</file>
-            <file>file:/D:/proyecto/ProyVidrios/src/java/MbView/MbCalcularPuerta.java</file>
+            <file>file:/D:/proyecto/ProyVidrios/web/administrador/abonos/registrarAbonos.xhtml</file>
+            <file>file:/D:/proyecto/ProyVidrios/web/administrador/cotizacion/cotizarReg.xhtml</file>
+            <file>file:/D:/proyecto/ProyVidrios/web/administrador/cotizacion/cotizarVitrina.xhtml</file>
             <file>file:/D:/proyecto/ProyVidrios/src/java/MbView/MbCalcularVitrina.java</file>
             <file>file:/D:/proyecto/ProyVidrios/src/java/MbView/MbCotizacion.java</file>
             <file>file:/D:/proyecto/ProyVidrios/src/java/MbView/MbAbonos.java</file>
