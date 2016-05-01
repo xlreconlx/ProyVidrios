@@ -115,7 +115,7 @@ public class MbAbonos {
     
        public void agregarProducto() {
      switch(this.productoTipo){
-         case 1:
+             case 1:
                 calcularVentana();
                 break;
             case 2:
@@ -136,10 +136,12 @@ public class MbAbonos {
             case 7:
                 calcularPuerta();
                 break;
+
             case 8:
                 calcularVitrina();
                 break;
             case 9:   
+
                 calcularVitrina();
                 break;
             case 0:

@@ -94,6 +94,7 @@ public class MbCalcularVitrina {
         this.tipoEntrepanos = 0;
         this.precioTotal = 0;
         this.lista = new ArrayList<>();
+        this.tipoVitrina=0;
     }
 
     public void calcularCosto() {
@@ -170,7 +171,7 @@ public class MbCalcularVitrina {
                 this.precioVidrio = this.precioVidrio + (this.precioVidrio / 2);
 
                 int espacios = String.valueOf(this.precioVidrio).length();
-                this.precioVidrio = Integer.valueOf(String.valueOf(this.precioVidrio).substring(0, espacios - 4));
+//                this.precioVidrio = Integer.valueOf(String.valueOf(this.precioVidrio).substring(0, espacios - 4));
                 //        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Correcto:", "El precio del vidrio es: " + String.valueOf(this.precioVidrio).substring(0, espacios-4)));
 
             } else {
@@ -293,6 +294,8 @@ public class MbCalcularVitrina {
             this.ganancia = 0;
             this.manObra = 0;
             this.idVidrio = 0;
+            this.tipoEntrepanos=0;
+            this.tipoVitrina=0;
 
         } catch (Exception ex) {
             if (this.transaccion != null) {
