@@ -104,6 +104,7 @@ public class Factura {
         this.tipoVitrina = 0;
         this.fondo = "";
         this.tipoEntrepanos = 0;
+        this.productoTipo=0;
 
     }
 
