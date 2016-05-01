@@ -6,7 +6,7 @@
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/vidrieria?zeroDateTimeBehavior=convertToNull</property>
     <property name="hibernate.connection.username">root</property>
-    <property name="hibernate.connection.password">1234</property>
+    <property name="hibernate.connection.password">root</property>
     <mapping resource="Pojos/Tipodocumento.hbm.xml"/>
     <mapping resource="Pojos/Ventanadetalle.hbm.xml"/>
     <mapping resource="Pojos/Abonosecundario.hbm.xml"/>

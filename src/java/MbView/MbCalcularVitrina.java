@@ -39,7 +39,7 @@ public class MbCalcularVitrina {
     private ArrayList<Vitrinas> lista;
     private int total;
     private int idVidrio;
-    private int precioVidrio;
+    private long precioVidrio;
     private int tipoVentana;
     private int precioCuerpo;
     private long precioTotal;
@@ -150,9 +150,9 @@ public class MbCalcularVitrina {
 
                 this.precioVidrio = daoVidrio.getById(this.session, this.idVidrio).getPreciocost();
                 vidrioEntrepano = daoVidrio.getById(this.session, 6).getPreciocost();
-                int precFondos = this.precioVidrio * (vitrina.getAlto() * vitrina.getFondo());
+                long precFondos = this.precioVidrio * (vitrina.getAlto() * vitrina.getFondo());
                 precFondos = precFondos * 2;
-                int precFondoAncho = this.precioVidrio * (vitrina.getAncho() * vitrina.getFondo());
+                long precFondoAncho = this.precioVidrio * (vitrina.getAncho() * vitrina.getFondo());
                 precFondoAncho = precFondoAncho * 2;
                 this.precioVidrio = this.precioVidrio * (vitrina.getAlto() * vitrina.getAncho());
                 this.precioVidrio = this.precioVidrio * 2;
@@ -171,7 +171,7 @@ public class MbCalcularVitrina {
                 this.precioVidrio = this.precioVidrio + (this.precioVidrio / 2);
 
                 int espacios = String.valueOf(this.precioVidrio).length();
-//                this.precioVidrio = Integer.valueOf(String.valueOf(this.precioVidrio).substring(0, espacios - 4));
+                this.precioVidrio = Integer.valueOf(String.valueOf(this.precioVidrio).substring(0, espacios - 4));
                 //        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Correcto:", "El precio del vidrio es: " + String.valueOf(this.precioVidrio).substring(0, espacios-4)));
 
             } else {
@@ -377,13 +377,15 @@ public class MbCalcularVitrina {
         this.idVidrio = idVidrio;
     }
 
-    public int getPrecioVidrio() {
+    public long getPrecioVidrio() {
         return precioVidrio;
     }
 
-    public void setPrecioVidrio(int precioVidrio) {
+    public void setPrecioVidrio(long precioVidrio) {
         this.precioVidrio = precioVidrio;
     }
+
+   
 
     public int getTipoVentana() {
         return tipoVentana;

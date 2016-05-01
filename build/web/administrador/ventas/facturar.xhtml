@@ -19,7 +19,7 @@
                         <div class="panel-body">
                             <h:form  styleClass="form-group" >
                                 <p:growl id="growl" showDetail="true" sticky="true" />  
-                                <h:inputText styleClass="input-sm col-sm-4 derecha" pa:placeholder="Digite el alto cm." value="#{factura.alto}"></h:inputText>
+                                <h:inputText disabled="#{factura.productoTipo=='0'}" styleClass="input-sm col-sm-4 derecha" pa:placeholder="Digite el alto cm." value="#{factura.alto}"></h:inputText>
                                 <h:inputText styleClass="input-sm col-sm-4 derecha" pa:placeholder="Digite el ancho cm." value="#{factura.ancho}"></h:inputText>
                                 <h:inputText styleClass="input-sm col-sm-4 derecha" pa:placeholder="Digite el fondo cm." value="#{factura.fondo}"></h:inputText>
 
