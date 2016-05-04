@@ -550,7 +550,7 @@ public class Factura {
             this.factura.setPreciototal(suma);
 
             daoFactura.actualizar(this.session, this.factura);
-            this.factura.getFechaventa();
+            this.factura.setFechaventa(new Date());
             HttpSession sesson
                     = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
             sesson.setAttribute("idfactura", this.factura.getIdfacturas());
