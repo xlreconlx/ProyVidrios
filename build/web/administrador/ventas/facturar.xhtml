@@ -19,14 +19,16 @@
                         <div class="panel-body">
                             <h:form  styleClass="form-group" >
                                 <p:growl id="growl" showDetail="true" sticky="true" />  
-                                <h:inputText disabled="#{factura.productoTipo=='0'}" styleClass="input-sm col-sm-4 derecha" pa:placeholder="Digite el alto cm." value="#{factura.alto}"></h:inputText>
-                                <h:inputText styleClass="input-sm col-sm-4 derecha" pa:placeholder="Digite el ancho cm." value="#{factura.ancho}"></h:inputText>
-                                <h:inputText styleClass="input-sm col-sm-4 derecha" pa:placeholder="Digite el fondo cm." value="#{factura.fondo}"></h:inputText>
+                                <h:inputText id="alto"  disabled="#{factura.productoTipo=='0'}" styleClass="input-sm col-sm-4 derecha" pa:placeholder="Digite el alto cm." value="#{factura.alto}"></h:inputText>
+                                <h:inputText id="ancho" disabled="#{factura.productoTipo=='0'}" styleClass="input-sm col-sm-4 derecha" pa:placeholder="Digite el ancho cm." value="#{factura.ancho}"></h:inputText>
+                                <h:inputText id="fondo" disabled="#{factura.productoTipo=='0' || factura.productoTipo=='1' || factura.productoTipo=='2' || factura.productoTipo=='4'  || factura.productoTipo=='5'  || factura.productoTipo=='6'  || factura.productoTipo=='7'}" 
+                                             styleClass="input-sm col-sm-4 derecha" pa:placeholder="Digite el fondo cm." value="#{factura.fondo}"></h:inputText>
 
-                                <h:inputText styleClass="input-sm col-sm-4 derecha" pa:placeholder="Digite ganancia %." value="#{factura.ganancia}" style="margin-top: 10px;"></h:inputText>
-                                <h:inputText styleClass="input-sm col-sm-4 derecha" pa:placeholder="Precio trabajo $." value="#{factura.manObra}" style="margin-top: 10px;"></h:inputText>
+                                <h:inputText id="ganancia" disabled="#{factura.productoTipo=='0'}" styleClass="input-sm col-sm-4 derecha" pa:placeholder="Digite ganancia %." value="#{factura.ganancia}" style="margin-top: 10px;"></h:inputText>
+                                <h:inputText id="precio"   disabled="#{factura.productoTipo=='0'}" styleClass="input-sm col-sm-4 derecha" pa:placeholder="Precio trabajo $." value="#{factura.manObra}" style="margin-top: 10px;"></h:inputText>
 
                                 <h:selectOneMenu value="#{factura.productoTipo}" styleClass="input-sm col-sm-4 derecha" style="margin-top: 10px;">
+                                    <f:ajax event="valueChange" execute="@this" render="alto ancho fondo ganancia precio"></f:ajax>
                                     <f:selectItem itemValue="0" itemLabel="Seleccione un tipo de Producto"/>
                                     <f:selectItem itemValue="1" itemLabel="ventana"/>
                                     <f:selectItem itemValue="2" itemLabel="Puerta 2 Aluminio T87 y Vidrio"/>
