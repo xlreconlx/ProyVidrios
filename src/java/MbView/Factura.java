@@ -80,8 +80,8 @@ public class Factura {
     private Long montoDinero;
     private Long saldoDevuelta;
     private int tipoEntrepanos;
-     private String nombreProducto;
-       private long precioTotal;
+    private String nombreProducto;
+    private long precioTotal;
 
     /**
      * Creates a new instance of VentanaDetalle
@@ -104,7 +104,7 @@ public class Factura {
         this.tipoVitrina = 0;
         this.fondo = "";
         this.tipoEntrepanos = 0;
-        this.productoTipo=0;
+        this.productoTipo = 0;
 
     }
 
@@ -128,10 +128,10 @@ public class Factura {
             case 6:
                 calcularPuerta();
                 break;
-           case 7:
+            case 7:
                 calcularPuerta();
                 break;
-           case 8:
+            case 8:
                 calcularVitrina();
                 break;
             case 9:
@@ -153,21 +153,21 @@ public class Factura {
             DaoProductos daoProductos = new DaoProductos();
             DaoVitrinas daoVitrinas = new DaoVitrinas();
             this.listaVitrinas.addAll(daoVitrinas.getAll(this.session));
-               int codigoVitrina = 0;
-               
-                if (this.productoTipo == 3) {
-               codigoVitrina = 7;
-               vitrina = new Vitrina(this.ancho, this.alto, this.fondo, this.manObra, this.ganancia,
-                    this.listaVitrinas.get(0).getPreciocot(), this.listaVitrinas.get(1).getPreciocot(),
-                    this.listaVitrinas.get(2).getPreciocot(), this.listaVitrinas.get(4).getPreciocot(), this.listaVitrinas.get(5).getPreciocot(),
-                    this.listaVitrinas.get(6).getPreciocot(), this.listaVitrinas.get(3).getPreciocot(),
-                    this.listaVitrinas.get(7).getPreciocot(),
-                    this.listaVitrinas.get(8).getPreciocot(), 1,0,0,0,0);
+            int codigoVitrina = 0;
+
+            if (this.productoTipo == 3) {
+                codigoVitrina = 7;
+                vitrina = new Vitrina(this.ancho, this.alto, this.fondo, this.manObra, this.ganancia,
+                        this.listaVitrinas.get(0).getPreciocot(), this.listaVitrinas.get(1).getPreciocot(),
+                        this.listaVitrinas.get(2).getPreciocot(), this.listaVitrinas.get(4).getPreciocot(), this.listaVitrinas.get(5).getPreciocot(),
+                        this.listaVitrinas.get(6).getPreciocot(), this.listaVitrinas.get(3).getPreciocot(),
+                        this.listaVitrinas.get(7).getPreciocot(),
+                        this.listaVitrinas.get(8).getPreciocot(), 1, 0, 0, 0, 0);
 
             } else {
                 if (this.productoTipo == 8) {
                     codigoVitrina = 11;
-                        vitrina = new Vitrina(this.ancho, this.alto, this.fondo, this.manObra, this.ganancia,
+                    vitrina = new Vitrina(this.ancho, this.alto, this.fondo, this.manObra, this.ganancia,
                             0, this.listaVitrinas.get(1).getPreciocot(),
                             0, this.listaVitrinas.get(4).getPreciocot(), 0,
                             this.listaVitrinas.get(6).getPreciocot(), 0,
@@ -178,19 +178,19 @@ public class Factura {
                 } else {
                     if (this.productoTipo == 9) {
                         codigoVitrina = 12;
-                          vitrina = new Vitrina(this.ancho, this.alto, this.fondo, this.manObra, this.ganancia,
+                        vitrina = new Vitrina(this.ancho, this.alto, this.fondo, this.manObra, this.ganancia,
                                 0, this.listaVitrinas.get(1).getPreciocot(),
                                 0, this.listaVitrinas.get(4).getPreciocot(), 0,
                                 this.listaVitrinas.get(6).getPreciocot(), 0,
                                 this.listaVitrinas.get(8).getPreciocot(),
                                 0, 3, this.listaVitrinas.get(9).getPreciocot(), this.listaVitrinas.get(10).getPreciocot(),
                                 this.listaVitrinas.get(11).getPreciocot(), this.listaVitrinas.get(12).getPreciocot());
-                    }  
+                    }
                 }
-                    
-        }
-                
-                        if (this.idVidrio != 0) {
+
+            }
+
+            if (this.idVidrio != 0) {
                 int vidrioEntrepano = 0;
                 DaoVidrio daoVidrio = new DaoVidrio();
 
@@ -219,15 +219,13 @@ public class Factura {
                 int espacios = String.valueOf(this.precioVidrio).length();
                 this.precioVidrio = Integer.valueOf(String.valueOf(this.precioVidrio).substring(0, espacios - 4));
 //          
-            
+
             } else {
                 if (this.idVidrio == 0) {
                     this.precioVidrio = 0;
                 }
             }
 
-        
-                
             this.listaVentana.add(new Ventanadetalle(null, daoProductos.getById(this.session, codigoVitrina),
                     daoProductos.getById(this.session, codigoVitrina).getNombre() + " " + this.alto + "*" + this.ancho + " fondo: " + this.fondo,
                     1, vitrina.getSumaTotal() + this.precioVidrio, 1 * vitrina.getSumaTotal()
@@ -258,7 +256,7 @@ public class Factura {
             }
         }
     }
-    
+
     public void calcularPuerta() {
         this.session = null;
         this.transaccion = null;
@@ -273,24 +271,24 @@ public class Factura {
             int codigoPuerta = 0;
 
             if (this.productoTipo == 2) {
-            
+
                 codigoPuerta = 5;
                 puertas = new Puerta(this.ancho, this.alto, this.manObra, this.ganancia,
                         this.listaPuertas.get(1).getPreciocot(), this.listaPuertas.get(0).getPreciocot(),
                         this.listaPuertas.get(2).getPreciocot(), this.listaPuertas.get(3).getPreciocot(), this.listaPuertas.get(5).getPreciocot(),
                         this.listaPuertas.get(6).getPreciocot(), this.listaPuertas.get(4).getPreciocot(), this.listaPuertas.get(7).getPreciocot(),
                         this.listaPuertas.get(8).getPreciocot(),
-                        1, 0, 0,0,0,this.listaPuertas.get(13).getPreciocot());
+                        1, 0, 0, 0, 0, this.listaPuertas.get(13).getPreciocot());
 
             } else {
                 if (this.productoTipo == 4) {
                     codigoPuerta = 6;
                     puertas = new Puerta(this.ancho, this.alto, this.manObra, this.ganancia,
-                            this.listaPuertas.get(1).getPreciocot(), this.listaPuertas.get(0).getPreciocot(),
-                            this.listaPuertas.get(1).getPreciocot(), this.listaPuertas.get(2).getPreciocot(), this.listaPuertas.get(5).getPreciocot(),
-                            this.listaPuertas.get(6).getPreciocot(), this.listaPuertas.get(4).getPreciocot(), this.listaPuertas.get(7).getPreciocot(),
-                            this.listaPuertas.get(8).getPreciocot(),
-                            2, this.listaPuertas.get(9).getPreciocot(), 0,0,0,0);
+                            0, this.listaPuertas.get(0).getPreciocot(),
+                            this.listaPuertas.get(1).getPreciocot(), 0, this.listaPuertas.get(3).getPreciocot(),
+                            this.listaPuertas.get(4).getPreciocot(), this.listaPuertas.get(2).getPreciocot(), this.listaPuertas.get(5).getPreciocot(),
+                            this.listaPuertas.get(6).getPreciocot(),
+                            2, this.listaPuertas.get(7).getPreciocot(), 0, 0, 0, 0);
 
                 } else {
                     if (this.productoTipo == 5) {
@@ -300,50 +298,50 @@ public class Factura {
                                 this.listaPuertas.get(2).getPreciocot(), this.listaPuertas.get(3).getPreciocot(), this.listaPuertas.get(5).getPreciocot(),
                                 this.listaPuertas.get(6).getPreciocot(), this.listaPuertas.get(4).getPreciocot(), this.listaPuertas.get(7).getPreciocot(),
                                 this.listaPuertas.get(8).getPreciocot(),
-                                3, 0, this.listaPuertas.get(9).getPreciocot(),0,0,0);
+                                3, 0, this.listaPuertas.get(9).getPreciocot(), 0, 0, 0);
                     } else {
                         if (this.productoTipo == 6) {
-                         codigoPuerta = 9;
+                            codigoPuerta = 9;
                             puertas = new Puerta(this.ancho, this.alto, this.manObra, this.ganancia,
-                                    this.listaPuertas.get(1).getPreciocot(), this.listaPuertas.get(0).getPreciocot(),
-                                    this.listaPuertas.get(1).getPreciocot(), this.listaPuertas.get(2).getPreciocot(), this.listaPuertas.get(5).getPreciocot(),
-                                    this.listaPuertas.get(6).getPreciocot(), this.listaPuertas.get(4).getPreciocot(), this.listaPuertas.get(7).getPreciocot(),
-                                    this.listaPuertas.get(8).getPreciocot(),
-                                    4, this.listaPuertas.get(9).getPreciocot(), 0,0,0,this.listaPuertas.get(13).getPreciocot());
+                                    0, this.listaPuertas.get(0).getPreciocot(),
+                                    this.listaPuertas.get(1).getPreciocot(), 0, this.listaPuertas.get(3).getPreciocot(),
+                                    this.listaPuertas.get(4).getPreciocot(), this.listaPuertas.get(2).getPreciocot(), this.listaPuertas.get(5).getPreciocot(),
+                                    this.listaPuertas.get(6).getPreciocot(),
+                                    4, this.listaPuertas.get(7).getPreciocot(), 0, 0, 0, this.listaPuertas.get(13).getPreciocot());
 
-                           } else {
-                        if (this.productoTipo == 7) {
-                            codigoPuerta = 10;
-                             puertas = new Puerta(this.ancho, this.alto, this.manObra, this.ganancia,
-                                    this.listaPuertas.get(1).getPreciocot(), 0,
-                                    this.listaPuertas.get(2).getPreciocot(), 0, 0,
-                                    this.listaPuertas.get(6).getPreciocot(), this.listaPuertas.get(4).getPreciocot(), this.listaPuertas.get(7).getPreciocot(),
-                                    this.listaPuertas.get(8).getPreciocot(),
-                                    5, 0, 0,this.listaPuertas.get(11).getPreciocot(),this.listaPuertas.get(12).getPreciocot(),this.listaPuertas.get(13).getPreciocot());
+                        } else {
+                            if (this.productoTipo == 7) {
+                                codigoPuerta = 10;
+                                puertas = new Puerta(this.ancho, this.alto, this.manObra, this.ganancia,
+                                        0, this.listaPuertas.get(0).getPreciocot(),
+                                        this.listaPuertas.get(2).getPreciocot(), 0, 0,
+                                        this.listaPuertas.get(6).getPreciocot(), this.listaPuertas.get(4).getPreciocot(), this.listaPuertas.get(7).getPreciocot(),
+                                        0, 5, 0, 0, this.listaPuertas.get(11).getPreciocot(), this.listaPuertas.get(12).getPreciocot(), this.listaPuertas.get(13).getPreciocot());
 
+                            }
                         }
                     }
                 }
             }
-            }
-            
-                if (this.idVidrio != 0) {
-                    DaoVidrio daoVidrio = new DaoVidrio();
 
-                    this.precioVidrio = daoVidrio.getById(this.session, this.idVidrio).getPreciocost();
+            if (this.idVidrio != 0) {
+                DaoVidrio daoVidrio = new DaoVidrio();
+
+                this.precioVidrio = daoVidrio.getById(this.session, this.idVidrio).getPreciocost();
 //                   FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Correcto:", "El precio1 del vidrio es: " + this.precioVidrio));
 
-                    this.precioVidrio = this.precioVidrio * (puertas.getAlto() * puertas.getAncho());
-                    // this.precioVidrio=this.precioVidrio+(this.precioVidrio*50/100);
-                    this.precioVidrio = this.precioVidrio + (this.precioVidrio / 2);
-                    int espacios = String.valueOf(this.precioVidrio).length();
-                     this.precioVidrio = Integer.valueOf(String.valueOf(this.precioVidrio).substring(0, espacios - 4));
+                this.precioVidrio = this.precioVidrio * (puertas.getAlto() * puertas.getAncho());
+                // this.precioVidrio=this.precioVidrio+(this.precioVidrio*50/100);
+                this.precioVidrio = this.precioVidrio + (this.precioVidrio / 2);
+                int espacios = String.valueOf(this.precioVidrio).length();
+                this.precioVidrio = Integer.valueOf(String.valueOf(this.precioVidrio).substring(0, espacios - 4));
 //          
-                
-                } else {
-           if(this.idVidrio==0){
-               this.precioVidrio=0;
-           }}
+
+            } else {
+                if (this.idVidrio == 0) {
+                    this.precioVidrio = 0;
+                }
+            }
 
             this.listaVentana.add(new Ventanadetalle(null, daoProductos.getById(this.session, codigoPuerta),
                     daoProductos.getById(this.session, codigoPuerta).getNombre() + " " + this.alto + "*" + this.ancho,
@@ -373,7 +371,7 @@ public class Factura {
         this.session = null;
         this.transaccion = null;
         try {
-
+            Material material = new Material();
             if (this.alto.equals("")) {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Error:", "Por favor digite el alto."));
                 return;
@@ -420,14 +418,43 @@ public class Factura {
 
             this.lista.addAll(daoMaterial.getAll(this.session));
 
-            Material material = new Material(this.ancho, this.alto, this.manObra,
-                    this.ganancia, this.lista.get(0).getPreciocost(),
-                    this.lista.get(2).getPreciocost(), this.lista.get(1).getPreciocost(),
-                    this.lista.get(3).getPreciocost(), this.lista.get(4).getPreciocost(),
-                    this.lista.get(5).getPreciocost(), this.lista.get(6).getPreciocost(),
-                    this.lista.get(9).getPreciocost(), this.lista.get(8).getPreciocost(),
-                    this.lista.get(7).getPreciocost(), this.lista.get(10).getPreciocost(),
-                    this.tipoVentana, this.lista.get(11).getPreciocost());
+            if (this.tipoAluminio == 0) {
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Error:", "Seleccione un tipo de aluminio"));
+                return;
+            }
+
+            if (this.tipoAluminio == 1) {
+                material = new Material(this.ancho, this.alto, this.manObra, this.ganancia,
+                        this.lista.get(0).getPreciocost(), this.lista.get(2).getPreciocost(),
+                        this.lista.get(1).getPreciocost(), this.lista.get(3).getPreciocost(),
+                        this.lista.get(4).getPreciocost(),
+                        this.lista.get(5).getPreciocost(), this.lista.get(6).getPreciocost(),
+                        this.lista.get(9).getPreciocost(), this.lista.get(8).getPreciocost(),
+                        this.lista.get(7).getPreciocost(), this.lista.get(10).getPreciocost(),
+                        this.tipoVentana, this.lista.get(11).getPreciocost());
+            } else {
+
+                if (this.tipoAluminio == 2) {
+                    material = new Material(this.ancho, this.alto, this.manObra, this.ganancia,
+                            this.lista.get(12).getPreciocost(), this.lista.get(14).getPreciocost(),
+                            this.lista.get(13).getPreciocost(), this.lista.get(15).getPreciocost(),
+                            this.lista.get(16).getPreciocost(),
+                            this.lista.get(17).getPreciocost(), this.lista.get(18).getPreciocost(),
+                            this.lista.get(21).getPreciocost(), this.lista.get(20).getPreciocost(),
+                            this.lista.get(19).getPreciocost(), this.lista.get(22).getPreciocost(),
+                            this.tipoVentana, this.lista.get(23).getPreciocost());
+                } else {
+                    material = new Material(this.ancho, this.alto, this.manObra, this.ganancia,
+                            this.lista.get(24).getPreciocost(), this.lista.get(26).getPreciocost(),
+                            this.lista.get(25).getPreciocost(), this.lista.get(27).getPreciocost(),
+                            this.lista.get(28).getPreciocost(),
+                            this.lista.get(29).getPreciocost(), this.lista.get(30).getPreciocost(),
+                            this.lista.get(33).getPreciocost(), this.lista.get(32).getPreciocost(),
+                            this.lista.get(31).getPreciocost(), this.lista.get(34).getPreciocost(),
+                            this.tipoVentana, this.lista.get(35).getPreciocost());
+                }
+
+            }
 
             if (this.idVidrio != 0) {
                 DaoVidrio daoVidrio = new DaoVidrio();
