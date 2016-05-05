@@ -148,14 +148,13 @@ public class Puerta {
                 this.aluminio3 = this.alto * 2 + this.ancho * 2;
 
                 this.partidorT103 = this.alto * 2 + this.ancho * 3;
-                this.precioPartidorT103 = this.partidorT103 * prePartidorT103;
-                this.entamborado = (this.ancho / 8) * this.alto;
-                this.perfilU71 = (this.ancho * 4 + this.alto * 4) * prePerfilU71;
+                this.entamborado = (this.ancho / 7) * this.alto;
+                this.perfilU71 = this.ancho * 4 + this.alto * 4;
 
-                this.precioPerfilU71 = this.perfilU71;
+                this.precioPerfilU71 = this.perfilU71 * prePerfilU71;
 
                 this.precioAluminio3 = this.aluminio3 * preAluminio3;
-                this.precioAluminioT87 = this.aluminioT87 * preAluminiot87;
+//                this.precioAluminioT87 = this.aluminioT87 * preAluminiot87;
 
                 this.pibotesAmericanos = prePibotesAmericanos * 2;
                 this.chapaPuerta = preChapaPuerta;
@@ -164,7 +163,7 @@ public class Puerta {
                 this.precioEntamborado = this.entamborado * preEntamborado;
 
                 this.sumaTotal = this.precioAluminio3 + this.precioAluminioT87
-                        + this.precioPartidorT103 + this.pisavidrios + this.chapaPuerta
+                        + this.pisavidrios + this.chapaPuerta
                         + this.pibotesAmericanos + this.varillaTensora + this.escuadras + this.precioPerfilU71 + this.precioEntamborado;
 
                 this.subTotal = this.sumaTotal;
