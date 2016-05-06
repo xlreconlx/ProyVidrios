@@ -123,8 +123,8 @@ public class Puerta {
                 this.precioAluminio3 = this.aluminio3 * preAluminio3;
                 this.precioAluminioT87 = this.aluminioT87 * preAluminiot87;
                 this.precioPartidorT103 = this.partidorT103 * prePartidorT103;
-                this.pisavidrios = this.ancho * 4 + this.alto * 4;
-                this.precioPisavidrios=pisavidrios* prePisavidrios;
+                this.pisavidrios = this.ancho * 8 + this.alto * 4;
+                this.precioPisavidrios = pisavidrios * prePisavidrios;
                 this.precioEmpaque = this.empaque * preEmpaque;
                 this.pibotesAmericanos = (prePibotesAmericanos * 100) * 2;
                 this.chapaPuerta = preChapaPuerta;
@@ -156,7 +156,6 @@ public class Puerta {
                 this.precioPartidorT103 = this.partidorT103 * prePartidorT103;
                 this.precioAluminio3 = this.aluminio3 * preAluminio3;
                 this.precioEntamborado = this.entamborado * preEntamborado;
-//                this.precioAluminioT87 = this.aluminioT87 * preAluminiot87;
 
                 this.pibotesAmericanos = (prePibotesAmericanos * 100) * 2;
                 this.chapaPuerta = preChapaPuerta;
@@ -178,18 +177,17 @@ public class Puerta {
 
             case 3:
                 //marco de la pared
-                this.aluminio3 = this.alto * 2 + this.ancho * 2;
+                this.aluminio3 = this.alto * 2 + this.ancho * 1;
                 //marco puerta
                 this.aluminioT87 = this.alto * 2 + this.ancho * 2;
-                this.partidorT103 = this.ancho;
+
                 this.entamboradoF06 = ((this.ancho / 7) * this.alto);
                 //  this.partidorT103=recortar(String.valueOf(partidorT103));
 
                 this.precioAluminio3 = this.aluminio3 * preAluminio3;
                 this.precioAluminioT87 = this.aluminioT87 * preAluminiot87;
-                this.precioPartidorT103 = this.partidorT103 * prePartidorT103;
-                this.pisavidrios = (this.ancho * 4 + this.alto * 4) * prePisavidrios;
-
+                this.pisavidrios = this.ancho * 8 + this.alto * 4;
+                this.precioPisavidrios = this.pisavidrios * prePisavidrios;
                 this.pibotesAmericanos = (prePibotesAmericanos * 100) * 2;
                 this.chapaPuerta = preChapaPuerta;
                 this.varillaTensora = (preVarillaTensora * 100) * 2;
@@ -197,7 +195,7 @@ public class Puerta {
                 this.precioEntamboradoF06 = this.entamboradoF06 * preEntamboradoF06;
 
                 this.sumaTotal = this.precioAluminio3 + this.precioAluminioT87
-                        + this.precioPartidorT103 + this.pisavidrios + this.chapaPuerta
+                        + this.precioPisavidrios + this.chapaPuerta
                         + this.pibotesAmericanos + this.varillaTensora + this.precioEscuadras + this.precioEntamboradoF06;
 
                 this.subTotal = this.sumaTotal;
@@ -215,10 +213,8 @@ public class Puerta {
 
                 this.partidorT103 = this.alto * 2 + this.ancho * 3;
                 this.precioPartidorT103 = this.partidorT103 * prePartidorT103;
-
-                this.perfilU71 = this.ancho * 4 + this.alto * 4;
-
-                this.precioPerfilU71 = this.perfilU71 * prePerfilU71;
+                this.pisavidrios = this.ancho * 8 + this.alto * 4;
+                this.precioPisavidrios = this.pisavidrios * prePisavidrios;
                 this.empaque = this.alto * 2 + this.ancho * 4;
                 this.precioAluminio3 = this.aluminio3 * preAluminio3;
 
@@ -228,8 +224,8 @@ public class Puerta {
                 this.varillaTensora = (preVarillaTensora * 100) * 2;
                 this.escuadras = (preEscuadras * 100) * 12;
 
-                this.sumaTotal = this.precioAluminio3 + this.precioPartidorT103  + this.precioEmpaque + this.chapaPuerta
-                        + this.pibotesAmericanos + this.varillaTensora + this.escuadras + this.precioPerfilU71;
+                this.sumaTotal = this.precioAluminio3 + this.precioPartidorT103 + this.precioEmpaque + this.chapaPuerta
+                        + this.pibotesAmericanos + this.varillaTensora + this.escuadras + this.precioPisavidrios;
 
                 this.subTotal = this.sumaTotal;
 
