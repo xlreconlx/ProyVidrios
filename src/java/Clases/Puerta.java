@@ -114,7 +114,7 @@ public class Puerta {
 
             case 1:
                 //marco de la pared
-                this.aluminio3 = this.alto * 2 + this.ancho * 2;
+                this.aluminio3 = this.alto * 2 + this.ancho * 1;
                 //marco puerta
                 this.aluminioT87 = this.alto * 2 + this.ancho * 2;
                 this.partidorT103 = this.ancho;
@@ -146,9 +146,9 @@ public class Puerta {
 
             case 2:
 
-                this.aluminio3 = this.alto * 2 + this.ancho * 2;
+                this.aluminio3 = this.alto * 2 + this.ancho * 1;
 
-                this.partidorT103 = this.alto * 2 + this.ancho * 1;
+                this.partidorT103 = this.alto * 2 + this.ancho * 2;
                 this.entamborado = (this.ancho / 7) * this.alto;
                 this.perfilU71 = this.ancho * 4 + this.alto * 4;
 
@@ -211,14 +211,14 @@ public class Puerta {
 
             case 4:
 
-                this.aluminio3 = this.alto * 2 + this.ancho * 2;
+                this.aluminio3 = this.alto * 2 + this.ancho * 1;
 
                 this.partidorT103 = this.alto * 2 + this.ancho * 3;
                 this.precioPartidorT103 = this.partidorT103 * prePartidorT103;
 
-                this.perfilU71 = (this.ancho * 4 + this.alto * 4) * prePerfilU71;
+                this.perfilU71 = this.ancho * 4 + this.alto * 4;
 
-                this.precioPerfilU71 = this.perfilU71;
+                this.precioPerfilU71 = this.perfilU71 * prePerfilU71;
                 this.empaque = this.alto * 2 + this.ancho * 4;
                 this.precioAluminio3 = this.aluminio3 * preAluminio3;
 
@@ -228,8 +228,7 @@ public class Puerta {
                 this.varillaTensora = (preVarillaTensora * 100) * 2;
                 this.escuadras = (preEscuadras * 100) * 12;
 
-                this.sumaTotal = this.precioAluminio3 + this.precioAluminioT87
-                        + this.precioPartidorT103 + this.pisavidrios + this.precioEmpaque + this.chapaPuerta
+                this.sumaTotal = this.precioAluminio3 + this.precioPartidorT103  + this.precioEmpaque + this.chapaPuerta
                         + this.pibotesAmericanos + this.varillaTensora + this.escuadras + this.precioPerfilU71;
 
                 this.subTotal = this.sumaTotal;
