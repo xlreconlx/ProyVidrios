@@ -345,7 +345,17 @@ public class Factura {
                     1, puertas.getSumaTotal() + this.precioVidrio, 1 * puertas.getSumaTotal()
                     + this.precioVidrio, this.manObra, this.ganancia, this.alto, this.ancho, ""));
 
-            this.transaccion.commit();
+        this.transaccion.commit();
+            this.idVidrio = 0;
+            this.ganancia = 0;
+            this.alto = "";
+            this.ancho = "";
+            this.manObra = 0;
+            this.tipoVentana = 0;
+            this.tipoVidrio = 0;
+            this.tipoVitrina = 0;
+            this.fondo = "";
+            this.productoTipo = 0;
 
         } catch (Exception ex) {
 
@@ -480,7 +490,17 @@ public class Factura {
                         daoProductos.getById(this.session, this.tipoVentana).getNombre() + " " + this.alto + "*" + this.ancho,
                         1, this.precioVidrio, 1 * this.precioVidrio, this.manObra, this.ganancia, this.alto, this.ancho, ""));
             }
-            this.transaccion.commit();
+           this.transaccion.commit();
+            this.idVidrio = 0;
+            this.ganancia = 0;
+            this.alto = "";
+            this.ancho = "";
+            this.manObra = 0;
+            this.tipoVentana = 0;
+            this.tipoVidrio = 0;
+            this.tipoVitrina = 0;
+            this.fondo = "";
+            this.productoTipo = 0;
         } catch (Exception ex) {
 
             if (this.transaccion != null) {
