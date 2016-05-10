@@ -126,7 +126,7 @@ public class Puerta {
                 this.pisavidrios = this.ancho * 8 + this.alto * 4;
                 this.precioPisavidrios = pisavidrios * prePisavidrios;
                 this.precioEmpaque = this.empaque * preEmpaque;
-                this.pibotesAmericanos = (prePibotesAmericanos * 100) * 2;
+                this.pibotesAmericanos = prePibotesAmericanos;
                 this.chapaPuerta = preChapaPuerta;
                 this.varillaTensora = (preVarillaTensora * 100) * 2;
                 this.precioEscuadras = (preEscuadras * 100) * 12;
@@ -157,7 +157,7 @@ public class Puerta {
                 this.precioAluminio3 = this.aluminio3 * preAluminio3;
                 this.precioEntamborado = this.entamborado * preEntamborado;
 
-                this.pibotesAmericanos = (prePibotesAmericanos * 100) * 2;
+                this.pibotesAmericanos = prePibotesAmericanos;
                 this.chapaPuerta = preChapaPuerta;
                 this.varillaTensora = (preVarillaTensora * 100) * 2;
                 this.escuadras = (preEscuadras * 100) * 12;
@@ -188,7 +188,7 @@ public class Puerta {
                 this.precioAluminioT87 = this.aluminioT87 * preAluminiot87;
                 this.pisavidrios = this.ancho * 8 + this.alto * 4;
                 this.precioPisavidrios = this.pisavidrios * prePisavidrios;
-                this.pibotesAmericanos = (prePibotesAmericanos * 100) * 2;
+                this.pibotesAmericanos = prePibotesAmericanos;
                 this.chapaPuerta = preChapaPuerta;
                 this.varillaTensora = (preVarillaTensora * 100) * 2;
                 this.precioEscuadras = (preEscuadras * 100) * 12;
@@ -219,7 +219,7 @@ public class Puerta {
                 this.precioAluminio3 = this.aluminio3 * preAluminio3;
 
                 this.precioEmpaque = this.empaque * preEmpaque;
-                this.pibotesAmericanos = (prePibotesAmericanos * 100) * 2;
+                this.pibotesAmericanos = prePibotesAmericanos;
                 this.chapaPuerta = preChapaPuerta;
                 this.varillaTensora = (preVarillaTensora * 100) * 2;
                 this.escuadras = (preEscuadras * 100) * 12;
@@ -237,11 +237,11 @@ public class Puerta {
                 break;
 
             case 5:
-                this.aluminio3 = this.alto * 2 + this.ancho * 2;
+                this.aluminio3 = this.alto * 2 + this.ancho * 1;
                 this.alamoUnoMedia = this.alto * 2 + this.ancho * 2;
 
                 this.partidorT103 = this.ancho;
-                this.empaque = this.alto * 2 + this.ancho * 4;
+                this.empaque = this.alto * 4 + this.ancho * 8;
                 this.precioAluminio3 = this.aluminio3 * preAluminio3;
                 this.precioPartidorT103 = this.partidorT103 * prePartidorT103;
 

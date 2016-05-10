@@ -273,26 +273,26 @@ public class Factura {
             if (this.productoTipo == 2) {
 
                 codigoPuerta = 5;
-                         puertas = new Puerta(this.ancho, this.alto, this.manObra, this.ganancia,
+                puertas = new Puerta(this.ancho, this.alto, this.manObra, this.ganancia,
                         this.listaPuertas.get(1).getPreciocot(), this.listaPuertas.get(0).getPreciocot(),
                         this.listaPuertas.get(2).getPreciocot(), this.listaPuertas.get(3).getPreciocot(), this.listaPuertas.get(5).getPreciocot(),
                         this.listaPuertas.get(6).getPreciocot(), this.listaPuertas.get(4).getPreciocot(), this.listaPuertas.get(7).getPreciocot(),
-                        0,  this.tipoVentana, 0, 0, 0, 0, this.listaPuertas.get(13).getPreciocot());
+                        0, this.tipoVentana, 0, 0, 0, 0, this.listaPuertas.get(13).getPreciocot());
 
             } else {
                 if (this.productoTipo == 4) {
                     codigoPuerta = 6;
-                   puertas = new Puerta(this.ancho, this.alto, this.manObra, this.ganancia,
-                            0, this.listaPuertas.get(0).getPreciocot(),this.listaPuertas.get(2).getPreciocot(),
+                    puertas = new Puerta(this.ancho, this.alto, this.manObra, this.ganancia,
+                            0, this.listaPuertas.get(0).getPreciocot(), this.listaPuertas.get(2).getPreciocot(),
                             0, this.listaPuertas.get(5).getPreciocot(), this.listaPuertas.get(6).getPreciocot(),
                             this.listaPuertas.get(4).getPreciocot(), this.listaPuertas.get(7).getPreciocot(),
-                            this.listaPuertas.get(8).getPreciocot(), 
+                            this.listaPuertas.get(8).getPreciocot(),
                             this.tipoVentana, this.listaPuertas.get(9).getPreciocot(), 0, 0, 0, 0);
 
                 } else {
                     if (this.productoTipo == 5) {
                         codigoPuerta = 8;
-                         puertas = new Puerta(this.ancho, this.alto, this.manObra, this.ganancia,
+                        puertas = new Puerta(this.ancho, this.alto, this.manObra, this.ganancia,
                                 this.listaPuertas.get(1).getPreciocot(), this.listaPuertas.get(0).getPreciocot(),
                                 this.listaPuertas.get(2).getPreciocot(), this.listaPuertas.get(3).getPreciocot(), this.listaPuertas.get(5).getPreciocot(),
                                 this.listaPuertas.get(6).getPreciocot(), this.listaPuertas.get(4).getPreciocot(), this.listaPuertas.get(7).getPreciocot(),
@@ -301,7 +301,7 @@ public class Factura {
                     } else {
                         if (this.productoTipo == 6) {
                             codigoPuerta = 9;
-                           puertas = new Puerta(this.ancho, this.alto, this.manObra, this.ganancia,
+                            puertas = new Puerta(this.ancho, this.alto, this.manObra, this.ganancia,
                                     0, this.listaPuertas.get(0).getPreciocot(), this.listaPuertas.get(2).getPreciocot(),
                                     this.listaPuertas.get(3).getPreciocot(), this.listaPuertas.get(5).getPreciocot(), this.listaPuertas.get(6).getPreciocot(),
                                     this.listaPuertas.get(4).getPreciocot(), this.listaPuertas.get(7).getPreciocot(),
@@ -310,11 +310,11 @@ public class Factura {
                         } else {
                             if (this.productoTipo == 7) {
                                 codigoPuerta = 10;
-                                 puertas = new Puerta(this.ancho, this.alto, this.manObra, this.ganancia,
-                                     0, this.listaPuertas.get(0).getPreciocot(),  this.listaPuertas.get(2).getPreciocot(), 0, 0,
-                                   this.listaPuertas.get(6).getPreciocot(), this.listaPuertas.get(4).getPreciocot(), this.listaPuertas.get(7).getPreciocot(), 0,
-                                   this.tipoVentana, 0, 0, this.listaPuertas.get(11).getPreciocot(), this.listaPuertas.get(12).getPreciocot(),
-                                   this.listaPuertas.get(13).getPreciocot());
+                                puertas = new Puerta(this.ancho, this.alto, this.manObra, this.ganancia,
+                                        0, this.listaPuertas.get(0).getPreciocot(), this.listaPuertas.get(2).getPreciocot(), 0, 0,
+                                        this.listaPuertas.get(6).getPreciocot(), this.listaPuertas.get(4).getPreciocot(), this.listaPuertas.get(7).getPreciocot(), 0,
+                                        this.tipoVentana, 0, 0, this.listaPuertas.get(11).getPreciocot(), this.listaPuertas.get(12).getPreciocot(),
+                                        this.listaPuertas.get(13).getPreciocot());
                             }
                         }
                     }
@@ -345,7 +345,7 @@ public class Factura {
                     1, puertas.getSumaTotal() + this.precioVidrio, 1 * puertas.getSumaTotal()
                     + this.precioVidrio, this.manObra, this.ganancia, this.alto, this.ancho, ""));
 
-        this.transaccion.commit();
+            this.transaccion.commit();
             this.idVidrio = 0;
             this.ganancia = 0;
             this.alto = "";
@@ -490,7 +490,7 @@ public class Factura {
                         daoProductos.getById(this.session, this.tipoVentana).getNombre() + " " + this.alto + "*" + this.ancho,
                         1, this.precioVidrio, 1 * this.precioVidrio, this.manObra, this.ganancia, this.alto, this.ancho, ""));
             }
-           this.transaccion.commit();
+            this.transaccion.commit();
             this.idVidrio = 0;
             this.ganancia = 0;
             this.alto = "";

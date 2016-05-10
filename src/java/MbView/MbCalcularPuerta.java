@@ -218,7 +218,7 @@ public class MbCalcularPuerta {
                     this.cantidadMarcoAncho = 1;
                     this.cantidadNaveAlto = 2;
                     this.cantidadNaveAncho = 2;
-                    this.CantidadPerfilU71= Integer.valueOf(this.getAncho()) / 7;;
+                    this.CantidadPerfilU71= Integer.valueOf(this.getAncho()) / 7;
 
                     this.cantidadPartidor = 1;
                     this.cantidadPisaVidriosAlto = 4;
@@ -227,7 +227,7 @@ public class MbCalcularPuerta {
                     this.mensajeAluminio3Ancho = "" + this.cantidadMarcoAncho + "Alumininio 3media de: " + (this.recorteAncho);
                     this.mensajeNaveAlto = "" + this.cantidadNaveAlto + "  AluminiT103 de " + (this.recorteAlto - 5.0);
                     this.mensajeNaveAncho = "" + this.cantidadNaveAncho + " AluminioT103 de:  " + (this.recorteAncho - 8.0);
-                    this.mensajePerfilU71 = "" + this.CantidadPerfilU71 + "perfil U71 Alto de:  " + (this.recorteAlto - 20.2);
+                    this.mensajePerfilU71 = "" + this.CantidadPerfilU71 + "pefil U71 Alto de:  " + (this.recorteAlto - 20.2);
 
                 } else {
                     if (this.tipoVentana == 3) {
