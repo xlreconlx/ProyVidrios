@@ -210,7 +210,7 @@ public class MbCalcularPuerta {
                 this.cantidadPisaVidriosAlto = 8;
                 this.cantidadPisaVidriosAncho = 8;
                 this.cantidadVidrio = 2;
-                this.mensajeAluminio3Alto = "" + this.cantidadMarcoAlto + " Aluminio 3media Alto de:" + (this.recorteAlto);
+                this.mensajeAluminio3Alto = "" + this.cantidadMarcoAlto + " Aluminio 3 media Alto de:" + (this.recorteAlto);
                 this.mensajeAluminio3Ancho = "" + this.cantidadMarcoAncho + "Alumininio 3media Ancho de: " + (this.recorteAncho);
                 this.mensajeNaveAlto = "" + this.cantidadNaveAlto + "  AluminiT87 Alto de " + (this.recorteAlto - 5.0);
                 this.mensajeNaveAncho = "" + this.cantidadNaveAncho + " AluminioT87 Ancho de:  " + (this.recorteAncho - 8.0);
@@ -225,6 +225,7 @@ public class MbCalcularPuerta {
                 this.recorteVidrioAncho = Integer.valueOf(this.getAncho()) - 16.1;
 //                this.recorteVidrioAlto = puertas.getAlto() - 10;
                 this.recorteVidrioAlto = Integer.valueOf(this.getAlto()) - 19.7;
+                this.recorteVidrioAlto=this.recorteVidrioAlto/2;
 
             } else {
                 if (this.tipoVentana == 2) {
