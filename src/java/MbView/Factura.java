@@ -534,7 +534,8 @@ public class Factura {
 
             this.session = HibernateUtil.getSessionFactory().openSession();
             this.transaccion = this.session.beginTransaction();
-
+            int idBdFactura = daoFactura.getByUltimoRegistro(this.session).getIdfacturas();
+            this.factura.setIdfacturas(idFactura+1);
             this.factura.setCliente(daoCliente.getById(this.session, this.idCliente));
             this.factura.setEmpleado(daoEmpleado.getById(this.session, this.idEmpleado));
             this.factura.setFechaventa(new Date());
