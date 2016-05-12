@@ -62,6 +62,7 @@ public class BeanEmpleado {
     }
 
     public void register() {
+ 
         this.session = null;
         this.transaccion = null;
 

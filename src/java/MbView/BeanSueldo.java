@@ -53,6 +53,7 @@ public class BeanSueldo {
     private BigDecimal totalVentasFecha;
       private String numeroDocumento;
       private int idSueldo;
+      private Sueldo sueldoSelect;
 
     public BeanSueldo() {
         this.sueldo = new Sueldo();
@@ -303,7 +304,6 @@ public class BeanSueldo {
     
     
     public void BuscarBYcodigoSueldo(int id) {
-        this.listaSueldo = new ArrayList<>();
         this.session = null;
         this.transaccion = null;
         try {
@@ -311,12 +311,11 @@ public class BeanSueldo {
             this.transaccion = this.session.beginTransaction();
             DaoSueldo daoSueldo = new DaoSueldo();
      
-            this.listaSueldo.addAll(daoSueldo.getAllByIdEmpleado(this.session, id));
+          this.sueldoSelect=daoSueldo.getByCodigoSueldo(this.session, id);
+          this.transaccion.commit();
 
         } catch (Exception e) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Contacte con su administrador" + e.getMessage()));
-            this.listaSueldo = null;
-            this.empleado = null;
             if (this.transaccion != null) {
                 this.transaccion.rollback();
                 this.session.close();
@@ -435,6 +434,14 @@ public class BeanSueldo {
 
     public void setListaEmpleado(List<Empleado> listaEmpleado) {
         this.listaEmpleado = listaEmpleado;
+    }
+
+    public Sueldo getSueldoSelect() {
+        return sueldoSelect;
+    }
+
+    public void setSueldoSelect(Sueldo sueldoSelect) {
+        this.sueldoSelect = sueldoSelect;
     }
 
 }

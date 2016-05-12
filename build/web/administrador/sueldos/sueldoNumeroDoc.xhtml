@@ -44,7 +44,7 @@
 
                                 <div class="panel-body">
                                     <div class="panel-heading color">Lista De Sueldo Empledo</div>
-                                    <h:form  styleClass="form-group" >
+                                    <h:form rendered="#{beanSueldo.listaSueldo!=null}"  styleClass="form-group" >
 
                                         <p:growl id="growl" showDetail="true" sticky="true" />
                                         <p:dataTable style="width: 98% !important;margin-left: 5px;" value="#{beanSueldo.listaSueldo}" var="item">
@@ -93,63 +93,47 @@
                                             <p:column headerText="Saldo Final">
                                                 #{item.sueldoTotal}
                                             </p:column>
-                                           <!-- <p:column headerText="Abono secundario">
+                                            <p:column headerText="Abono secundario">
                                                 <h:form>
-                                                    <button type="button" jsf:onclick="# {beanSueldo.BuscarBYcodigoSueldo(item.idsueldo)}" class="btn btn-info" pa:data-toggle="modal" pa:data-target="#myModal1">
+                                                    <button type="button" jsf:onclick="#{beanSueldo.BuscarBYcodigoSueldo(item.idsueldo)}" class="btn btn-info" pa:data-toggle="modal" pa:data-target="#myModal1">
                                                         Ver Mas
                                                     </button>
                                                 </h:form>
 
-                                            </p:column>-->
+                                            </p:column>
                                         </p:dataTable>
 
                                     </h:form>
                                 </div>
 
                                 <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                                    <h:form styleClass="modal-dialog"  role="document">
+                                    <h:form  styleClass="modal-dialog"  role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                 <h4 class="modal-title" id="myModalLabel">Sueldo</h4>
                                             </div>
-                                            <div class="modal-body">
-                                                <p:dataTable style="width: 98% !important;margin-left: 5px;" value="# {beanSueldo.listaSueldo}" var="item">
-
-                                                    <f:facet name="header">
-                                                        Lista
-                                                    </f:facet>
-                                                    <p:column headerText="Abono" >
-                                                        <h:outputText value="# {item.idsueldo}"/>
-                                                    </p:column>
-
-                                                    <p:column headerText="nombre">
-                                                        <h:outputText value="# {item.comision}"/>
-                                                    </p:column>
-
-
-
-                                                    <p:column headerText="Valor" >
-                                                        <h:outputText value="# {item.sueldoBase}"/>
-                                                    </p:column>
-                                                    <p:column headerText="total" >
-                                                        <h:outputText value="# {item.horasExtras}"/>
-                                                    </p:column>
-
-                                                    <p:column headerText="Fecha">
-                                                        <h:outputText value="# {item.descuentos}"/>
-                                                    </p:column>
-                                                    <p:column headerText="Fecha">
-                                                        <h:outputText value="# {item.sueldoTotal}"/>
-                                                    </p:column>
-
-                                                </p:dataTable>
-
+                                            <div id="imprimeDiv" class="modal-body">
+                                                <label>Nombre empleado #{beanEmpleado.getById(beanSueldo.sueldoSelect.empleado.idempleado).getNombre()}</label>
+                                                <br></br>
+                                                <label>Codigo sueldo  #{beanSueldo.sueldoSelect.idsueldo}</label>
+                                                <br></br>
+                                                <label>Fecha  #{beanSueldo.sueldoSelect.fechaCreacionSueldo}</label>
+                                                <br></br>
+                                                <label>Comision  #{beanSueldo.sueldoSelect.comision}</label>
+                                                <br></br>
+                                                <label>Hora extras #{beanSueldo.sueldoSelect.horasExtras}</label>
+                                                <br></br>
+                                                <label>Descuentos  #{beanSueldo.sueldoSelect.descuentos}</label>
+                                                <br></br>
+                                                <label>Sueldo base  #{beanSueldo.sueldoSelect.sueldoBase}</label>
+                                                <br></br>
+                                                <label>Sueldo total  #{beanSueldo.sueldoSelect.sueldoTotal}</label>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-
-                                            </div>
+                                                <button onclick="imprimir()" type="button" class="btn btn-info" >Imprimir</button>
+                                             </div>
                                         </div>
 
                                     </h:form>
