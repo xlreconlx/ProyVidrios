@@ -7,6 +7,7 @@ package Daos;
 
 import Interface.InterfaceSueldo;
 import Pojos.Sueldo;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import org.hibernate.Query;
@@ -57,5 +58,26 @@ public class DaoSueldo implements InterfaceSueldo {
             query.setParameter("fechaFin", fechaFin);
         return (List<Sueldo>) query.list(); 
     }
+
+    @Override
+    public List<Sueldo> getAllByEmpleado(Session session, String numeroDocumento) throws Exception {
+  String hql = "FROM Sueldo a inner join fetch a.empleado ac where ac.numeroDocumento=:numeroDocumento";
+        Query query = session.createQuery(hql);
+            query.setParameter("numeroDocumento", numeroDocumento);
+           
+        return (List<Sueldo>) query.list();
+    }
+ @Override
+    public List<Sueldo> getAllByIdEmpleado(Session session, int id) {
+ String hql = "FROM Sueldo a inner join fetch a.empleado ac where ac.idempleado=:id";
+        Query query = session.createQuery(hql);
+            query.setParameter("id", id);
+           
+        return (List<Sueldo>) query.list();    }
+
+   
+
+  
+  
 
 }

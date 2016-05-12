@@ -21,5 +21,7 @@ public interface Empleados {
     public Empleado getById(Session session,int id)throws Exception;
     public List<Empleado> getAll(Session session)throws Exception;  
           public Empleado getByNumeroDocumento(Session session, String numeroDocumento) throws Exception;
+      public Empleado getAllByIdSueldo(Session session,int id)throws Exception;
+
 
 }

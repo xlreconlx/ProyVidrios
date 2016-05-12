@@ -21,6 +21,10 @@ public interface InterfaceSueldo {
     public boolean update(Session session, Sueldo tipodocumento)throws Exception;
     public boolean delete(Session session, Sueldo sueldo) throws Exception;
     public List<Sueldo> getAllFecha(Session session, Date fechaInicio, Date fechaFin) throws Exception;
+    public List<Sueldo> getAllByEmpleado(Session session,String numeroDocumento)throws Exception;
+        public List<Sueldo> getAllByIdEmpleado(Session session,int id)throws Exception;
+
+
 
 
 }

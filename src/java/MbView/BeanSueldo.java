@@ -11,7 +11,9 @@ import HibernateUtil.HibernateUtil;
 import Pojos.Empleado;
 import Pojos.Sueldo;
 import java.math.BigDecimal;
+import java.sql.Array;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import javax.faces.application.FacesMessage;
@@ -40,6 +42,7 @@ public class BeanSueldo {
     private Sueldo sueldo;
     private Empleado empleado;
     private List<Sueldo> listaSueldo;
+    private List<Empleado> listaEmpleado;
     private List<Sueldo> listaSueldoByFecha;
     private int codigoEmpleado;
     private int codigoSueldo;
@@ -48,6 +51,8 @@ public class BeanSueldo {
     private Date fechaFin;
     private Date fechaInicio;
     private BigDecimal totalVentasFecha;
+      private String numeroDocumento;
+      private int idSueldo;
 
     public BeanSueldo() {
         this.sueldo = new Sueldo();
@@ -266,6 +271,60 @@ public class BeanSueldo {
         }
     }
 
+    
+     public void selectSueldo(int id) {
+        this.idSueldo = id;
+    }
+    
+    
+    public void searchByDocumento() {
+        this.listaSueldo = new ArrayList<>();
+        this.session = null;
+        this.transaccion = null;
+        try {
+            this.session = HibernateUtil.getSessionFactory().openSession();
+            this.transaccion = this.session.beginTransaction();
+            DaoEmpleado daoEmpleado = new DaoEmpleado();
+            DaoSueldo daoSueldo = new DaoSueldo();
+            this.empleado = daoEmpleado.getByNumeroDocumento(this.session,this.numeroDocumento);
+            this.listaSueldo.addAll(daoSueldo.getAllByEmpleado(this.session, this.numeroDocumento));
+
+        } catch (Exception e) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Contacte con su administrador" + e.getMessage()));
+            this.listaSueldo = null;
+            this.empleado = null;
+            if (this.transaccion != null) {
+                this.transaccion.rollback();
+                this.session.close();
+            }
+        }
+    }
+    
+    
+    
+    public void BuscarBYcodigoSueldo(int id) {
+        this.listaSueldo = new ArrayList<>();
+        this.session = null;
+        this.transaccion = null;
+        try {
+            this.session = HibernateUtil.getSessionFactory().openSession();
+            this.transaccion = this.session.beginTransaction();
+            DaoSueldo daoSueldo = new DaoSueldo();
+     
+            this.listaSueldo.addAll(daoSueldo.getAllByIdEmpleado(this.session, id));
+
+        } catch (Exception e) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Contacte con su administrador" + e.getMessage()));
+            this.listaSueldo = null;
+            this.empleado = null;
+            if (this.transaccion != null) {
+                this.transaccion.rollback();
+                this.session.close();
+            }
+        }
+    }
+    
+    
     public Sueldo getSueldo() {
         return sueldo;
     }
@@ -352,6 +411,30 @@ public class BeanSueldo {
 
     public void setTotalVentasFecha(BigDecimal totalVentasFecha) {
         this.totalVentasFecha = totalVentasFecha;
+    }
+
+    public String getNumeroDocumento() {
+        return numeroDocumento;
+    }
+
+    public void setNumeroDocumento(String numeroDocumento) {
+        this.numeroDocumento = numeroDocumento;
+    }
+
+    public int getIdSueldo() {
+        return idSueldo;
+    }
+
+    public void setIdSueldo(int idSueldo) {
+        this.idSueldo = idSueldo;
+    }
+
+    public List<Empleado> getListaEmpleado() {
+        return listaEmpleado;
+    }
+
+    public void setListaEmpleado(List<Empleado> listaEmpleado) {
+        this.listaEmpleado = listaEmpleado;
     }
 
 }

@@ -1,0 +1,170 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pa="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../../layaut/TemplateAdmin.xhtml">
+
+            <ui:define name="top">
+                <div class="container">
+                    <div class="row">
+                        <h1 style="color: #fff;">Buscar Sueldo Por Numero Documento</h1>
+                        <hr></hr>
+                        <div class="col-lg-3 col-md-3 col-xs-13 col-sm-3">
+
+                            <div class="panel panel-default div2">
+                                <div class="panel-heading color">Buscar Empleado</div>
+                                <div class="panel-body">
+                                    <h:form>
+                                        <p:growl showDetail="true" sticky="false"></p:growl>
+
+                                        <label>Digite el Numero de documento </label>
+                                        <h:inputText styleClass="form-control" value="#{beanSueldo.numeroDocumento}"/>
+                                        <br></br>
+                                        <h:commandButton styleClass="btn btn-block btn-info" value="Buscar" actionListener="#{beanSueldo.searchByDocumento()}"></h:commandButton>
+                                        <br></br>
+
+
+                                    </h:form>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="col-lg-9 col-md-9 col-xs-9 col-sm-9">
+                            <div class="panel panel-default div2">
+
+                                <div class="panel-body">
+                                    <div class="panel-heading color">Lista De Sueldo Empledo</div>
+                                    <h:form  styleClass="form-group" >
+
+                                        <p:growl id="growl" showDetail="true" sticky="true" />
+                                        <p:dataTable style="width: 98% !important;margin-left: 5px;" value="#{beanSueldo.listaSueldo}" var="item">
+                                            <p:columnGroup  type="header">
+                                                <p:row>
+                                                    <p:column colspan="2" headerText=" #{beanSueldo.empleado.nombre} #{beanSueldo.empleado.apellidos}" />
+                                                    <p:column colspan="2" headerText="Doc: #{beanSueldo.empleado.numeroDocumento}" />
+                                                    <p:column colspan="1" headerText="Tel: #{beanSueldo.empleado.telefono}"/>
+                                                    <p:column colspan="2" headerText="Dir: #{beanSueldo.empleado.direccion}"/>
+
+                                                </p:row>
+
+
+
+                                                <p:row>
+                                                    <p:column headerText="Codigo" />
+                                                    <p:column headerText="fecha" />
+                                                    <p:column headerText="Sueldo Base" />
+                                                    <p:column headerText="Comision" />
+                                                    <p:column headerText="Horas Extras" />
+                                                    <p:column headerText="Descuentos" />
+                                                    <p:column headerText="Saldo Total" />
+
+
+                                                </p:row>
+                                            </p:columnGroup>
+                                            <p:column headerText="codigo">
+                                                #{item.idsueldo}
+                                            </p:column>
+
+                                            <p:column headerText="Fecha">
+                                                #{item.fechaCreacionSueldo}
+                                            </p:column>
+                                            <p:column headerText="Sueldo Base">
+                                                #{item.sueldoBase}
+                                            </p:column>
+                                            <p:column headerText="comision">
+                                                #{item.comision}
+                                            </p:column>
+                                            <p:column headerText="Horas exras">
+                                                #{item.horasExtras}
+                                            </p:column>
+                                            <p:column headerText="Descuentos">
+                                                #{item.descuentos}
+                                            </p:column>
+                                            <p:column headerText="Saldo Final">
+                                                #{item.sueldoTotal}
+                                            </p:column>
+                                           <!-- <p:column headerText="Abono secundario">
+                                                <h:form>
+                                                    <button type="button" jsf:onclick="# {beanSueldo.BuscarBYcodigoSueldo(item.idsueldo)}" class="btn btn-info" pa:data-toggle="modal" pa:data-target="#myModal1">
+                                                        Ver Mas
+                                                    </button>
+                                                </h:form>
+
+                                            </p:column>-->
+                                        </p:dataTable>
+
+                                    </h:form>
+                                </div>
+
+                                <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                    <h:form styleClass="modal-dialog"  role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                <h4 class="modal-title" id="myModalLabel">Sueldo</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p:dataTable style="width: 98% !important;margin-left: 5px;" value="# {beanSueldo.listaSueldo}" var="item">
+
+                                                    <f:facet name="header">
+                                                        Lista
+                                                    </f:facet>
+                                                    <p:column headerText="Abono" >
+                                                        <h:outputText value="# {item.idsueldo}"/>
+                                                    </p:column>
+
+                                                    <p:column headerText="nombre">
+                                                        <h:outputText value="# {item.comision}"/>
+                                                    </p:column>
+
+
+
+                                                    <p:column headerText="Valor" >
+                                                        <h:outputText value="# {item.sueldoBase}"/>
+                                                    </p:column>
+                                                    <p:column headerText="total" >
+                                                        <h:outputText value="# {item.horasExtras}"/>
+                                                    </p:column>
+
+                                                    <p:column headerText="Fecha">
+                                                        <h:outputText value="# {item.descuentos}"/>
+                                                    </p:column>
+                                                    <p:column headerText="Fecha">
+                                                        <h:outputText value="# {item.sueldoTotal}"/>
+                                                    </p:column>
+
+                                                </p:dataTable>
+
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+
+                                            </div>
+                                        </div>
+
+                                    </h:form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ui:define>
+
+            <ui:define name="bottom">
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

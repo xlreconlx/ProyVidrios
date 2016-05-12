@@ -42,8 +42,7 @@
 
                                             <div></div>
 
-                                            <h:outputLabel value="  Recorte: #{mbCalcularPuerta.tipoVentana}"/>
-                                            <br></br>
+                                           
                                             <h:outputText value=" Recorte: #{mbCalcularPuerta.mensajeAluminio3Alto}">
                                             </h:outputText>
                                             <br></br>
@@ -96,11 +95,7 @@
                                         <h:inputText value="#{mbCalcularPuerta.ganancia}" styleClass="form-control"></h:inputText>
                                         <label class="bajar">Digite el costo de la mano de obra</label>
                                         <h:inputText value="#{mbCalcularPuerta.manObra}"  styleClass="form-control"></h:inputText>
-                                        <label class="bajar">Seleccione un tipo de vidrio</label>
-                                        <h:selectOneMenu value="#{mbCalcularPuerta.idVidrio}" styleClass="form-control">
-                                            <f:selectItem itemValue="0" itemLabel="Seleccione un tipo de vidrio"/>
-                                            <f:selectItems value="#{mbVidrios.all}" var="vidrio" itemLabel="#{vidrio.calibre}" itemValue="#{vidrio.idvidrios}"/>
-                                        </h:selectOneMenu>
+                                      
                                         <label class="bajar">Seleccione un tipo de Puerta</label>
                                         <h:selectOneMenu value="#{mbCalcularPuerta.tipoVentana}" styleClass="form-control">
                                             <f:selectItem itemValue="0" itemLabel="Seleccione un tipo de Puerta"/>
@@ -109,6 +104,11 @@
                                             <f:selectItem itemValue="3" itemLabel="4 Aluminio T87 y Entamborado F06"/>
                                             <f:selectItem itemValue="4" itemLabel="5 Aluminio T103 y vidrio"/>
                                             <f:selectItem itemValue="5" itemLabel="5 Aluminio Alamo 1 1/2 y Vidrio"/>
+                                        </h:selectOneMenu>
+                                          <label class="bajar">Seleccione un tipo de vidrio</label>
+                                        <h:selectOneMenu value="#{mbCalcularPuerta.idVidrio}" styleClass="form-control">
+                                            <f:selectItem itemValue="0" itemLabel="Seleccione un tipo de vidrio"/>
+                                            <f:selectItems value="#{mbVidrios.all}" var="vidrio" itemLabel="#{vidrio.calibre}" itemValue="#{vidrio.idvidrios}"/>
                                         </h:selectOneMenu>
 
 

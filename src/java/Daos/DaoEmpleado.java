@@ -66,9 +66,20 @@ public class DaoEmpleado implements Empleados {
 
         Empleado empleado = (Empleado) query.uniqueResult();
 
-        return empleado;    }
+        return empleado;  
+    }
 
-}
+    @Override
+    public Empleado getAllByIdSueldo(Session session, int id) throws Exception {
+ String hql="FROM Empleado a inner join fetch a.abonos ab where ab.idabonos=:id ";
+   Query query= session.createQuery(hql);
+            query.setParameter("id", id);   
+    Empleado empleado = (Empleado) query.uniqueResult();
+
+        return empleado; 
+    }
+
+
 
 //    public Empleado getByCorreoElectronico(Session session, String correo) throws Exception {
 // String hql = "from Empleado e inner join fetch e.rol  where e.correo=:correo";
@@ -79,3 +90,4 @@ public class DaoEmpleado implements Empleados {
 //
 //        return empleado;     }
 //  
+}
