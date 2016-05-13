@@ -47,6 +47,7 @@ public class MbAbonoSecundario {
     private Date fechaFin;
     private Date fechaInicio;
     private long totalVentasFecha;
+     private Abonosecundario abonoSelect;
 
     /**
      * Creates a new instance of MbAbonoSecundario
@@ -150,6 +151,27 @@ public class MbAbonoSecundario {
         }
     }
 
+        public void BuscarBYcodigoAbono(int id) {
+        this.session = null;
+        this.transaccion = null;
+        try {
+            this.session = HibernateUtil.getSessionFactory().openSession();
+            this.transaccion = this.session.beginTransaction();
+
+            DaoAbonoSecundario daoAbonoSecundario = new DaoAbonoSecundario();
+
+            this.abonoSelect = daoAbonoSecundario.getById(this.session, id);
+            this.transaccion.commit();
+
+        } catch (Exception e) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Contacte con su administrador" + e.getMessage()));
+            if (this.transaccion != null) {
+                this.transaccion.rollback();
+                this.session.close();
+            }
+        }
+    }
+    
     public List<Abonosecundario> getAll() {
         this.session = null;
         this.transaccion = null;
@@ -320,8 +342,17 @@ public class MbAbonoSecundario {
         return idAbonoSecundario;
     }
 
+    public Abonosecundario getAbonoSelect() {
+        return abonoSelect;
+    }
+
+    public void setAbonoSelect(Abonosecundario abonoSelect) {
+        this.abonoSelect = abonoSelect;
+    }
+
     public void setIdAbonoSecundario(int idAbonoSecundario) {
         this.idAbonoSecundario = idAbonoSecundario;
     }
+
 
 }

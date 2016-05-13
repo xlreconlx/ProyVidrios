@@ -3,8 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"     
       xmlns:pa="http://xmlns.jcp.org/jsf/passthrough"
-      xmlns:p="http://primefaces.org/ui"
       xmlns:jsf="http://xmlns.jcp.org/jsf"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
@@ -13,9 +13,9 @@
         <ui:composition template="./../../layaut/TemplateAdmin.xhtml">
 
             <ui:define name="top">
-                <div class="container">
+                  <div class="container">
                     <div class="row">
-                        <h1 style="color: #fff;">Cotizaciones </h1>
+                        <h1 style="color: #fff;">Abonos </h1>
                         <hr></hr>
                         <div class="col-lg-3 col-md-3 col-xs-13 col-sm-3">
 
@@ -24,11 +24,11 @@
                                 <div class="panel-body">
                                     <h:form>
                                         <p:growl showDetail="true" sticky="false"></p:growl>
-
+                                        
                                         <label>Digite el Numero de documento </label>
-                                        <h:inputText styleClass="form-control" value="#{mbCotizacion.numeroDocumento}"/>
+                                        <h:inputText styleClass="form-control" value="#{factura.numeroDocumento}"/>
                                         <br></br>
-                                        <h:commandButton styleClass="btn btn-block btn-info" value="Buscar" actionListener="#{mbCotizacion.searchByDocumento()}"></h:commandButton>
+                                        <h:commandButton styleClass="btn btn-block btn-info" value="Buscar" actionListener="#{factura.searchByDocumento()}"></h:commandButton>
                                         <br></br>
 
 
@@ -47,13 +47,13 @@
                                     <h:form  styleClass="form-group" >
 
                                         <p:growl id="growl" showDetail="true" sticky="true" />
-                                        <p:dataTable style="width: 98% !important;margin-left: 5px;" value="#{mbCotizacion.listaCot}" var="item">
+                                        <p:dataTable style="width: 98% !important;margin-left: 5px;" value="#{mbAbonos.listaAbonoSel}" var="item">
                                             <p:columnGroup  type="header">
                                                 <p:row>
-                                                    <p:column colspan="2" headerText="cliente: #{mbCotizacion.cliente.nombre} #{mbCotizacion.cliente.apellidos}" />
-                                                    <p:column colspan="2" headerText="Documento: #{mbCotizacion.cliente.numeroDocumentoC}" />
-                                                    <p:column colspan="1" headerText="Telefono: #{mbCotizacion.cliente.telefono}"/>
-                                                    <p:column colspan="2" headerText="Direccion: #{mbCotizacion.cliente.direccion}"/>
+                                                    <p:column colspan="2" headerText="cliente: #{mbAbonos.cliente.nombre} #{mbAbonos.cliente.apellidos}" />
+                                                    <p:column colspan="2" headerText="Documento: #{mbAbonos.cliente.numeroDocumentoC}" />
+                                                    <p:column colspan="1" headerText="Telefono: #{mbAbonos.cliente.telefono}"/>
+                                                    <p:column colspan="2" headerText="Direccion: #{mbAbonos.cliente.direccion}"/>
                                                 </p:row>
 
 
@@ -61,38 +61,38 @@
                                                 <p:row>
                                                     <p:column headerText="Id" />
                                                     <p:column headerText="Empleado" />
-
+                                               
                                                     <p:column headerText="SubTotal" />
                                                     <p:column headerText="Iva" />
                                                     <p:column headerText="Total" />
                                                     <p:column colspan="2" headerText="Fecha" />
-
+                                            
 
                                                 </p:row>
                                             </p:columnGroup>
                                             <p:column headerText="codigo">
-                                                #{item.idcotizacion}
+                                                #{item.idabonos}
                                             </p:column>
                                             <p:column headerText="Empleado">
                                                 #{beanEmpleado.getById(item.empleado.idempleado).getNombre()}
                                             </p:column>
-
-
-                                            <p:column headerText="SubTotal">
-                                                #{item.subtotal}
+                                          
+                                          
+                                                <p:column headerText="SubTotal">
+                                                #{item.fecharegistro}
                                             </p:column>
                                             <p:column headerText="Iva">
-                                                #{item.iva}
+                                                #{item.precioTotal}
                                             </p:column>
                                             <p:column headerText="Saldo Final">
-                                                #{item.preciototal}
+                                                #{item.montoabono}
                                             </p:column>
                                             <p:column colspan="2" headerText="Fecha">
-                                                #{item.fechacotizacion}
+                                                #{item.saldofinal}
                                             </p:column>
-                                            <p:column headerText="Abono secundario">
+                                                <p:column headerText="Abono secundario">
                                                 <h:form>
-                                                    <button type="button" jsf:onclick="#{mbCotizacionDetalle.BuscarBYcodigoFactura(item.idcotizacion)}" class="btn btn-info" pa:data-toggle="modal" pa:data-target="#myModal1">
+                                                    <button type="button" jsf:onclick="#{mbAbonos.BuscarBYcodigoFactura(item.idfacturas)}" class="btn btn-info" pa:data-toggle="modal" pa:data-target="#myModal1">
                                                         Ver Mas
                                                     </button>
                                                 </h:form>
@@ -109,11 +109,12 @@
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                <h4 class="modal-title" id="myModalLabel">Lista Detalle Cotizaccion</h4>
+                                                <h4 class="modal-title" id="myModalLabel">Lista Detalle Venta</h4>
                                             </div>
-                                            <div  id="imprimeDiv" class="modal-body">
-                                                <p:dataTable style="width: 98% !important;margin-left: 5px;" value="#{mbCotizacionDetalle.listaCotizaciondetalle}" var="item">
-                                                      <f:facet   name="header">
+                                            <div id="imprimeDiv" class="modal-body">
+                                                <p:dataTable style="width: 98% !important;margin-left: 5px;" value="#{beanVentanaDetalle.listaVentanadetalle}" var="item">
+
+                                                                          <f:facet   name="header">
                                    <a>
                                             <img class="logotipo" alt="Brand" src="/ProyVidrios/resources/imagenes/imgVP.jpg" width="50" height="25" style="background: #fff;"></img>
                                         </a>
@@ -133,14 +134,14 @@
                                                     <p:column headerText="Cantidad">
                                                         <h:outputText value="#{item.cantidad}"/>
                                                     </p:column>
-                                                    <p:column headerText="Precio Venta">
-                                                        <h:outputText value="#{item.precioventa}"/>
+                                                       <p:column headerText="Precio Venta">
+                                                           <h:outputText value="#{item.precioventa}"/>
                                                     </p:column>
                                                     <p:column headerText="Trabajo">
                                                         <h:outputText value="#{item.preciotrabajo}"/>
                                                     </p:column>
 
-                                                    <p:column headerText="Porcentaje" >
+                                                   <p:column headerText="Porcentaje" >
                                                         <h:outputText value="#{item.porcentajeganancia}"/>
                                                     </p:column>
                                                     <p:column headerText="total" >
@@ -172,7 +173,7 @@
             </ui:define>
 
             <ui:define name="bottom">
-
+          
             </ui:define>
 
         </ui:composition>

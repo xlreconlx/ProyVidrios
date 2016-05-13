@@ -60,20 +60,19 @@
 
 
                                                 <p:row>
-                                                    <p:column headerText="Codigo" />
+                                                
                                                     <p:column headerText="fecha" />
                                                     <p:column headerText="Sueldo Base" />
                                                     <p:column headerText="Comision" />
                                                     <p:column headerText="Horas Extras" />
                                                     <p:column headerText="Descuentos" />
                                                     <p:column headerText="Saldo Total" />
+                                                    <p:column headerText="" />
 
 
                                                 </p:row>
                                             </p:columnGroup>
-                                            <p:column headerText="codigo">
-                                                #{item.idsueldo}
-                                            </p:column>
+                                         
 
                                             <p:column headerText="Fecha">
                                                 #{item.fechaCreacionSueldo}
@@ -114,20 +113,30 @@
                                                 <h4 class="modal-title" id="myModalLabel">Sueldo</h4>
                                             </div>
                                             <div id="imprimeDiv" class="modal-body">
-                                                <label>Nombre empleado #{beanEmpleado.getById(beanSueldo.sueldoSelect.empleado.idempleado).getNombre()}</label>
+                                                   <a>
+                                            <img class="logotipo" alt="Brand" src="/ProyVidrios/resources/imagenes/imgVP.jpg" width="50" height="25" style="background: #fff;"></img>
+                                        </a>
+                                       <h3>Vidrios Palmira</h3> Alberto Jimenez Guzman.
+                                        NIT: 6'645.506-5.
+                                        <br></br>
+                                        Telefono:2726887  2726801  2871472.
+                                        <br></br>
+                                        Direccion: Carrera 35 # 28-45.
+                                        <hr></hr>
+                                          <label>Fecha  #{beanSueldo.sueldoSelect.fechaCreacionSueldo}</label>
                                                 <br></br>
-                                                <label>Codigo sueldo  #{beanSueldo.sueldoSelect.idsueldo}</label>
+                                                <label>Nombre empleado #{beanEmpleado.getById(beanSueldo.sueldoSelect.empleado.idempleado).getNombre()} #{beanEmpleado.getById(beanSueldo.sueldoSelect.empleado.idempleado).getApellidos()}</label>
                                                 <br></br>
-                                                <label>Fecha  #{beanSueldo.sueldoSelect.fechaCreacionSueldo}</label>
+                                               <label>Sueldo base  #{beanSueldo.sueldoSelect.sueldoBase}</label>
                                                 <br></br>
+                                               
                                                 <label>Comision  #{beanSueldo.sueldoSelect.comision}</label>
                                                 <br></br>
                                                 <label>Hora extras #{beanSueldo.sueldoSelect.horasExtras}</label>
                                                 <br></br>
                                                 <label>Descuentos  #{beanSueldo.sueldoSelect.descuentos}</label>
                                                 <br></br>
-                                                <label>Sueldo base  #{beanSueldo.sueldoSelect.sueldoBase}</label>
-                                                <br></br>
+                                                
                                                 <label>Sueldo total  #{beanSueldo.sueldoSelect.sueldoTotal}</label>
                                             </div>
                                             <div class="modal-footer">

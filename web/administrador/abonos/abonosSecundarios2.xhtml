@@ -25,7 +25,7 @@
                                 <div class="panel-body">
                                     <h:form>
                                         <p:growl showDetail="true" sticky="false"></p:growl>
-                                        
+
                                         <label>Digite el Numero de documento </label>
                                         <h:inputText styleClass="form-control" value="#{mbAbonoSecundario.numeroDocumento}"/>
                                         <br></br>
@@ -145,9 +145,15 @@
                                             </div>
                                             <div class="modal-body">
                                                 <p:dataTable style="width: 98% !important;margin-left: 5px;" value="#{mbAbonoSecundario.listaAbonoSecundario}" var="item">
-
-                                                    <f:facet name="header">
-                                                        Lista Abonos Secundarios
+                                                    <f:facet   name="header">
+                                                        <a>
+                                                            <img class="logotipo" alt="Brand" src="/ProyVidrios/resources/imagenes/imgVP.jpg" width="50" height="25" style="background: #fff;"></img>
+                                                        </a>
+                                                        <h3>Vidrios Palmira</h3> Alberto Jimenez Guzman.
+                                                        NIT: 6'645.506-5.
+                                                        <br></br>
+                                                        Telefono:2726887  2726801  2871472.
+                                                        Direccion: Carrera 35 # 28-45.
                                                     </f:facet>
                                                     <p:column headerText="Abono" >
                                                         <h:outputText value="#{item.idabonosecun}"/>
@@ -173,7 +179,14 @@
                                                         <h:outputText value="#{item.fechaRegistro}"/>
                                                     </p:column>
 
+                                                    <p:column headerText="Abono xx">
+                                                        <h:form>
+                                                            <button type="button" jsf:onclick="#{mbAbonoSecundario.BuscarBYcodigoAbono(item.idabonosecun)}" class="btn btn-info" pa:data-toggle="modal" pa:data-target="#myModal2">
+                                                                Ver Mas
+                                                            </button>
+                                                        </h:form>
 
+                                                    </p:column>
                                                 </p:dataTable>
 
                                             </div>
@@ -186,6 +199,53 @@
                                     </h:form>
                                 </div>
 
+                                
+                                
+                                
+                                <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                    <h:form styleClass="modal-dialog"  role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                <h4 class="modal-title" id="myModalLabel">Lista Abonos Secundario</h4>
+                                            </div>
+                                            <div  id="imprimeDiv" class="modal-body">
+                                                  
+                                                        <a>
+                                                            <img class="logotipo" alt="Brand" src="/ProyVidrios/resources/imagenes/imgVP.jpg" width="50" height="25" style="background: #fff;"></img>
+                                                        </a>
+                                                        <h3>Vidrios Palmira</h3> Alberto Jimenez Guzman.
+                                                        NIT: 6'645.506-5.
+                                                        <br></br>
+                                                        Telefono:2726887  2726801  2871472.
+                                                          <br></br>
+                                                        Direccion: Carrera 35 # 28-45.
+                                                 <hr></hr>
+                                                 <label>Fecha  #{mbAbonoSecundario.abonoSelect.fechaRegistro}</label>
+                                                <br></br>
+                                                <label>Nombre Cliente #{mbAbonoSecundario.abonoSelect.abonos.cliente.nombre}</label>
+                                                <br></br>
+                                                 <label> Saldo #{mbAbonoSecundario.abonoSelect.abonos.saldofinal}</label>
+                                                <br></br>
+                                                <label>Monto Abonado  #{mbAbonoSecundario.abonoSelect.valorAbono}</label>
+                                                <br></br>
+                                               
+                                                <label> Saldo Final #{mbAbonoSecundario.abonoSelect.saldoTotaL}</label>
+                                                <br></br>
+                                              
+                                                
+                                              
+                           
+
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                                <button onclick="imprimir()" type="button" class="btn btn-info" >Imprimir</button>
+                                             </div>
+                                        </div>
+
+                                    </h:form>
+                                </div>
                             </div>
 
 
