@@ -182,7 +182,7 @@ public class MbCalcularPuerta {
                 }
             }
 
-            if (this.tipoVentana == 5) {
+            if (this.tipoVentana == 6) {
                 this.nombreProducto = "Vidrio " + this.alto + " * " + this.ancho;
                 this.precioTotal = this.precioVidrio;
             } else {
@@ -317,6 +317,8 @@ public class MbCalcularPuerta {
                             this.recorteVidrioAncho = Integer.valueOf(this.getAncho()) - 24.1;
 //                            this.recorteVidrioAlto = puertas.getAlto() - 10;
                             this.recorteVidrioAlto = Integer.valueOf(this.getAlto()) - 21.1;
+                                  this.recorteVidrioAlto=this.recorteVidrioAlto/2;
+
 
                         } else {
                             if (this.tipoVentana == 5) {
@@ -325,6 +327,7 @@ public class MbCalcularPuerta {
                                 this.recorteAncho = Double.valueOf(this.getAncho());
                                 this.recorteAlto = Double.valueOf(this.getAlto());
                                 this.cantidadMarcoAncho = 1;
+                                this.cantidadMarcoAlto= 2;
                                 this.cantidadNaveAlto = 2;
                                 this.cantidadNaveAncho = 2;
                                 this.cantidadNaveAlto = 2;
@@ -337,7 +340,7 @@ public class MbCalcularPuerta {
                                 this.cantidadEscuadras = 12;
                                 this.mensajeAluminio3Alto = "" + this.cantidadMarcoAlto + " Aluminio 3media Alto de:" + (this.recorteAlto);
                                 this.mensajeAluminio3Ancho = "" + this.cantidadMarcoAncho + "Alumininio 3media Ancho de: " + (this.recorteAncho);
-                                this.mensajeNaveAlto = "" + this.cantidadNaveAlto + "  AluminiT103  Alto de " + (this.recorteAlto - 5.0);
+                                this.mensajeNaveAlto = "" + this.cantidadNaveAlto + "  AluminioT103  Alto de " + (this.recorteAlto - 5.0);
                                 this.mensajeNaveAncho = "" + this.cantidadNaveAncho + " AluminioT103  Ancho de:  " + (this.recorteAncho - 8.0);
                                 this.mensajePartidor = "" + this.cantidadPartidor + " Partidor Aluminio T103 Ancho de: " + (this.recorteAncho - 23.6);
                                 this.mensajePisaVidriosAncho = "" + this.cantidadPisaVidriosAncho + "PisaVidrios Ancho de:  " + (this.recorteAncho - 23.6);
@@ -349,6 +352,8 @@ public class MbCalcularPuerta {
                                 this.recorteVidrioAncho = Integer.valueOf(this.getAncho()) - 24.1;
 //                            this.recorteVidrioAlto = puertas.getAlto() - 10;
                                 this.recorteVidrioAlto = Integer.valueOf(this.getAlto()) - 21.1;
+                                      this.recorteVidrioAlto=this.recorteVidrioAlto/2;
+
 
                             }
                         }
@@ -357,9 +362,7 @@ public class MbCalcularPuerta {
                 }
             }
 
-//            this.recorteVidrioAncho=Integer.valueOf(this.getAncho())-5.5;            
-////            this.recorteVidrioAlto=material.getAlto()-2.5;
-//            this.recorteVidrioAlto= Integer.valueOf(this.getAlto())-10;
+
             this.precioVidrio = 0;
             this.alto = "";
             this.ancho = "";
