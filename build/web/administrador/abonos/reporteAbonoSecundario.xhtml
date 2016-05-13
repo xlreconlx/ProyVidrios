@@ -23,19 +23,19 @@
                                 <h:form  styleClass="form-group" >
                                     <p:growl id="growl" showDetail="true" sticky="true" />  
 
-                                    <h:outputLabel  value="Fecha Inicio" style="margin-left: 10px;  color: #398439;"/>                                
+                                    <h:outputLabel  value="Fecha Inicio" style="margin-left: 10px;"/>                                
                                     <p:calendar id="FechaInicio" label="yyyy/mm/dd" pattern="yyyy/MM/dd" showOn="button" value="#{mbAbonoSecundario.fechaInicio}" />
 
 
-                                    <h:outputLabel  value="FechaFin" style="margin-left: 10px;  color: #D20005;"/>                                
+                                    <h:outputLabel  value="FechaFin" style="margin-left: 10px;"/>                                
                                     <p:calendar id="FechaFinal" label="yyyy/mm/dd" pattern="yyyy/MM/dd" showOn="button" value="#{mbAbonoSecundario.fechaFin}" />
 
 
 
-                                    <h:commandButton styleClass="btn btn-primary col-sm-2" value="Agregar" actionListener="#{mbAbonoSecundario.consultarVentas}">
+                                    <h:commandButton styleClass="btn btn-primary col-sm-2" value="Agregar" actionListener="#{mbAbonoSecundario.consultarVentas}" style="float: right; margin-right: 252px; ">
                                         <p:ajax process="@this @form" update=":formReporteFechas:tbl"/>
                                     </h:commandButton>
-                                  <a onclick="imprimir()" class="btn btn-warning col-lg-2 col-md-2 col-sm-2 col-xs-2 bajar">Imprimir</a>
+                                  <a onclick="imprimir()" class="btn btn-warning col-lg-2 col-md-2 col-sm-2 col-xs-2 bajar" style="float: right; margin-right: -450px;" >Imprimir</a>
 
                                 </h:form>
 
@@ -46,13 +46,12 @@
                             <div id="imprimeDiv">
                             <p:dataTable id="tbl" var="lista" value="#{mbAbonoSecundario.listAbonoSecundarioByFecha}">
                                 <f:facet   name="header">
-                                            <img class="logotipo" alt="Brand" src="/ProyVidrios/resources/imagenes/imgVP.jpg" width="50" height="25" style="background: #fff;"></img>
 
-                                    <h3>Vidrios Palmira</h3> Alberto Jimenez Guzman.
-                                        NIT: 6'645.506-5.
+                                        <h3>Decorvidrio</h3> Elio Fabio Peñaloza.
+                                        NIT: 16280385-9.
                                         <br></br>
-                                        Telefono:2726887  2726801  2871472.
-                                        Direccion: Carrera 35 #28-45.
+                                        Telefono:2723025 2759959.
+                                        Direccion: calle 30 # 30-54..
 
 
                                 </f:facet>

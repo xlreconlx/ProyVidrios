@@ -32,10 +32,10 @@
 
 
 
-                                    <h:commandButton styleClass="btn btn-primary col-sm-3" value="Agregar" actionListener="#{factura.consultarVentas}">
+                                    <h:commandButton styleClass="btn btn-primary col-sm-3" value="Agregar" actionListener="#{factura.consultarVentas}" style="float: right; margin-right: 252px; ">
                                         <p:ajax process="@this @form" update=":formReporteFechas:tbl"/>
                                     </h:commandButton>
-                                    <a onclick="imprimir()" class="btn btn-warning col-lg-2 col-md-2 col-sm-2 col-xs-2 bajar">Imprimir</a>
+                                    <a onclick="imprimir()" class="btn btn-warning col-lg-2 col-md-2 col-sm-2 col-xs-2 bajar" style="float: right; margin-right: -550px; ">Imprimir</a>
 
                                 </h:form>
 
