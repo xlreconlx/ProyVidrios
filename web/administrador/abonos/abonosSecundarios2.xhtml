@@ -45,7 +45,7 @@
 
                                 <div class="panel-body">
                                     <div class="panel-heading color">Lista De Abonos Primario</div>
-                                    <h:form  styleClass="form-group" >
+                                    <h:form id="frmActualizarInfoSitio"  styleClass="form-group" >
 
                                         <p:growl id="growl" showDetail="true" sticky="true" />
                                         <p:dataTable style="width: 98% !important;margin-left: 5px;" value="#{mbAbonoSecundario.listaAbonos}" var="item">
@@ -92,21 +92,15 @@
                                             </p:column>
                                             
                                             <p:column headerText="Abono secundario">
-                                                <h:form>
-                                                    <button type="button" jsf:onclick="#{mbAbonoSecundario.selectAbono(item.idabonos)}" class="btn btn-success" pa:data-toggle="modal" pa:data-target="#myModal">
-                                                        Registrar
-                                                    </button>
-                                                </h:form>
-
-                                            </p:column>
+                                             <h:commandButton  pa:data-toggle="modal" pa:data-target="#myModal" value="Registar" class="btn btn-primary">
+                                        <f:ajax listener="#{mbAbonoSecundario.selectAbono(item.idabonos)}" render="growl frmModal2" event="click" />
+                                     </h:commandButton>
+                                   </p:column>
                                             <p:column headerText="Abono secundario">
-                                                <h:form>
-                                                    <button type="button" jsf:onclick="#{mbAbonoSecundario.BuscarBYcodigoAbonoSecundario(item.idabonos)}" class="btn btn-info" pa:data-toggle="modal" pa:data-target="#myModal1">
-                                                        Ver Mas
-                                                    </button>
-                                                </h:form>
-
-                                            </p:column>
+                                    <h:commandButton  pa:data-toggle="modal" pa:data-target="#myModal1" value="Ver mas" class="btn btn-primary">
+                                        <f:ajax listener="#{mbAbonoSecundario.BuscarBYcodigoAbonoSecundario(item.idabonos)}" render="growl frmEliminarSitio" event="click" />
+                                    </h:commandButton>
+                                        </p:column>
                                         </p:dataTable>
 
                                     </h:form>
@@ -115,7 +109,7 @@
 
 
                                 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                                    <h:form styleClass="modal-dialog"  role="document">
+                                    <h:form id="frmModal2" styleClass="modal-dialog"  role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -143,7 +137,7 @@
 
 
                                 <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                                    <h:form styleClass="modal-dialog"  role="document">
+                                    <h:form id="frmEliminarSitio" styleClass="modal-dialog"  role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -186,13 +180,11 @@
                                                     </p:column>
 
                                                     <p:column headerText="">
-                                                        <h:form>
-                                                            <button type="button" jsf:onclick="#{mbAbonoSecundario.BuscarBYcodigoAbono(item.idabonosecun)}" class="btn btn-info" pa:data-toggle="modal" pa:data-target="#myModal2">
-                                                                Ver Mas
-                                                            </button>
-                                                        </h:form>
-
-                                                    </p:column>
+                                  
+                                   <h:commandButton  pa:data-toggle="modal" pa:data-target="#myModal2" value="Ver mas" class="btn btn-primary">
+                                        <f:ajax listener="#{mbAbonoSecundario.BuscarBYcodigoAbono(item.idabonosecun)}" render="growl frmModal" event="click" />
+                                    </h:commandButton>
+                                           </p:column>
                                                 </p:dataTable>
 
                                             </div>
@@ -209,7 +201,7 @@
                                 
                                 
                                 <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                                    <h:form styleClass="modal-dialog"  role="document">
+                                    <h:form id="frmModal" styleClass="modal-dialog"  role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>

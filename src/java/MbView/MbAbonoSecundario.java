@@ -13,6 +13,7 @@ import HibernateUtil.HibernateUtil;
 import Pojos.Abonos;
 import Pojos.Abonosecundario;
 import Pojos.Cliente;
+import java.io.Console;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -130,14 +131,16 @@ public class MbAbonoSecundario {
     }
 
     public void BuscarBYcodigoAbonoSecundario(int id) {
-        this.listaAbonoSecundario = new ArrayList<>();
-        this.session = null;
+         this.listaAbonoSecundario = new ArrayList<>();
+         this.session = null;
         this.transaccion = null;
         try {
             this.session = HibernateUtil.getSessionFactory().openSession();
             this.transaccion = this.session.beginTransaction();
             DaoAbonoSecundario daoAbonoSecundario = new DaoAbonoSecundario();
-     
+             this.listaAbonoSecundario.clear();
+             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "el id es" + id));
+            System.out.println("el id es"+ id);
             this.listaAbonoSecundario.addAll(daoAbonoSecundario.getAllByIdAbonos(this.session, id));
 
         } catch (Exception e) {
@@ -154,6 +157,7 @@ public class MbAbonoSecundario {
         public void BuscarBYcodigoAbono(int id) {
         this.session = null;
         this.transaccion = null;
+        this.abonoSelect=null;
         try {
             this.session = HibernateUtil.getSessionFactory().openSession();
             this.transaccion = this.session.beginTransaction();

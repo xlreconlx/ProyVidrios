@@ -57,7 +57,9 @@
                                                     <td>#{item.correoElectronico}</td>
                                                     <td>#{item.direccion}</td>
                                                     <td>#{item.fechaIngreso}</td>
-                                                    <td>  <p:commandButton value="Editar" actionListener="#{beanEmpleado.cargarEmpleadoEditar(item.idempleado)}"/></td>
+                                                    <td>
+                                                        
+                                                        <p:commandButton value="Editar" actionListener="#{beanEmpleado.cargarEmpleadoEditar(item.idempleado)}"/></td>
 
                                                 </tr>
                                             </h:panelGroup>
@@ -98,32 +100,32 @@
                             </p:selectOneMenu>
                             <h:panelGroup></h:panelGroup>
                             <p:outputLabel value="Nombre" for="txtNombre"/>
-                            <p:inputText id="txtNombre" label="Nombre" size="50" value="#{beanEmpleado.empleado.nombre}">
+                            <p:inputText id="txtNombre" label="Nombre" size="50" value="#{beanEmpleado.empleadoSelect.nombre}">
                                 <f:validator validatorId="validatorVacio"/>
                             </p:inputText>
                             <p:message for="txtNombre"/>
                             <p:outputLabel value="Apellidos " for="txtApellidos"/>
-                            <p:inputText id="txtApellidos" label="Apellidos" size="50" value="#{beanEmpleado.empleado.apellidos}">
+                            <p:inputText id="txtApellidos" label="Apellidos" size="50" value="#{beanEmpleado.empleadoSelect.apellidos}">
                                 <f:validator validatorId="validatorVacio"/>
                             </p:inputText>
                             <p:message for="txtApellidos"/>
                             <p:outputLabel value="Edad " for="txtEdad"/>
-                            <p:inputText id="txtEdad" label="Edad" size="50" value="#{beanEmpleado.empleado.edad}">
+                            <p:inputText id="txtEdad" label="Edad" size="50" value="#{beanEmpleado.empleadoSelect.edad}">
                                 <f:validator validatorId="validatorVacio"/>
                             </p:inputText>
                             <p:message for="txtEdad"/>
                             <p:outputLabel value="Sexo " />
-                            <p:selectOneRadio id="radioSexo" label="Sexo" value="#{beanEmpleado.empleado.genero}">
+                            <p:selectOneRadio id="radioSexo" label="Sexo" value="#{beanEmpleado.empleadoSelect.genero}">
                                 <f:selectItem itemLabel="Masculino" itemValue="true"/>
                                 <f:selectItem itemLabel="Femenino" itemValue="false"/>
                             </p:selectOneRadio>
                             <h:panelGroup></h:panelGroup>
                             <p:outputLabel value="Fecha Nacimiento "/>
-                            <p:calendar id="Fecha" label="yyyy/mm/dd" pattern="yyyy/MM/dd" showOn="button" value="#{beanEmpleado.empleado.fechaNacimiento}"/>
+                            <p:calendar id="Fecha" label="yyyy/mm/dd" pattern="yyyy/MM/dd" showOn="button" value="#{beanEmpleado.empleadoSelect.fechaNacimiento}"/>
                             <p:message for="Fecha"/>
 
                             <p:outputLabel value="Correo electrónico" for="txtCorreoElectronico"/>
-                            <p:inputText id="txtCorreoElectronico" label="Correo electrónico" size="50" title="Ejemplo: william@gmail.com" value="#{beanEmpleado.empleado.correoElectronico}">
+                            <p:inputText id="txtCorreoElectronico" label="Correo electrónico" size="50" title="Ejemplo: william@gmail.com" value="#{beanEmpleado.empleadoSelect.correoElectronico}">
                                 <f:validator validatorId="validatorVacio"/>
                                 <f:validator validatorId="validatorEmail"/>
                             </p:inputText>

@@ -759,6 +759,7 @@ public class Factura {
             DaoCliente daoCliente = new DaoCliente();
             DaoFactura daoFactura = new DaoFactura();
             this.cliente = daoCliente.getByNumeroDocumento(this.session, this.numeroDocumento);
+         
             this.listaFact.addAll(daoFactura.getAllByCliente(this.session, this.numeroDocumento));
 
         } catch (Exception e) {

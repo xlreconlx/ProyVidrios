@@ -45,6 +45,7 @@ public class BeanEmpleado {
     private int CodigoCiudad;
     private int CodigoRol;
     private int CodigotipoDocumento;
+    private Empleado empleadoSelect;
 
     public BeanEmpleado() {
           this.empleado = new Empleado();
@@ -233,17 +234,17 @@ public class BeanEmpleado {
             this.session = HibernateUtil.getSessionFactory().openSession();
             this.transaccion = session.beginTransaction();
 
-            if (this.empleado.getNombre().equals("")) {
+            if (this.empleadoSelect.getNombre().equals("")) {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error:", "El campo nombres es obligatorio"));
                 return;
             }
 
-            if (this.empleado.getApellidos().equals("")) {
+            if (this.empleadoSelect.getApellidos().equals("")) {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error:", "El campo nombres es obligatorio"));
                 return;
             }
 
-            daoEmpleado.actualizar(this.session, this.empleado);
+            daoEmpleado.actualizar(this.session, this.empleadoSelect);
 
             this.transaccion.commit();
 
@@ -274,8 +275,8 @@ public class BeanEmpleado {
             this.session = HibernateUtil.getSessionFactory().openSession();
             this.transaccion = session.beginTransaction();
 
-            this.empleado = daoEmpleado.getById(this.session, codigoEmpleado);
-
+            this.empleadoSelect = daoEmpleado.getById(this.session, codigoEmpleado);
+//            this.transaccion.commit();
             RequestContext.getCurrentInstance().update("frmEditarEmpleado:panelEditarEmpleado");
             RequestContext.getCurrentInstance().execute("PF('dialogoEditarEmpleado').show()");
 
@@ -395,6 +396,14 @@ public class BeanEmpleado {
 
     public void setCodigotipoDocumento(int CodigotipoDocumento) {
         this.CodigotipoDocumento = CodigotipoDocumento;
+    }
+
+    public Empleado getEmpleadoSelect() {
+        return empleadoSelect;
+    }
+
+    public void setEmpleadoSelect(Empleado empleadoSelect) {
+        this.empleadoSelect = empleadoSelect;
     }
 
 }
