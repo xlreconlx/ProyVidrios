@@ -113,10 +113,7 @@
                             </table>
                             <br></br>
                             <br></br>
-                            <h:selectOneMenu value="#{mbAbonos.idCliente}" styleClass="input-sm derecha col-sm-4">
-                                <f:selectItem itemValue="0" itemLabel="Seleccione un Cliente"/>
-                                <f:selectItems value="#{mbCliente.all}" var="cliente" itemLabel="#{cliente.nombre}" itemValue="#{cliente.idcliente}"/>
-                            </h:selectOneMenu>
+                            <p:autoComplete styleClass="input-sm derecha col-sm-4" placeholder="Documento del cliente" value="#{mbAbonos.idCliente}" completeMethod="#{factura.completeText}" />
                             <h:selectOneMenu value="#{mbAbonos.idEmpleado}" styleClass="input-sm derecha col-sm-4">
                                 <f:selectItem itemValue="0" itemLabel="Seleccione un Empleado"/>
                                 <f:selectItems value="#{beanEmpleado.all}" var="empleado" itemLabel="#{empleado.nombre}" itemValue="#{empleado.idempleado}"/>

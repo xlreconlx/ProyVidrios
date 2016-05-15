@@ -27,11 +27,7 @@
                                     <th style="margin-left: 20px;">Descuentos</th>
                                     <th style="margin-left: 20px;">Sueldo total</th>
                                        <th style="margin-left: 20px;">Fecha</th>
-                                    <th style="margin-left: 20px;">Cambios</th>
-
-
-
-                                </tr>
+                               </tr>
                                 <tbody style="color:#ffffff;">
                                     <ui:repeat var="item" value="#{beanSueldo.all}" varStatus="status">
                                         <h:panelGroup>
@@ -45,9 +41,6 @@
                                                 <td>#{item.descuentos}</td>
                                                 <td>#{item.sueldoTotal}</td>
                                                 <td>#{item.fechaCreacionSueldo}</td>
-                                                <td>  <p:commandButton value="Editar datos" actionListener="#{beanSueldo.cargarSueldoEditar(item.idsueldo)}"/></td>
-
-
                                             </tr>
                                         </h:panelGroup>
 

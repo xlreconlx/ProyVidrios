@@ -61,7 +61,7 @@ public class Factura {
     private List<Facturas> listaFact;
     private List<Facturas> listaFactFiltrado;
     private List<Facturas> listaVentasByFecha;
-    private int idCliente;
+    private String idCliente;
     private int idEmpleado;
     private long precioVidrio;
     private int idVidrio;
@@ -82,6 +82,7 @@ public class Factura {
     private int tipoEntrepanos;
     private String nombreProducto;
     private long precioTotal;
+    private Cliente client1;
 
     /**
      * Creates a new instance of VentanaDetalle
@@ -527,7 +528,7 @@ public class Factura {
             DaoFactura daoFactura = new DaoFactura();
             DaoDetalle daoDetalle = new DaoDetalle();
 
-            if (this.idCliente == 0 || this.idEmpleado == 0) {
+            if (this.idCliente.equals("") || this.idEmpleado == 0) {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Error:", "Por favor selecione un empleado y un cliente."));
                 return;
             }
@@ -536,7 +537,7 @@ public class Factura {
             this.transaccion = this.session.beginTransaction();
             int idBdFactura = daoFactura.getByUltimoRegistro(this.session).getIdfacturas();
             this.factura.setIdfacturas(idFactura+1);
-            this.factura.setCliente(daoCliente.getById(this.session, this.idCliente));
+            this.factura.setCliente(daoCliente.getByNumeroDocumento(this.session, this.idCliente));
             this.factura.setEmpleado(daoEmpleado.getById(this.session, this.idEmpleado));
             this.factura.setFechaventa(new Date());
             daoFactura.registar(this.session, this.factura);
@@ -717,6 +718,26 @@ public class Factura {
         }
         return listaVentasByFecha;
     }
+    
+    
+      public List<String> completeText(String query) {
+          MbCliente mbCliente= new MbCliente();
+          List<Cliente> allClientes = new ArrayList<>();
+          allClientes.addAll(mbCliente.getAll());
+           
+          List<String> results = new ArrayList<>();
+          
+         for(int i=0;i<allClientes.size();i++){
+          Cliente clients = allClientes.get(i);
+          
+          if(clients.getNumeroDocumentoC().toLowerCase().startsWith(query)){
+              results.add(clients.getNumeroDocumentoC());
+           }
+          }
+        
+         
+        return results;
+    }
 
     public void consultarVentas() {
         this.session = null;
@@ -810,11 +831,11 @@ public class Factura {
         this.factura = factura;
     }
 
-    public int getIdCliente() {
+    public String getIdCliente() {
         return idCliente;
     }
 
-    public void setIdCliente(int idCliente) {
+    public void setIdCliente(String idCliente) {
         this.idCliente = idCliente;
     }
 
@@ -1072,6 +1093,14 @@ public class Factura {
 
     public void setPrecioTotal(long precioTotal) {
         this.precioTotal = precioTotal;
+    }
+
+    public Cliente getClient1() {
+        return client1;
+    }
+
+    public void setClient1(Cliente client1) {
+        this.client1 = client1;
     }
 
 }

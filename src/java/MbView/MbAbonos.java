@@ -66,7 +66,7 @@ public class MbAbonos {
     private Abonos abonos;
     private List<Abonos> listaAbonoSel;
     private List<Abonos> listaVentasByFecha;
-    private int idCliente;
+    private String idCliente;
     private int idEmpleado;
     private int idAbono;
     private long precioVidrio;
@@ -534,7 +534,7 @@ public class MbAbonos {
             DaoAbonos daoAbonos = new DaoAbonos();
             DaoAbonoDetalle daoAbonoDetalle = new DaoAbonoDetalle();
 
-            if (this.idCliente == 0 || this.idEmpleado == 0) {
+            if (this.idCliente.equals("") || this.idEmpleado == 0) {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Error:", "Por favor selecione un empleado y un cliente."));
                 return;
             }
@@ -557,7 +557,7 @@ public class MbAbonos {
             this.session = HibernateUtil.getSessionFactory().openSession();
             this.transaccion = this.session.beginTransaction();
 
-            this.abonos.setCliente(daoCliente.getById(this.session, this.idCliente));
+            this.abonos.setCliente(daoCliente.getByNumeroDocumento(this.session, this.idCliente));
             this.abonos.setEmpleado(daoEmpleado.getById(this.session, this.idEmpleado));
             this.abonos.setFecharegistro(new Date());
             daoAbonos.registar(this.session, this.abonos);
@@ -896,11 +896,11 @@ public class MbAbonos {
         this.listaVentasByFecha = listaVentasByFecha;
     }
 
-    public int getIdCliente() {
+    public String getIdCliente() {
         return idCliente;
     }
 
-    public void setIdCliente(int idCliente) {
+    public void setIdCliente(String idCliente) {
         this.idCliente = idCliente;
     }
 

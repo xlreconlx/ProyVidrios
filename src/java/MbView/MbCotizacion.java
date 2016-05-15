@@ -63,7 +63,7 @@ public class MbCotizacion {
     private Cotizacion cotizacionT;
     private List<Cotizacion> listaCot;
     private Cliente cliente;
-    private int idCliente;
+    private String idCliente;
     private int idEmpleado;
     private long precioVidrio;
     private int idVidrio;
@@ -88,7 +88,7 @@ public class MbCotizacion {
         this.listaVitrinas = new ArrayList<>();
         this.cotizacionT = new Cotizacion();
         this.cotizacionDetall = new Cotizaciondetalle();
-        this.idCliente = 0;
+        this.idCliente = "";
         this.idEmpleado = 0;
         this.idVidrio = 0;
         this.ganancia = 0;
@@ -518,7 +518,7 @@ public class MbCotizacion {
             DaoCotizacion daoCotizacion = new DaoCotizacion();
             DaoCotizacionDetalle daoCotizacionDetalle = new DaoCotizacionDetalle();
 
-            if (this.idCliente == 0 || this.idEmpleado == 0) {
+            if (this.idCliente.equals("") || this.idEmpleado == 0) {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Error:", "Por favor selecione un empleado y un cliente."));
                 return;
             }
@@ -526,7 +526,7 @@ public class MbCotizacion {
             this.session = HibernateUtil.getSessionFactory().openSession();
             this.transaccion = this.session.beginTransaction();
 
-            this.cotizacionT.setCliente(daoCliente.getById(this.session, this.idCliente));
+            this.cotizacionT.setCliente(daoCliente.getByNumeroDocumento(this.session, this.idCliente));
             this.cotizacionT.setEmpleado(daoEmpleado.getById(this.session, this.idEmpleado));
             this.cotizacionT.setFechacotizacion(new Date());
 
@@ -827,11 +827,11 @@ public class MbCotizacion {
         this.listaCot = listaCot;
     }
 
-    public int getIdCliente() {
+    public String getIdCliente() {
         return idCliente;
     }
 
-    public void setIdCliente(int idCliente) {
+    public void setIdCliente(String idCliente) {
         this.idCliente = idCliente;
     }
 

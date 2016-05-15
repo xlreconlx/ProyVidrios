@@ -119,19 +119,15 @@
                                       <br></br>
                                       <br></br>-->
 
-                                
+
                                     <br></br>
                                     <h:outputText value="Total" style="box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.7);padding: 7px;margin-left: 465px; color: #fff;"/>  
                                     <h:outputText id="total" value="#{factura.factura.preciototal}" style="box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.7);padding: 7px; color: #fff;"/>  
 
                                 </f:facet>
                             </h:dataTable>
-
-                            <h:selectOneMenu value="#{factura.idCliente}" styleClass="input-sm derecha col-sm-5">
-                                <f:selectItem itemValue="0" itemLabel="Seleccione un Cliente"/>
-                                <f:selectItems value="#{mbCliente.all}" var="cliente" itemLabel="#{cliente.nombre}" itemValue="#{cliente.idcliente}"/>
-                            </h:selectOneMenu>
-                            <h:selectOneMenu value="#{factura.idEmpleado}" styleClass="input-sm derecha col-sm-5">
+                            <p:autoComplete styleClass="input-sm derecha col-sm-5" placeholder="Documento del cliente" value="#{factura.idCliente}" completeMethod="#{factura.completeText}" />
+                             <h:selectOneMenu value="#{factura.idEmpleado}" styleClass="input-sm derecha col-sm-5">
                                 <f:selectItem itemValue="0" itemLabel="Seleccione un Empleado"/>
                                 <f:selectItems value="#{beanEmpleado.all}" var="empleado" itemLabel="#{empleado.nombre}" itemValue="#{empleado.idempleado}"/>
                             </h:selectOneMenu>
@@ -234,7 +230,7 @@
 
                                         </p:row>
                                     </p:columnGroup>
-                                   
+
                                 </p:dataTable>
 
                             </h:form>
