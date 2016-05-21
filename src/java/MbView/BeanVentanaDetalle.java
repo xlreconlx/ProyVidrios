@@ -33,6 +33,7 @@ public class BeanVentanaDetalle {
     private Transaction transaccion;
       private Ventanadetalle ventanaDetalle;
     private List<Ventanadetalle> listaVentanadetalle;
+        private List<Ventanadetalle> listaVentanadetalleSele;
     private Factura factura;
     
     public BeanVentanaDetalle() {
@@ -51,10 +52,10 @@ public class BeanVentanaDetalle {
             this.session = HibernateUtil.getSessionFactory().openSession();
             this.transaccion = this.session.beginTransaction();
 
-            this.listaVentanadetalle = daoDetalle.getAll(this.session);
+            this.listaVentanadetalleSele = daoDetalle.getAll(this.session);
             this.transaccion.commit();
             
-            return this.listaVentanadetalle;
+            return this.listaVentanadetalleSele;
             
         } catch (Exception ex) {
             if (this.transaccion != null) {
@@ -71,19 +72,21 @@ public class BeanVentanaDetalle {
         }
     }
      public void BuscarBYcodigoFactura(int id) {
-        this.listaVentanadetalle = new ArrayList<>();
+        this.listaVentanadetalleSele = new ArrayList<>();
         this.session = null;
         this.transaccion = null;
         try {
             this.session = HibernateUtil.getSessionFactory().openSession();
             this.transaccion = this.session.beginTransaction();
             DaoDetalle  daoDetalle = new DaoDetalle();
-     
-            this.listaVentanadetalle.addAll(daoDetalle.getAllByIdFactura(this.session, id));
+     this.listaVentanadetalleSele.clear();
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "el id es" + id));
+            System.out.println("el id es"+ id);
+            this.listaVentanadetalleSele.addAll(daoDetalle.getAllByIdFactura(this.session, id));
 
         } catch (Exception e) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Contacte con su administrador" + e.getMessage()));
-            this.listaVentanadetalle = null;
+            this.listaVentanadetalleSele = null;
             this.factura = null;
             if (this.transaccion != null) {
                 this.transaccion.rollback();
@@ -114,6 +117,14 @@ public class BeanVentanaDetalle {
 
     public void setFactura(Factura factura) {
         this.factura = factura;
+    }
+
+    public List<Ventanadetalle> getListaVentanadetalleSele() {
+        return listaVentanadetalleSele;
+    }
+
+    public void setListaVentanadetalleSele(List<Ventanadetalle> listaVentanadetalleSele) {
+        this.listaVentanadetalleSele = listaVentanadetalleSele;
     }
     
 }

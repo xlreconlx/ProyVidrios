@@ -92,9 +92,9 @@
                                             </p:column>
                                             <p:column headerText="Abono secundario">
                                                 <h:form>
-                                                    <button type="button" jsf:onclick="#{mbCotizacionDetalle.BuscarBYcodigoFactura(item.idcotizacion)}" class="btn btn-info" pa:data-toggle="modal" pa:data-target="#myModal1">
-                                                        Ver Mas
-                                                    </button>
+                                                       <h:commandButton  pa:data-toggle="modal" pa:data-target="#myModal1" value="Ver mas" class="btn btn-primary">
+                                                           <f:ajax listener="#{mbCotizacionDetalle.BuscarBYcodigoFactura(item.idcotizacion)}" render="growl frmEliminarSitio" event="click" />
+                                    </h:commandButton>
                                                 </h:form>
 
                                             </p:column>
@@ -105,7 +105,7 @@
 
 
                                 <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                                    <h:form styleClass="modal-dialog"  role="document">
+                                    <h:form id="frmEliminarSitio" styleClass="modal-dialog"  role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>

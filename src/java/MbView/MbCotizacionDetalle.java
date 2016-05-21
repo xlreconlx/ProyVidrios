@@ -78,7 +78,9 @@ public class MbCotizacionDetalle {
             this.session = HibernateUtil.getSessionFactory().openSession();
             this.transaccion = this.session.beginTransaction();
             DaoCotizacionDetalle daoCotizacionDetalle= new DaoCotizacionDetalle();
-     
+      this.listaCotizaciondetalle.clear();
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "el id es" + id));
+            System.out.println("el id es"+ id);
             this.listaCotizaciondetalle.addAll(daoCotizacionDetalle.getAllByIdCotizacion(this.session, id));
 
         } catch (Exception e) {
