@@ -32,9 +32,11 @@
 
 
 
-                                    <h:commandButton styleClass="btn btn-primary col-sm-3" value="Agregar" actionListener="#{beanSueldo.consultarSueldo()}">
+                                    <h:commandButton styleClass="btn btn-primary col-sm-3" style="float: right; margin-right: 210px;" value="Agregar" actionListener="#{beanSueldo.consultarSueldo()}">
                                         <p:ajax process="@this @form" update=":formReporteFechas:tbl"/>
                                     </h:commandButton>
+                                      <a onclick="imprimir()" class="btn btn-warning col-lg-2 col-md-2 col-sm-2 col-xs-2 bajar" style="float: right; margin-right: -550px; ">Imprimir</a>
+
                                 </h:form>
 
 
@@ -44,7 +46,7 @@
                             <p:dataTable id="tbl" var="lista" value="#{beanSueldo.listSueldoByFecha}">
                                 <f:facet   name="header">
 
-                                    <h3>DECORVIDRIOS</h3> ELIOT FABIO PEÑALOSA.
+                                    <h3>DECORVIDRIOS</h3> ELIO FABIO PEÑALOSA.
                                     NIT: 891304175-9.
                                     <br></br>
                                     Telefono:2722978.
