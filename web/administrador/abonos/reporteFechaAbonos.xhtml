@@ -32,7 +32,7 @@
 
 
 
-                                    <h:commandButton styleClass="btn btn-primary col-sm-2" value="Agregar" actionListener="#{mbAbonos.consultarVentas}" style="float: right; margin-right: 252px; " >
+                                    <h:commandButton styleClass="btn btn-primary col-sm-2" value="Consultar Abonos" actionListener="#{mbAbonos.consultarVentas}" style="float: right; margin-right: 252px; " >
                                         <p:ajax process="@this @form" update=":formReporteFechas:tbl"/>
                                     </h:commandButton>
                          <a onclick="imprimir()" class="btn btn-warning col-lg-2 col-md-2 col-sm-2 col-xs-2 bajar" style="float: right; margin-right: -450px; ">Imprimir</a>
@@ -61,13 +61,13 @@
 
 
                                 <p:column headerText="Cliente">
-                                    <h:outputText value="#{mbCliente.getById(lista.cliente.idcliente).getNombre()}" />
+                                    <h:outputText value="#{mbCliente.getById(lista.cliente.idcliente).getNombre()} #{mbCliente.getById(lista.cliente.idcliente).getApellidos()}" />
                                 </p:column>
                                 <p:column  headerText="Fecha">
                                     <h:outputText value="#{lista.fecharegistro}" />
                                 </p:column>
                                 <p:column  headerText="Valor">
-                                    <h:outputText value="#{lista.precioTotal}" />
+                                    <h:outputText value="#{lista.montoabono}" />
                                 </p:column>
 
                                 <p:columnGroup type="footer">
@@ -75,7 +75,7 @@
 
                                         <p:column footerText=""/>
                                         <p:column footerText=""/>
-                                        <p:column footerText="total ventas $:#{mbAbonos.totalVentasFecha}"/>
+                                        <p:column footerText="total Monto Abonos $:#{mbAbonos.totalVentasFecha}"/>
 
                                     </p:row>
 

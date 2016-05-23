@@ -110,7 +110,7 @@
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                <h4 class="modal-title" id="myModalLabel">Sueldo</h4>
+                                                <h4 class="modal-title" id="myModalLabel">Sueldo Empleado</h4>
                                             </div>
                                             <div id="imprimeDiv" class="modal-body">
                                                    <a>
@@ -125,19 +125,21 @@
                                         <hr></hr>
                                           <label>Fecha  #{beanSueldo.sueldoSelect.fechaCreacionSueldo}</label>
                                                 <br></br>
-                                                <label>Nombre empleado #{beanEmpleado.getById(beanSueldo.sueldoSelect.empleado.idempleado).getNombre()} #{beanEmpleado.getById(beanSueldo.sueldoSelect.empleado.idempleado).getApellidos()}</label>
+                                                <label>Nombre empleado: #{beanEmpleado.getById(beanSueldo.sueldoSelect.empleado.idempleado).getNombre()} #{beanEmpleado.getById(beanSueldo.sueldoSelect.empleado.idempleado).getApellidos()}</label>
                                                 <br></br>
-                                               <label>Sueldo base  #{beanSueldo.sueldoSelect.sueldoBase}</label>
+                                                     <label>Numero Documento: #{beanEmpleado.getById(beanSueldo.sueldoSelect.empleado.idempleado).getNumeroDocumento()}</label>
+                                                <br></br>
+                                               <label>Sueldo base:  #{beanSueldo.sueldoSelect.sueldoBase}</label>
                                                 <br></br>
                                                
-                                                <label>Comision  #{beanSueldo.sueldoSelect.comision}</label>
+                                                <label>Comision:  #{beanSueldo.sueldoSelect.comision}</label>
                                                 <br></br>
-                                                <label>Hora extras #{beanSueldo.sueldoSelect.horasExtras}</label>
+                                                <label>Hora Extras: #{beanSueldo.sueldoSelect.horasExtras}</label>
                                                 <br></br>
-                                                <label>Descuentos  #{beanSueldo.sueldoSelect.descuentos}</label>
+                                                <label>Descuentos:  #{beanSueldo.sueldoSelect.descuentos}</label>
                                                 <br></br>
                                                 
-                                                <label>Sueldo total  #{beanSueldo.sueldoSelect.sueldoTotal}</label>
+                                                <label>Sueldo Total:  #{beanSueldo.sueldoSelect.sueldoTotal}</label>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>

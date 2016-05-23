@@ -59,13 +59,14 @@
 
 
                                                 <p:row>
-                                                    <p:column headerText="Id" />
+                                                    <p:column headerText="Factura #" />
                                                     <p:column headerText="Empleado" />
                                                
                                                     <p:column headerText="SubTotal" />
                                                     <p:column headerText="Iva" />
                                                     <p:column headerText="Total" />
-                                                    <p:column colspan="2" headerText="Fecha" />
+                                                    <p:column  headerText="Fecha" />
+                                                      <p:column  headerText="x" />
                                             
 
                                                 </p:row>
@@ -124,6 +125,29 @@
                                         Telefono:2726887  2726801  2871472.
                                         Direccion: Carrera 35 # 28-45.
                                     </f:facet>
+                                                       <p:columnGroup  type="header">
+                                                <p:row>
+                                                    <p:column colspan="2" headerText="cliente: #{factura.cliente.nombre} #{factura.cliente.apellidos}" />
+                                                    <p:column colspan="2" headerText="Documento: #{factura.cliente.numeroDocumentoC}" />
+                                                    <p:column colspan="1" headerText="Telefono: #{factura.cliente.telefono}"/>
+                                                    <p:column colspan="2" headerText="Direccion: #{factura.cliente.direccion}"/>
+                                                </p:row>
+
+
+
+                                                <p:row>
+                                                    <p:column headerText="Producto" />
+                                                    <p:column headerText="Nombre" />
+                                               
+                                                    <p:column headerText="Cantizad" />
+                                                    <p:column headerText="Precio Venta" />
+                                                    <p:column headerText="Trabajo" />
+                                                    <p:column  headerText="%" />
+                                                      <p:column headerText="Total" />
+                                            
+
+                                                </p:row>
+                                            </p:columnGroup>
                                                     <p:column headerText="Producto" >
                                                         <h:outputText value="#{item.productos.tipo}"/>
                                                     </p:column>

@@ -27,10 +27,10 @@
                             <h:outputText value="#{item.idabonos}"/>
                         </p:column>
                           <p:column headerText="Empleado" >
-                              <h:outputText value="#{beanEmpleado.getById(item.empleado.idempleado).getNombre()}"/>
+                              <h:outputText value="#{beanEmpleado.getById(item.empleado.idempleado).getNombre()} #{beanEmpleado.getById(item.empleado.idempleado).getApellidos()}"/>
                         </p:column>
                         <p:column headerText="Cliente"  >
-                            <h:outputText value="#{mbCliente.getById(item.cliente.idcliente).getNombre()}"/>
+                            <h:outputText value="#{mbCliente.getById(item.cliente.idcliente).getNombre()} #{mbCliente.getById(item.cliente.idcliente).getApellidos()}"/>
                         </p:column>
                           <p:column headerText="total">
                               <h:outputText value="#{item.precioTotal}"/>
