@@ -133,7 +133,7 @@ public class Material {
                 this.precioTraslape = this.traslape * preTraslape;
                 this.precioHsuperior = this.hSuperior * preHsuper;
                 this.precioHinferior = this.hInferior * preHinfe;
-                this.rodamiento = preRodamiento;
+                this.rodamiento = (preRodamiento *100)*2;
                 this.chapa = preChapa;
                 this.guias = (preGuias * 100) * 8;
                 this.empaque = (this.ancho * 2 + this.alto * 4) * preEmpaque;
