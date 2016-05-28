@@ -169,7 +169,7 @@ public class Material {
                 this.precioTraslape = this.traslape * preTraslape;
                 this.precioHsuperior = this.hSuperior * preHsuper;
                 this.precioHinferior = this.hInferior * preHinfe;
-                this.rodamiento = (preRodamiento * 100) * 2;
+                this.rodamiento = (preRodamiento * 100) * 4;
                 this.chapa = (preChapa * 100) * 2;
                 this.guias = (preGuias * 100) * 8;
                 this.empaque = (this.ancho * 2 + this.alto * 6) * preEmpaque;
@@ -206,7 +206,7 @@ public class Material {
                 this.precioTraslape = this.traslape * preTraslape;
                 this.precioHsuperior = this.hSuperior * preHsuper;
                 this.precioHinferior = this.hInferior * preHinfe;
-                this.rodamiento = (preRodamiento * 100) * 2;
+                this.rodamiento = (preRodamiento * 100) * 4;
                 this.chapa = (preChapa * 100) * 2;
                 this.guias = (preGuias * 100) * 8;
                 this.empaque = (this.ancho * 2 + this.alto * 8) * preEmpaque;
