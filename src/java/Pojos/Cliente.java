@@ -18,7 +18,7 @@ public class Cliente  implements java.io.Serializable {
      private String apellidos;
      private String numeroDocumentoC;
      private String correoElectronico;
-     private Integer telefono;
+     private String telefono;
      private String direccion;
      private Set cotizacions = new HashSet(0);
      private Set abonoses = new HashSet(0);
@@ -34,7 +34,7 @@ public class Cliente  implements java.io.Serializable {
         this.nombre = nombre;
         this.numeroDocumentoC = numeroDocumentoC;
     }
-    public Cliente(Ciudad ciudad, Tipodocumento tipodocumento, String nombre, String apellidos, String numeroDocumentoC, String correoElectronico, Integer telefono, String direccion, Set cotizacions, Set abonoses, Set facturases) {
+    public Cliente(Ciudad ciudad, Tipodocumento tipodocumento, String nombre, String apellidos, String numeroDocumentoC, String correoElectronico, String telefono, String direccion, Set cotizacions, Set abonoses, Set facturases) {
        this.ciudad = ciudad;
        this.tipodocumento = tipodocumento;
        this.nombre = nombre;
@@ -97,11 +97,11 @@ public class Cliente  implements java.io.Serializable {
     public void setCorreoElectronico(String correoElectronico) {
         this.correoElectronico = correoElectronico;
     }
-    public Integer getTelefono() {
+    public String getTelefono() {
         return this.telefono;
     }
     
-    public void setTelefono(Integer telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
     public String getDireccion() {

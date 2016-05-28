@@ -26,8 +26,8 @@
         <property name="correoElectronico" type="string">
             <column name="correoElectronico" length="45" />
         </property>
-        <property name="telefono" type="java.lang.Integer">
-            <column name="telefono" />
+        <property name="telefono" type="string">
+            <column name="telefono"   length="20"/>
         </property>
         <property name="direccion" type="string">
             <column name="direccion" length="45" />

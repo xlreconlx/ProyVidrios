@@ -81,6 +81,9 @@
                                                 <p:inputText autocomplete="off" id="Edad" pa:placeholder="Edad" value="#{beanEmpleado.empleado.edad}" class="col-lg-12 form-control" style="margin-top: 10px">
                                                     <f:validator validatorId="validatorVacio"/>
                                                 </p:inputText>
+                                                <p:inputText autocomplete="off" id="Telefono" pa:placeholder="Telefono" value="#{beanEmpleado.empleado.telefono}" class="col-lg-12 form-control" style="margin-top: 10px">
+                                                    <f:validator validatorId="validatorVacio"/>
+                                                </p:inputText>
                                             
                                                 <p:selectOneRadio id="radioSexo" label="Sexo" value="#{beanEmpleado.empleado.genero}">
                                                     <f:selectItem itemLabel="Masculino" itemValue="true"/>

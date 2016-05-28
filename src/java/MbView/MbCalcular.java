@@ -112,11 +112,11 @@ public class MbCalcular {
             this.transaccion = this.session.beginTransaction();
             this.lista.addAll(daoMaterial.getAll(this.session));
             
-            if(this.tipoAluminio==0){
-                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Error:", "Seleccione un tipo de aluminio"));
-                return;
-            }
-            
+//            if(this.tipoAluminio==0){
+//                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Error:", "Seleccione un tipo de aluminio"));
+//                return;
+//            }
+//            
             if(this.tipoAluminio==1){
                     material = new Material(this.ancho, this.alto, this.manObra, this.ganancia,
                     this.lista.get(0).getPreciocost(), this.lista.get(2).getPreciocost(),
@@ -191,6 +191,8 @@ public class MbCalcular {
             if (this.tipoVentana == 4) {
                 this.nombreProducto = "Vidrio " + this.alto + " * " + this.ancho;
                 this.precioTotal = this.precioVidrio;
+                     this.precioTotalCantidad= this.precioTotal*this.canti;
+                this.mensajeCanti=String.valueOf(this.canti);
             } else {
                 this.nombreProducto = "ventana " + this.alto + " * " + this.ancho;
                 this.precioTotal = material.getSumaTotal() + this.precioVidrio;
@@ -274,6 +276,7 @@ public class MbCalcular {
 
                    
                 }else{
+                        if(this.tipoVentana==3){
 //                    this.recorte3=material.getAncho()/4;
                      this.recorteAncho=Double.valueOf(this.getAncho())/4;
                 this.recorteAlto=Double.valueOf(this.getAlto())/4;
@@ -299,7 +302,36 @@ public class MbCalcular {
                this.mensajeVidrio = "" + this.cantidadVidrio + " Vidrio Alto de: "+ (this.recorteAlto * 2-5)+ " VidrioAncho de: "+ (this.recorteAncho * 2 -5.5);
 
                  
+                  }else{
+                        if(this.tipoVentana==4){
+//                    this.recorte3=material.getAncho()/4;
+                     this.recorteAncho=0;
+                this.recorteAlto=0;
+                
+                 this.cantidadCabezal=0;
+                 this.cantidadSillar=0;
+                 this.cantidadJamba=0;
+                 this.cantidadEnganche=0;
+                 this.cantidadTraslape=0;
+                 this.cantidadHorizontalesSuperior=0;
+                 this.cantidadHorizontalesInferior=0;
+                 this.cantidadAdactador=1* this.canti;
+                this.mensajeCabezal=""+this.cantidadCabezal+" Cabeazal de:  ";
+                  this.mensajeSillar=""+this.cantidadSillar+" Sillar de: ";
+                  this.mensajeJamba=""+this.cantidadJamba+"  Jamba de ";
+                  this.mensajeEnganche=""+this.cantidadEnganche+" Enganchez de:  ";
+                  this.mensajeTraslape=""+this.cantidadTraslape+" traslapes de:  ";
+                  this.mensajeHSuperior=""+this.cantidadHorizontalesSuperior+" Horizontales Superior de:  ";
+                 this.mensajeHInferior=""+this.cantidadHorizontalesInferior+" Horizontales Inferior de:  ";
+                 this.mensajeHSuperior=""+this.cantidadHorizontalesSuperior+" Horizontales de:  ";
+                 this.mensajeHInferior=""+this.cantidadHorizontalesInferior+" Horizontales de:  ";
+                 this.mensajeAdactador=""+this.cantidadAdactador+" Adaptador de: ";
+               this.mensajeVidrio = "" + this.cantidadVidrio + " Vidrio Alto de: ";
+
+                 
                 }
+            }
+            }
             }
 //            this.recorteCabezal=Integer.valueOf(this.getAncho())-0;
 //            this.recorteSillar= Integer.valueOf(this.getAncho())-0;

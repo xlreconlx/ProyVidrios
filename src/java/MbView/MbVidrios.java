@@ -45,7 +45,7 @@ public class MbVidrios {
         this.lista = new ArrayList<>();
     }
 
-    public String registrar() {
+    public void registrar() {
         this.session = null;
         this.transaccion = null;
 
@@ -56,7 +56,7 @@ public class MbVidrios {
 
             if (this.vidrios.getCalibre().equals("")) {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error:", "El campo nombres es muy corto"));
-                return "administrador/vidrios/registrarVidrios";
+                return ;
             }
 
             daoVidrio.registar(this.session, this.vidrios);
@@ -80,7 +80,7 @@ public class MbVidrios {
             }
         }
 
-        return "administrador/vidrios/listaVidrios";
+       
     }
 
     public List<Vidrios> getAll() {

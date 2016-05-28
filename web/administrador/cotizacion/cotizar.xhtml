@@ -18,7 +18,7 @@
                             <p:outputLabel value="hola" rendered="false"></p:outputLabel>
 
                             <div  class="panel panel-default div2">
-                                <div class="panel-heading color">Precio Cotizacion Ventanas</div>
+                                <div class="panel-heading color">Precio Cotizacion Ventanas y Vidrios Individuales</div>
                                 <div class="panel-body">
                                     <h:form  styleClass="form-group" >
                                         <h:outputText value="Nombre producto: #{mbCalcular.nombreProducto} ">
@@ -102,9 +102,9 @@
                                             <f:selectItem itemValue="0" itemLabel="Seleccione un tipo de vidrio"/>
                                             <f:selectItems value="#{mbVidrios.all}" var="vidrio" itemLabel="#{vidrio.calibre}" itemValue="#{vidrio.idvidrios}"/>
                                         </h:selectOneMenu>
-                                        <label class="bajar">Seleccione un tipo de ventana</label>
+                                        <label class="bajar">Seleccione un tipo de Ventana</label>
                                         <h:selectOneMenu value="#{mbCalcular.tipoVentana}" styleClass="form-control">
-                                            <f:selectItem itemValue="0" itemLabel="Seleccione un tipo de ventana"/>
+                                            <f:selectItem itemValue="0" itemLabel="Seleccione un tipo de Ventana"/>
                                             <f:selectItem itemValue="1" itemLabel="2 Cuerpos"/>
                                             <f:selectItem itemValue="2" itemLabel="3 Cuerpos"/>
                                             <f:selectItem itemValue="3" itemLabel="4 Cuerpos"/>
