@@ -23,12 +23,16 @@
                                     <h:form  styleClass="form-group" >
                                         <h:outputText value="Nombre producto: #{mbCalcular.nombreProducto} ">
                                         </h:outputText> 
-                                        <br></br>
-                                        <h:outputText value="  Precio total: #{mbCalcular.precioTotal}">
+                                      <br></br>
+                                        <h:outputText value="  Precio Unitario $ :  #{mbCalcular.precioTotal}">
                                         </h:outputText>
                                         <br></br>
-                                    
-
+                                      <h:outputText value="  Cantidad Ventanas :  #{mbCalcular.mensajeCanti}">
+                                            </h:outputText>
+                                            <br></br>
+                                            <h:outputText value="  Precio total $ :  #{mbCalcular.precioTotalCantidad}">
+                                            </h:outputText>
+                                            <br></br>
                                     </h:form>
                                 </div>
                             </div>
@@ -43,10 +47,10 @@
                                         <div></div>
                              
                                     
-                                        <h:outputText value="  Recorte Cabezal  #{mbCalcular.recorteCabezal}">
+                                        <h:outputText value="  Recorte Cabezal  #{mbCalcular.mensajeCabezal}">
                                         </h:outputText>
                                         <br></br>
-                                        <h:outputText value="  Recorte Sillar  #{mbCalcular.recorteSillar}">
+                                        <h:outputText value="  Recorte Sillar  #{mbCalcular.mensajeSillar}">
                                         </h:outputText>
                                         <br></br>
                                         <h:outputText value=" Recorte:  #{mbCalcular.mensajeJamba}">
@@ -68,12 +72,9 @@
                                         <h:outputText value="  Recorte:  #{mbCalcular.mensajeAdactador}">
                                         </h:outputText>
                                         <br></br>
-                                        <h:outputText value="  Recorte vidrio ancho:  #{mbCalcular.recorteVidrioAncho}">
+                                           <h:outputText value="  Recorte :  #{mbCalcular.mensajeVidrio}">
                                         </h:outputText>
                                         <br></br>
-                                        <h:outputText value="  Recorte vidrio alto:  #{mbCalcular.recorteVidrioAlto}">
-                                        </h:outputText>
-
                                     </h:form>
                                 </div>
                             </div>
@@ -94,6 +95,8 @@
                                         <h:inputText value="#{mbCalcular.ganancia}" styleClass="form-control"></h:inputText>
                                         <label class="bajar">Digite el costo de la mano de obra</label>
                                         <h:inputText value="#{mbCalcular.manObra}"  styleClass="form-control"></h:inputText>
+                                          <label class="bajar">Cantidad de Ventanas</label>
+                                         <h:inputText value="#{mbCalcular.canti}"  styleClass="form-control"></h:inputText>
                                         <label class="bajar">Seleccione un tipo de vidrio</label>
                                         <h:selectOneMenu value="#{mbCalcular.idVidrio}" styleClass="form-control">
                                             <f:selectItem itemValue="0" itemLabel="Seleccione un tipo de vidrio"/>

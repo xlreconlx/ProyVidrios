@@ -69,6 +69,10 @@ public class MbCalcular {
      private String mensajeEnganche;
      private String mensajeTraslape;
      private String mensajeAdactador;
+        private String mensajeVidrio;
+         private int canti;
+    private String mensajeCanti;
+    private long precioTotalCantidad;
     
 
     /**
@@ -83,7 +87,7 @@ public class MbCalcular {
         this.ganancia = 0;
         this.manObra = 0;
         this.idVidrio = 0;
-      
+          this.canti=0;
         this.nombreProducto="";
         this.mensajeHSuperior="";
         this.mensajeHInferior="";
@@ -190,6 +194,8 @@ public class MbCalcular {
             } else {
                 this.nombreProducto = "ventana " + this.alto + " * " + this.ancho;
                 this.precioTotal = material.getSumaTotal() + this.precioVidrio;
+                    this.precioTotalCantidad= this.precioTotal*this.canti;
+                this.mensajeCanti=String.valueOf(this.canti);
             }
             
             
@@ -222,20 +228,23 @@ public class MbCalcular {
                 this.recorteAncho=Double.valueOf(this.getAncho())/2;
                 this.recorteAlto=Double.valueOf(this.getAlto())/2;
                 
-                 this.cantidadCabezal=1;
-                 this.cantidadSillar=1;
-                 this.cantidadJamba=2;
-                 this.cantidadEnganche=2;
-                 this.cantidadTraslape=2;
-                 this.cantidadHorizontalesSuperior=2;
-                 this.cantidadHorizontalesInferior=2;
-                  this.mensajeCabezal=""+this.cantidadCabezal+" Cabeazal de:  ";
-                  this.mensajeSillar=""+this.cantidadSillar+"Sillar de: ";
+                 this.cantidadCabezal=1* this.canti;
+                 this.cantidadSillar=1* this.canti;
+                 this.cantidadJamba=2* this.canti;
+                 this.cantidadEnganche=2* this.canti;
+                 this.cantidadTraslape=2* this.canti;
+                 this.cantidadHorizontalesSuperior=2* this.canti;
+                 this.cantidadHorizontalesInferior=2* this.canti;
+                      this.cantidadVidrio = 2 * this.canti;
+                 this.mensajeCabezal=""+this.cantidadCabezal+" Cabeazal de:  "+ (this.recorteAncho * 2);
+                  this.mensajeSillar=""+this.cantidadSillar+" Sillar de: "+ (this.recorteAncho * 2);
                   this.mensajeJamba=""+this.cantidadJamba+"  Jamba de "+(this.recorteAlto+this.recorteAlto-1.3);
                   this.mensajeEnganche=""+this.cantidadEnganche+" Enganchez de:  "+(this.recorteAlto+this.recorteAlto-2.5);
                   this.mensajeTraslape=""+this.cantidadTraslape+"traslapes de:  "+(this.recorteAlto+recorteAlto-2.5);
                   this.mensajeHSuperior=""+this.cantidadHorizontalesSuperior+" Horizontales Superior de:  "+this.recorteAncho;
                  this.mensajeHInferior=""+this.cantidadHorizontalesInferior+" Horizontales Inferior de:  "+this.recorteAncho;
+                  this.mensajeVidrio = "" + this.cantidadVidrio + " Vidrio Alto de: "+ (this.recorteAlto * 2-5)+ " VidrioAncho de: "+ (this.recorteAncho * 2 -5.5);
+
 
             }else{
                 if(this.tipoVentana==2){
@@ -243,15 +252,15 @@ public class MbCalcular {
                     
            this.recorteAncho=Double.valueOf(this.getAncho())/2;
                 this.recorteAlto=Double.valueOf(this.getAlto())/2;
-                  this.cantidadCabezal=1;
-                 this.cantidadSillar=1;
-                 this.cantidadJamba=2;
-                 this.cantidadEnganche=2;
-                 this.cantidadTraslape=4;
-                 this.cantidadHorizontalesSuperior=2;
-                 this.cantidadHorizontalesInferior=2;
-                  this.mensajeCabezal=""+this.cantidadCabezal+" Cabeazal de:  ";
-                  this.mensajeSillar=""+this.cantidadSillar+"Sillar de: ";
+                  this.cantidadCabezal=1* this.canti;
+                 this.cantidadSillar=1* this.canti;
+                 this.cantidadJamba=2* this.canti;
+                 this.cantidadEnganche=2* this.canti;
+                 this.cantidadTraslape=4* this.canti;
+                 this.cantidadHorizontalesSuperior=2* this.canti;
+                 this.cantidadHorizontalesInferior=2* this.canti;
+                this.mensajeCabezal=""+this.cantidadCabezal+" Cabeazal de:  "+ (this.recorteAncho * 2);
+                  this.mensajeSillar=""+this.cantidadSillar+" Sillar de: "+ (this.recorteAncho * 2);;
                   this.mensajeJamba=""+this.cantidadJamba+"  Jamba de "+(this.recorteAlto+this.recorteAlto-1.3);
                   this.mensajeEnganche=""+this.cantidadEnganche+" Enganchez de:  "+(this.recorteAlto+this.recorteAlto-2.5);
                   this.mensajeTraslape=""+this.cantidadTraslape+"traslapes de:  "+(this.recorteAlto+recorteAlto-2.5);
@@ -260,6 +269,8 @@ public class MbCalcular {
                         this.cantidadHorizontalesInferior=3;
                     this.mensajeHSuperior=""+(this.cantidadHorizontalesSuperior-1)+" Horizontales Superior de:  "+(this.recorteAncho/2)+"  y 1 horizontal Superior de: "+this.recorteAncho;
                    this.mensajeHInferior=""+(this.cantidadHorizontalesInferior-1)+" Horizontales Inferior de:  "+(this.recorteAncho/2)+"  y 1 horizontal Inferior de: "+this.recorteAncho;
+                                    this.mensajeVidrio = "" + this.cantidadVidrio + " Vidrio Alto de: "+ (this.recorteAlto * 2-5)+ " VidrioAncho de: "+ (this.recorteAncho * 2 -5.5);
+
 
                    
                 }else{
@@ -267,15 +278,16 @@ public class MbCalcular {
                      this.recorteAncho=Double.valueOf(this.getAncho())/4;
                 this.recorteAlto=Double.valueOf(this.getAlto())/4;
                 
-                 this.cantidadCabezal=1;
-                 this.cantidadSillar=1;
-                 this.cantidadJamba=2;
-                 this.cantidadEnganche=4;
-                 this.cantidadTraslape=4;
-                 this.cantidadHorizontalesSuperior=4;
-                 this.cantidadHorizontalesInferior=4;
-                 this.cantidadAdactador=1;
-               
+                 this.cantidadCabezal=1* this.canti;
+                 this.cantidadSillar=1* this.canti;
+                 this.cantidadJamba=2* this.canti;
+                 this.cantidadEnganche=4* this.canti;
+                 this.cantidadTraslape=4* this.canti;
+                 this.cantidadHorizontalesSuperior=4* this.canti;
+                 this.cantidadHorizontalesInferior=4* this.canti;
+                 this.cantidadAdactador=1* this.canti;
+                this.mensajeCabezal=""+this.cantidadCabezal+" Cabeazal de:  "+ (this.recorteAncho * 2);
+                  this.mensajeSillar=""+this.cantidadSillar+" Sillar de: "+ (this.recorteAncho * 2);
                   this.mensajeJamba=""+this.cantidadJamba+"  Jamba de "+(this.recorteAlto+this.recorteAlto+this.recorteAlto+this.recorteAlto-1.3);
                   this.mensajeEnganche=""+this.cantidadEnganche+" Enganchez de:  "+(this.recorteAlto+this.recorteAlto+this.recorteAlto+this.recorteAlto-2.5);
                   this.mensajeTraslape=""+this.cantidadTraslape+" traslapes de:  "+(this.recorteAlto+recorteAlto+this.recorteAlto+this.recorteAlto-2.5);
@@ -284,18 +296,20 @@ public class MbCalcular {
                  this.mensajeHSuperior=""+this.cantidadHorizontalesSuperior+" Horizontales de:  "+this.recorteAncho;
                  this.mensajeHInferior=""+this.cantidadHorizontalesInferior+" Horizontales de:  "+this.recorteAncho;
                  this.mensajeAdactador=""+this.cantidadAdactador+" Adaptador de: "+(this.recorteAlto+this.recorteAlto+this.recorteAlto+this.recorteAlto-2.5);
+               this.mensajeVidrio = "" + this.cantidadVidrio + " Vidrio Alto de: "+ (this.recorteAlto * 2-5)+ " VidrioAncho de: "+ (this.recorteAncho * 2 -5.5);
+
                  
                 }
             }
-            this.recorteCabezal=Integer.valueOf(this.getAncho())-0;
-            this.recorteSillar= Integer.valueOf(this.getAncho())-0;
+//            this.recorteCabezal=Integer.valueOf(this.getAncho())-0;
+//            this.recorteSillar= Integer.valueOf(this.getAncho())-0;
 //          
-//            this.recorteTraslape=Integer.valueOf(this.getAlto())-2.5;
-            
-//             this.recorteEnganche=Integer.valueOf(this.getAlto())-2.5;
-            this.recorteVidrioAncho=Integer.valueOf(this.getAncho())-5.5;            
-//            this.recorteVidrioAlto=material.getAlto()-2.5;
-            this.recorteVidrioAlto= Integer.valueOf(this.getAlto())-10;
+////            this.recorteTraslape=Integer.valueOf(this.getAlto())-2.5;
+//            
+////             this.recorteEnganche=Integer.valueOf(this.getAlto())-2.5;
+//            this.recorteVidrioAncho=Integer.valueOf(this.getAncho())-5.5;            
+////            this.recorteVidrioAlto=material.getAlto()-2.5;
+//            this.recorteVidrioAlto= Integer.valueOf(this.getAlto())-10;
 //            
 //            this.cantidadHorizontalesSuperior=Integer.valueOf(this.getAncho())-0;
 //            this.cantidadHorizontalesInferior = Integer.valueOf(this.getAncho())-0;
@@ -645,6 +659,38 @@ public class MbCalcular {
 
     public void setMensajeAdactador(String mensajeAdactador) {
         this.mensajeAdactador = mensajeAdactador;
+    }
+
+    public int getCanti() {
+        return canti;
+    }
+
+    public void setCanti(int canti) {
+        this.canti = canti;
+    }
+
+    public String getMensajeCanti() {
+        return mensajeCanti;
+    }
+
+    public void setMensajeCanti(String mensajeCanti) {
+        this.mensajeCanti = mensajeCanti;
+    }
+
+    public long getPrecioTotalCantidad() {
+        return precioTotalCantidad;
+    }
+
+    public void setPrecioTotalCantidad(long precioTotalCantidad) {
+        this.precioTotalCantidad = precioTotalCantidad;
+    }
+
+    public String getMensajeVidrio() {
+        return mensajeVidrio;
+    }
+
+    public void setMensajeVidrio(String mensajeVidrio) {
+        this.mensajeVidrio = mensajeVidrio;
     }
 
    

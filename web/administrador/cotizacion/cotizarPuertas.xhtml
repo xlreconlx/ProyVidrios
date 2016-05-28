@@ -23,11 +23,16 @@
                                         <h:form  styleClass="form-group" >
                                             <h:outputText value="Nombre producto: #{mbCalcularPuerta.nombreProducto} ">
                                             </h:outputText> 
-                                            <br></br>
-                                            <h:outputText value="  Precio total: #{mbCalcularPuerta.precioTotal}">
+                                                <br></br>
+                                        <h:outputText value="  Precio Unitario $ :  #{mbCalcularPuerta.precioTotal}">
+                                        </h:outputText>
+                                        <br></br>
+                                      <h:outputText value="  Cantidad Ventanas :  #{mbCalcularPuerta.mensajeCanti}">
                                             </h:outputText>
                                             <br></br>
-
+                                            <h:outputText value="  Precio total $ :  #{mbCalcularPuerta.precioTotalCantidad}">
+                                            </h:outputText>
+                                            <br></br>
 
                                         </h:form>
                                     </div>
@@ -83,12 +88,10 @@
                                             <h:outputText value="  Cantidad:  #{mbCalcularPuerta.mensajeVisagras}">
                                             </h:outputText>
                                             <br></br>
-                                            <h:outputText value="  Recorte Vidrio Ancho:  #{mbCalcularPuerta.recorteVidrioAncho}">
-                                            </h:outputText>
-                                            <br></br>
-                                            <h:outputText value="  Recorte Vidrio Alto:  #{mbCalcularPuerta.recorteVidrioAlto}">
-                                            </h:outputText>
-
+                                               <h:outputText value="  Recorte :  #{mbCalcularPuerta.mensajeVidrio}">
+                                        </h:outputText>
+                                        <br></br>
+                                            
                                         </h:form>
                                     </div>
                                 </div>
@@ -109,7 +112,8 @@
                                         <h:inputText value="#{mbCalcularPuerta.ganancia}" styleClass="form-control"></h:inputText>
                                         <label class="bajar">Digite el costo de la mano de obra</label>
                                         <h:inputText value="#{mbCalcularPuerta.manObra}"  styleClass="form-control"></h:inputText>
-                                      
+                                        <label class="bajar">Cantidad de Ventanas</label>
+                                        <h:inputText value="#{mbCalcularPuerta.canti}"  styleClass="form-control"></h:inputText>
                                         <label class="bajar">Seleccione un tipo de Puerta</label>
                                         <h:selectOneMenu value="#{mbCalcularPuerta.tipoVentana}" styleClass="form-control">
                                             <f:selectItem itemValue="0" itemLabel="Seleccione un tipo de Puerta"/>

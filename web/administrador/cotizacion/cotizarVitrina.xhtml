@@ -23,11 +23,16 @@
                                     <h:form  styleClass="form-group" >
                                         <h:outputText value="Nombre producto: #{mbCalcularVitrina.nombreProducto} ">
                                         </h:outputText> 
-                                        <br></br>
-                                        <h:outputText value="  Precio total: #{mbCalcularVitrina.precioTotal}">
+                                            <br></br>
+                                        <h:outputText value="  Precio Unitario $ :  #{mbCalcular.precioTotal}">
                                         </h:outputText>
                                         <br></br>
-                                    
+                                      <h:outputText value="  Cantidad Ventanas :  #{mbCalcular.mensajeCanti}">
+                                            </h:outputText>
+                                            <br></br>
+                                            <h:outputText value="  Precio total $ :  #{mbCalcular.precioTotalCantidad}">
+                                            </h:outputText>
+                                            <br></br>
 
                                     </h:form>
                                 </div>
@@ -95,7 +100,8 @@
                                         <h:inputText value="#{mbCalcularVitrina.ganancia}" styleClass="form-control"></h:inputText>
                                         <label class="bajar">Digite el costo de la mano de obra</label>
                                         <h:inputText value="#{mbCalcularVitrina.manObra}"  styleClass="form-control"></h:inputText>
-                                        
+                                          <label class="bajar">Cantidad de Ventanas</label>
+                                          <h:inputText value="#{mbCalcularVitrina.canti}"  styleClass="form-control"></h:inputText>
                                         <h:selectOneMenu value="#{mbCalcularVitrina.idVidrio}" styleClass="form-control" style="margin-top: 10px;">
                                             <f:selectItem itemValue="0" itemLabel="Seleccione un tipo de vidrio"/>
                                             <f:selectItems value="#{mbVidrios.all}" var="vidrio" itemLabel="#{vidrio.calibre}" itemValue="#{vidrio.idvidrios}"/>

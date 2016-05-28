@@ -29,7 +29,7 @@
                                         <th style="margin-left: 20px;">Nombre</th>
                                         <th style="margin-left: 20px; ">Apellido</th>
                                         <th style="margin-left: 20px; ">Edad</th>
-                                        <th style="margin-left: 20px; ">Genero</th>
+                                    
                                         <th style="margin-left: 20px; ">Fecha Nacimiento</th>
                                         <th style="margin-left: 20px;">Correo Electronnico</th>
                                         <th style="margin-left: 20px;">Direccion </th>
@@ -52,7 +52,7 @@
                                                     <td>#{item.nombre}</td>
                                                     <td>#{item.apellidos}</td>
                                                     <td>#{item.edad}</td>
-                                                    <td>#{item.genero}</td>
+                                            
                                                     <td>#{item.fechaNacimiento}</td>
                                                     <td>#{item.correoElectronico}</td>
                                                     <td>#{item.direccion}</td>
@@ -114,12 +114,8 @@
                                 <f:validator validatorId="validatorVacio"/>
                             </p:inputText>
                             <p:message for="txtEdad"/>
-                            <p:outputLabel value="Sexo " />
-                            <p:selectOneRadio id="radioSexo" label="Sexo" value="#{beanEmpleado.empleadoSelect.genero}">
-                                <f:selectItem itemLabel="Masculino" itemValue="true"/>
-                                <f:selectItem itemLabel="Femenino" itemValue="false"/>
-                            </p:selectOneRadio>
-                            <h:panelGroup></h:panelGroup>
+                       
+                         
                             <p:outputLabel value="Fecha Nacimiento "/>
                             <p:calendar id="Fecha" label="yyyy/mm/dd" pattern="yyyy/MM/dd" showOn="button" value="#{beanEmpleado.empleadoSelect.fechaNacimiento}"/>
                             <p:message for="Fecha"/>

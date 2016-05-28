@@ -84,6 +84,9 @@ public class MbCalcularVitrina {
     private String mensajePisavidrioAlto;
     private String mensajePisavidrioAncho;
     private String mensajePisavidrioFondo;
+    private int canti;
+    private String mensajeCanti;
+    private long precioTotalCantidad;
 
     public MbCalcularVitrina() {
         this.alto = "";
@@ -94,7 +97,8 @@ public class MbCalcularVitrina {
         this.tipoEntrepanos = 0;
         this.precioTotal = 0;
         this.lista = new ArrayList<>();
-        this.tipoVitrina=0;
+        this.tipoVitrina = 0;
+            this.canti=0;
     }
 
     public void calcularCosto() {
@@ -183,9 +187,13 @@ public class MbCalcularVitrina {
             if (this.tipoEntrepanos == 1) {
                 this.nombreProducto = "Vitrina de 3 entrepaños " + this.alto + " * " + this.ancho + " Fondo: " + this.fondo;
                 this.precioTotal = vitrina.getSumaTotal() + this.precioVidrio;
+                    this.precioTotalCantidad= this.precioTotal*this.canti;
+                this.mensajeCanti=String.valueOf(this.canti);
             } else {
                 this.nombreProducto = "Vitrina de 4 entrepaños " + this.alto + " * " + this.ancho + " Fondo: " + this.fondo;
                 this.precioTotal = vitrina.getSumaTotal() + this.precioVidrio;
+                    this.precioTotalCantidad= this.precioTotal*this.canti;
+                this.mensajeCanti=String.valueOf(this.canti);
             }
 
             if (this.tipoVitrina == 1) {
@@ -194,15 +202,15 @@ public class MbCalcularVitrina {
                 this.recorteAlto = Double.valueOf(this.getAlto());
                 this.recorteFondo = Double.valueOf(this.getFondo());
 
-                this.cantidadCuartoCirculoAncho = 4;
-                this.cantidadCuartoCirculoAlto = 4;
-                this.cantidadCuartoCirculoFondo = 4;
-                this.cantidadAnguloMediaAlto = 6;
-                this.cantidadAnguloMediaAncho = 6;
-                this.cantidadAnguloMediaFondo = 6;
-                this.cantidadNaveDivisionAncho = 2;
-                this.cantidadVidrio = 2;
-                this.cantidadVidrioEntrepanos = 4;
+                this.cantidadCuartoCirculoAncho = 4* this.canti;
+                this.cantidadCuartoCirculoAlto = 4* this.canti;
+                this.cantidadCuartoCirculoFondo = 4* this.canti;
+                this.cantidadAnguloMediaAlto = 6* this.canti;
+                this.cantidadAnguloMediaAncho = 6* this.canti;
+                this.cantidadAnguloMediaFondo = 6* this.canti;
+                this.cantidadNaveDivisionAncho = 2* this.canti;
+                this.cantidadVidrio = 2* this.canti;
+                this.cantidadVidrioEntrepanos = 4* this.canti;
 
                 this.mensajeCuartoCirculoAlto = "" + this.cantidadCuartoCirculoAlto + " Aluminio CuartoCirculo Alto de:" + (this.recorteAlto - 8.0);
                 this.mensajeCuartoCirculoAncho = "" + this.cantidadCuartoCirculoAncho + "Alumininio CuartoCirculo Ancho de: " + (this.recorteAncho - 8.0);
@@ -225,29 +233,29 @@ public class MbCalcularVitrina {
                     this.cantidadPerfilEsquineroUnaAncho = 2;
                     this.cntidadPerfilEsquineroUnaFondo = 2;
 
-                    this.cantidadAnguloMediaAlto = 4;
-                    this.cantidadAnguloMediaAncho = 2;
-                    this.cantidadAnguloMediaFondo = 2;
-                    this.cantidadNaveDivisionAncho = 2;
-                        this.cantidadVidrio = 2;
-                        this.cantidadVidrioEntrepanos = 4;
-                        this.pisaVidrioAlto = 6;
-                        this.pisaVidrioAncho = 6;
-                        this.pisaVidrioFondo = 6;
+                    this.cantidadAnguloMediaAlto = 4* this.canti;
+                    this.cantidadAnguloMediaAncho = 2* this.canti;
+                    this.cantidadAnguloMediaFondo = 2* this.canti;
+                    this.cantidadNaveDivisionAncho = 2* this.canti;
+                    this.cantidadVidrio = 2* this.canti;
+                    this.cantidadVidrioEntrepanos = 4* this.canti;
+                    this.pisaVidrioAlto = 6* this.canti;
+                    this.pisaVidrioAncho = 6* this.canti;
+                    this.pisaVidrioFondo = 6* this.canti;
 
-                        this.mensajePerfilEsquineroUna= ""+ this.cantidadPerfilEsquineroUnaAncho+ " Perfil o de Una Ancho de: "+(this.recorteAncho);
-                       this.mensajePerfilEsquineroUna= ""+ this.cntidadPerfilEsquineroUnaFondo+ " Perfil Esquinero de Una Fondo de: "+(this.recorteFondo);
-                        this.mensajeAnguloMediaAlto = "" + this.cantidadAnguloMediaAlto + "  Tubular 1 * 1 Alto de " + (this.recorteAlto - 5);
-                        this.mensajeAnguloMediaAncho = "" + this.cantidadAnguloMediaAncho + " Tubular 1 * 1 Ancho de:  " + (this.recorteAncho - 5);
-                        this.mensajeAnguloMediaFondo = "" + this.cantidadAnguloMediaFondo + " Tubular 1 * 1 Fondo de:  " + (this.recorteFondo - 5);
-                        this.mensajePisavidrioAlto = "" + this.pisaVidrioAlto + " Pisavidrio de Media de: " + (this.recorteAlto);
-                        this.mensajePisavidrioAncho = "" + this.pisaVidrioAncho + " Pisavidrio de Media Alto de: " + (this.recorteAncho);
-                        this.mensajePisavidrioFondo = "" + this.pisaVidrioFondo + " Pisavidrio de Media Ancho de: " + (this.recorteFondo);
-                        this.mensajeNaveDivisionAncho = "" + this.cantidadNaveDivisionAncho + "Nave DivisionBano Ancho Fondo de:  " + (this.recorteAncho / 2);
-                        this.mensajeVidrioAltoAncho = "" + this.cantidadVidrio + "  Vidrios ALto" + (this.recorteAlto - 10.5) + " recorte ancho  " + (this.recorteAncho - 10.5);
-                        this.mensajeVidrioAltoFondo = "" + this.cantidadVidrio + "  Vidrios ALto" + (this.recorteAlto - 10.5) + "Recorte fondo" + (this.recorteFondo - 10.5);
-                         this.mensajeVidrioAnchoFondo = "" + this.cantidadVidrio + "  Vidrios Ancho " + (this.recorteAncho - 10.5) + "recorte fondo" + (this.recorteFondo - 1);
-                        this.mensajeVidrioAnchoFondo = "" + this.cantidadVidrioEntrepanos + "  Vidrios de 6mm Ancho " + (this.recorteAncho - 1) + "recorte fondo" + (this.recorteFondo -1);
+                    this.mensajePerfilEsquineroUna = "" + this.cantidadPerfilEsquineroUnaAncho + " Perfil o de Una Ancho de: " + (this.recorteAncho);
+                    this.mensajePerfilEsquineroUna = "" + this.cntidadPerfilEsquineroUnaFondo + " Perfil Esquinero de Una Fondo de: " + (this.recorteFondo);
+                    this.mensajeAnguloMediaAlto = "" + this.cantidadAnguloMediaAlto + "  Tubular 1 * 1 Alto de " + (this.recorteAlto - 5);
+                    this.mensajeAnguloMediaAncho = "" + this.cantidadAnguloMediaAncho + " Tubular 1 * 1 Ancho de:  " + (this.recorteAncho - 5);
+                    this.mensajeAnguloMediaFondo = "" + this.cantidadAnguloMediaFondo + " Tubular 1 * 1 Fondo de:  " + (this.recorteFondo - 5);
+                    this.mensajePisavidrioAlto = "" + this.pisaVidrioAlto + " Pisavidrio de Media de: " + (this.recorteAlto);
+                    this.mensajePisavidrioAncho = "" + this.pisaVidrioAncho + " Pisavidrio de Media Alto de: " + (this.recorteAncho);
+                    this.mensajePisavidrioFondo = "" + this.pisaVidrioFondo + " Pisavidrio de Media Ancho de: " + (this.recorteFondo);
+                    this.mensajeNaveDivisionAncho = "" + this.cantidadNaveDivisionAncho + "Nave DivisionBano Ancho Fondo de:  " + (this.recorteAncho / 2);
+                    this.mensajeVidrioAltoAncho = "" + this.cantidadVidrio + "  Vidrios ALto" + (this.recorteAlto - 10.5) + " recorte ancho  " + (this.recorteAncho - 10.5);
+                    this.mensajeVidrioAltoFondo = "" + this.cantidadVidrio + "  Vidrios ALto" + (this.recorteAlto - 10.5) + "Recorte fondo" + (this.recorteFondo - 10.5);
+                    this.mensajeVidrioAnchoFondo = "" + this.cantidadVidrio + "  Vidrios Ancho " + (this.recorteAncho - 10.5) + "recorte fondo" + (this.recorteFondo - 1);
+                    this.mensajeVidrioAnchoFondo = "" + this.cantidadVidrioEntrepanos + "  Vidrios de 6mm Ancho " + (this.recorteAncho - 1) + "recorte fondo" + (this.recorteFondo - 1);
 
                 } else {
                     if (this.tipoVitrina == 3) {
@@ -256,21 +264,21 @@ public class MbCalcularVitrina {
                         this.recorteAlto = Double.valueOf(this.getAlto());
                         this.recorteFondo = Double.valueOf(this.getFondo());
 
-                       this.cantidadPerfilEsquineroUnaAncho = 2;
-                    this.cntidadPerfilEsquineroUnaFondo = 2;
+                        this.cantidadPerfilEsquineroUnaAncho = 2* this.canti;
+                        this.cntidadPerfilEsquineroUnaFondo = 2* this.canti;
 
-                    this.cantidadAnguloMediaAlto = 6;
-                    this.cantidadAnguloMediaAncho = 2;
-                    this.cantidadAnguloMediaFondo = 2;
-                    this.cantidadNaveDivisionAncho = 2;
-                        this.cantidadVidrio = 2;
-                        this.cantidadVidrioEntrepanos = 4;
-                        this.pisaVidrioAlto = 6;
-                        this.pisaVidrioAncho = 6;
-                        this.pisaVidrioFondo = 6;
+                        this.cantidadAnguloMediaAlto = 6* this.canti;
+                        this.cantidadAnguloMediaAncho = 2* this.canti;
+                        this.cantidadAnguloMediaFondo = 2* this.canti;
+                        this.cantidadNaveDivisionAncho = 2* this.canti;
+                        this.cantidadVidrio = 2* this.canti;
+                        this.cantidadVidrioEntrepanos = 4* this.canti;
+                        this.pisaVidrioAlto = 6* this.canti;
+                        this.pisaVidrioAncho = 6* this.canti;
+                        this.pisaVidrioFondo = 6* this.canti;
 
-                      this.mensajePerfilEsquineroUna= ""+ this.cantidadPerfilEsquineroUnaAncho+ " Perfil o de Una Ancho de: "+(this.recorteAncho);
-                       this.mensajePerfilEsquineroUna= ""+ this.cntidadPerfilEsquineroUnaFondo+ " Perfil Esquinero de Una Fondo de: "+(this.recorteFondo);                     
+                        this.mensajePerfilEsquineroUna = "" + this.cantidadPerfilEsquineroUnaAncho + " Perfil o de Una Ancho de: " + (this.recorteAncho);
+                        this.mensajePerfilEsquineroUna = "" + this.cntidadPerfilEsquineroUnaFondo + " Perfil Esquinero de Una Fondo de: " + (this.recorteFondo);
                         this.mensajeAnguloMediaAlto = "" + this.cantidadAnguloMediaAlto + "  AnguloMedia Alto de " + (this.recorteAlto - 8);
                         this.mensajeAnguloMediaAncho = "" + this.cantidadAnguloMediaAncho + " AnguloMedia Ancho de:  " + (this.recorteAncho - 10);
                         this.mensajeAnguloMediaFondo = "" + this.cantidadAnguloMediaFondo + " AnguloMedia Fondo de:  " + (this.recorteFondo - 10);
@@ -280,8 +288,8 @@ public class MbCalcularVitrina {
                         this.mensajeNaveDivisionAncho = "" + this.cantidadNaveDivisionAncho + "Nave DivisionBano Ancho Fondo de:  " + (this.recorteAncho / 2);
                         this.mensajeVidrioAltoAncho = "" + this.cantidadVidrio + "  Vidrios ALto" + (this.recorteAlto - 10.5) + " recorte ancho  " + (this.recorteAncho - 10.5);
                         this.mensajeVidrioAltoFondo = "" + this.cantidadVidrio + "  Vidrios ALto" + (this.recorteAlto - 10.5) + "Recorte fondo" + (this.recorteFondo - 10.5);
-                         this.mensajeVidrioAnchoFondo = "" + this.cantidadVidrio + "  Vidrios Ancho " + (this.recorteAncho - 10.5) + "recorte fondo" + (this.recorteFondo - 1);
-                        this.mensajeVidrioAnchoFondo = "" + this.cantidadVidrioEntrepanos + "  Vidrios de 6mm Ancho " + (this.recorteAncho - 1) + "recorte fondo" + (this.recorteFondo -1);
+                        this.mensajeVidrioAnchoFondo = "" + this.cantidadVidrio + "  Vidrios Ancho " + (this.recorteAncho - 10.5) + "recorte fondo" + (this.recorteFondo - 1);
+                        this.mensajeVidrioAnchoFondo = "" + this.cantidadVidrioEntrepanos + "  Vidrios de 6mm Ancho " + (this.recorteAncho - 1) + "recorte fondo" + (this.recorteFondo - 1);
 
                     }
                 }
@@ -294,8 +302,8 @@ public class MbCalcularVitrina {
             this.ganancia = 0;
             this.manObra = 0;
             this.idVidrio = 0;
-            this.tipoEntrepanos=0;
-            this.tipoVitrina=0;
+            this.tipoEntrepanos = 0;
+            this.tipoVitrina = 0;
 
         } catch (Exception ex) {
             if (this.transaccion != null) {
@@ -384,8 +392,6 @@ public class MbCalcularVitrina {
     public void setPrecioVidrio(long precioVidrio) {
         this.precioVidrio = precioVidrio;
     }
-
-   
 
     public int getTipoVentana() {
         return tipoVentana;
@@ -729,6 +735,30 @@ public class MbCalcularVitrina {
 
     public void setMensajePisavidrioFondo(String mensajePisavidrioFondo) {
         this.mensajePisavidrioFondo = mensajePisavidrioFondo;
+    }
+
+    public int getCanti() {
+        return canti;
+    }
+
+    public void setCanti(int canti) {
+        this.canti = canti;
+    }
+
+    public String getMensajeCanti() {
+        return mensajeCanti;
+    }
+
+    public void setMensajeCanti(String mensajeCanti) {
+        this.mensajeCanti = mensajeCanti;
+    }
+
+    public long getPrecioTotalCantidad() {
+        return precioTotalCantidad;
+    }
+
+    public void setPrecioTotalCantidad(long precioTotalCantidad) {
+        this.precioTotalCantidad = precioTotalCantidad;
     }
 
 }
