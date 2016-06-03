@@ -461,7 +461,7 @@ public class MbCotizacion {
                 this.precioVidrio = this.precioVidrio * (material.getAlto() * material.getAncho());
 
                 // this.precioVidrio=this.precioVidrio+(this.precioVidrio*50/100);
-                this.precioVidrio = this.precioVidrio + (this.precioVidrio / 2);
+                this.precioVidrio = this.precioVidrio + (this.precioVidrio / 2)+ this.manObra;
                 int espacios = String.valueOf(this.precioVidrio).length();
                 this.precioVidrio = Integer.valueOf(String.valueOf(this.precioVidrio).substring(0, espacios - 4));
             }
@@ -479,7 +479,7 @@ public class MbCotizacion {
             if (this.tipoVentana == 4) {
                 this.listaCotizacion.add(new Cotizaciondetalle(null, daoProductos.getById(this.session, this.tipoVentana),
                         daoProductos.getById(this.session, this.tipoVentana).getNombre() + " " + this.alto + "*" + this.ancho,
-                        1, this.precioVidrio, 1 * this.precioVidrio, this.manObra, this.ganancia, this.alto, this.ancho, ""));
+                        1, this.precioVidrio+ this.manObra, 1 * this.precioVidrio, this.manObra, this.ganancia, this.alto, this.ancho, ""));
             }
               this.transaccion.commit();
             this.idVidrio = 0;

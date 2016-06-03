@@ -474,10 +474,11 @@ public class MbAbonos {
                 DaoVidrio daoVidrio = new DaoVidrio();
 
                 this.precioVidrio = daoVidrio.getById(this.session, this.idVidrio).getPreciocost();
+                 this.precioVidrio = Integer.valueOf(daoVidrio.getById(this.session, this.idVidrio).getCalibre());
                 this.precioVidrio = this.precioVidrio * (material.getAlto() * material.getAncho());
 
                 // this.precioVidrio=this.precioVidrio+(this.precioVidrio*50/100);
-                this.precioVidrio = this.precioVidrio + (this.precioVidrio / 2);
+                this.precioVidrio = this.precioVidrio + (this.precioVidrio / 2)+ this.manObra;
                 int espacios = String.valueOf(this.precioVidrio).length();
                 this.precioVidrio = Integer.valueOf(String.valueOf(this.precioVidrio).substring(0, espacios - 4));
             }
@@ -495,7 +496,7 @@ public class MbAbonos {
             if (this.tipoVentana == 4) {
                 this.listaAbono.add(new Abonodetalle(null, daoProductos.getById(this.session, this.tipoVentana),
                         daoProductos.getById(this.session, this.tipoVentana).getNombre() + " " + this.alto + "*" + this.ancho,
-                        1, this.precioVidrio, 1 * this.precioVidrio, this.manObra, this.ganancia, this.alto, this.ancho, ""));
+                        1, this.precioVidrio +this.manObra, 1 * this.precioVidrio, this.manObra, this.ganancia, this.alto, this.ancho, ""));
             }
             this.transaccion.commit();
             this.idVidrio = 0;

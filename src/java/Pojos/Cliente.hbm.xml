@@ -27,7 +27,7 @@
             <column name="correoElectronico" length="45" />
         </property>
         <property name="telefono" type="string">
-            <column name="telefono"   length="20"/>
+            <column name="telefono"   length="15"/>
         </property>
         <property name="direccion" type="string">
             <column name="direccion" length="45" />
