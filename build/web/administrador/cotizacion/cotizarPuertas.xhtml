@@ -11,14 +11,14 @@
         <ui:composition template="./../../layaut/TemplateAdmin.xhtml">
 
             <ui:define name="top">
-                <div class="container-fluid" style="margin-top: 30px;">
+                <div class="container" style="margin-top: 30px;">
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-xs-12 col-sm-6">
                             <div id="imprimeDiv">
                                 <p:outputLabel value="hola" rendered="false"></p:outputLabel>
 
                                 <div  class="panel panel-default div2">
-                                    <div class="panel-heading color">Precio cotizacion Puertas</div>
+                                    <div class="panel-heading " style="background-color: #c4e3f3;">Precio cotizacion Puertas</div>
                                     <div class="panel-body">
                                         <h:form  styleClass="form-group" >
                                             <h:outputText value="Nombre producto: #{mbCalcularPuerta.nombreProducto} ">
@@ -40,7 +40,7 @@
 
 
                                 <div class="panel panel-default div2">
-                                    <div class="panel-heading color">Medida Recorte de Materiales Puertas</div>
+                                    <div class="panel-heading " style="background-color: #c4e3f3;">Medida Recorte de Materiales Puertas</div>
                                     <div class="panel-body">
                                         <h:form  styleClass="form-group" >
 
@@ -99,7 +99,7 @@
                         </div>
                         <div class="col-lg-6 col-md-6 col-xs-12 col-sm-6">
                             <div class="panel panel-default div2">
-                                <div class="panel-heading color">Realizar Cotizacion Puerta</div>
+                                <div class="panel-heading " style="background-color: #c4e3f3;">Realizar Cotizacion Puerta</div>
                                 <div class="panel-body">
                                     <h:form  styleClass="form-group" >
                                         <p:growl id="growl" showDetail="true" sticky="true" /> 
