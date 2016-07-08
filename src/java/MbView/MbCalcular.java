@@ -174,7 +174,7 @@ public class MbCalcular {
                  this.precioVidrio = Integer.valueOf(String.valueOf(this.precioVidrio).substring(0, espacios1 - 4));
                 }
                 
-               this.precioVidrio = this.precioVidrio + (this.precioVidrio / 2);
+               this.precioVidrio = this.precioVidrio + (this.precioVidrio / 2)+ this.manObra;
             
 //                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Correcto:", "El precio vidrio mas ganancia : " + this.precioVidrio));
 //          

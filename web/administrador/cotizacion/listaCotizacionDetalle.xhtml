@@ -17,21 +17,17 @@
                 <hr />
                 <h:form id="frmListaVenta">
                     <p:growl id="mensajeGeneral" showDetail="true" sticky="false" />
-                    <p:dataTable id="tablaListaProductos" var="item" value="#{mbCotizacionDetalle.all}" paginator="true" rows="50" selection="#{mbCotizacionDetalle.cotizacionDetalle}" selectionMode="single" rowKey="#{item.idcotizacionDetalle}" filteredValue="#{mbCotizacionDetalle.listaCotizaciondetalleFiltrado}">
+                    <p:dataTable id="tablaListaProductos" var="item" value="#{mbCotizacionDetalle.all}" paginator="true" rows="8" selection="#{mbCotizacionDetalle.cotizacionDetalle}" selectionMode="single" rowKey="#{item.idcotizacionDetalle}" filteredValue="#{mbCotizacionDetalle.listaCotizaciondetalleFiltrado}">
 
 
-                        <f:facet name="header">
-                            Cotizacion detalle
-                        </f:facet>
+                      
                         <p:column headerText="Codigo" >
                             <h:outputText value="#{item.idcotizacionDetalle}"/>
                         </p:column>
                          <p:column headerText="C cotizacion" >
                              <h:outputText value="#{item.cotizacion.idcotizacion}"/>
                         </p:column>
-                         <p:column headerText="C Producto" >
-                             <h:outputText value="#{item.productos.idproductos}"/>
-                        </p:column>
+                     
                         <p:column headerText="Nombre">
                             <h:outputText value="#{item.nombrepro}"/>
                         </p:column>

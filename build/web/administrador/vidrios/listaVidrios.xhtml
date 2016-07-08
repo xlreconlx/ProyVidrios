@@ -11,75 +11,117 @@
         <ui:composition template="./../../layaut/TemplateAdmin.xhtml">
 
             <ui:define name="top">
-                     <h:form id="frmListaVidrios">
+                <h:form id="frmListaVidrios">
                     <p:growl id="mensajeGeneral" showDetail="true" sticky="false" />
-                   <div class="container">
-                    <div class="row">
-                        <h1 style="color: #ffffff;">Lista de Vidrios</h1>
-                        <hr></hr>
+                    <div class="container">
+                        <p:layout fullPage="true">
+                            <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true" style="background-color: #c9302c;">
+                                <center> <h2 >Lista de Vidrios</h2></center>  
 
-                        <div style="overflow-y: scroll; height: 400px;" class="col-lg-12">
-                            <table class="table table-condensed">
-                                <tr class="danger">
-                                         <p:outputLabel value="hola" rendered="false"></p:outputLabel>
-                                   <th style="margin-left: 20px;">Codigo</th>
-                                     
-                                    <th style="margin-left: 20px;">Nombre</th>
-                                    <th style="margin-left: 20px; ">Precio</th>
-                                     
-                                           
-                                         <th style="margin-left: 20px;">Cambios</th>
-                                         
-                                   
+                            </p:layoutUnit>
+
+
+                            <p:layoutUnit position="west" size="245" header="Menu" collapsible="true">
+                                <p:menu style="width: 230px;">
+                                    <p:submenu label="Vidrios" style="background-color: #419641;">
+                                        <p:menuitem value="Registrar Vidrios" outcome="/administrador/vidrios/registrarVidrios.xhtml" />
+                                        <p:menuitem value="Lista de Vidrios" outcome="/administrador/vidrios/listaVidrios.xhtml" />
+                                        <p:menuitem value="Lista Filtrada" outcome="/administrador/vidrios/vidriosFiltrados.xhtml"/>
+
+
+                                    </p:submenu>
+                                    <p:submenu label="Ventanas" style="background-color: #c9302c;">
+                                        <p:menuitem value="Registrar"  outcome="/administrador/materiales/registrarMateriales.xhtml"/>
+                                        <p:menuitem value="Lista Materiales" outcome="/administrador/materiales/listaMateriales.xhtml"  />
+                                        <p:menuitem value="Lista Filtrada" outcome="/administrador/materiales/materialesFiltrados.xhtml" />
+
+                                    </p:submenu>
+                                    <p:submenu label="Puertas" style="background-color: #ec971f;">
+                                        <p:menuitem value="Registrar Puertas" outcome="/administrador/puertas/registrarPuerta.xhtml" />
+                                        <p:menuitem value="Lista Puertas" outcome="/administrador/puertas/listaPuertas.xhtml"/>
+                                        <p:menuitem value="Lista Filtrada" outcome="/administrador/puertas/puertasFiltrado.xhtml" />
+
+                                    </p:submenu>
+                                    <p:submenu label="Vitrinas" style="background-color: #c1e2b3;">
+                                        <p:menuitem value="Registrar Vitrina" outcome="/administrador/vitrinas/registrarVitrinas.xhtml" />
+                                        <p:menuitem value="Lista Vitrina" outcome="/administrador/vitrinas/listaVitrinas.xhtml"/>
+                                        <p:menuitem value="Lista Filtrada" outcome="/administrador/vitrinas/vitrinasFiltrados.xhtml" />
+
+                                    </p:submenu>
+
+                                </p:menu>
+                            </p:layoutUnit>
+                            <p:layoutUnit position="center">
+                                <div class="row">
                                   
 
-                                </tr>
-                                <tbody style="color:#ffffff;">
-                                    <ui:repeat var="item" value="#{mbVidrios.all}" varStatus="status">
-                                        <h:panelGroup>
-                                            <tr>
-                                                <td>#{item.idvidrios}</td>
-                                            
-                                                <td>#{item.calibre}</td>
-                                                <td>#{item.preciocost}</td>
-                                             
-                                             
-                                                <td>  <p:commandButton value="Editar datos" actionListener="#{mbVidrios.cargarVidriosEditar(item.idvidrios)}"/></td>
-                                             </tr>
-                                        </h:panelGroup>
+                                    <div style="overflow-y: scroll; height: 400px;" class="col-lg-12">
+                                        <table class="table table-condensed">
+                                            <tr class="danger">
+                                                <p:outputLabel value="hola" rendered="false"></p:outputLabel>
+                                                <th style="margin-left: 20px;">Codigo</th>
+
+                                                <th style="margin-left: 20px;">Nombre</th>
+                                                <th style="margin-left: 20px; ">Precio</th>
 
 
-                                    </ui:repeat>
-                                </tbody>
-                            </table>
-                        </div>
+                                                <th style="margin-left: 20px;">Cambios</th>
+
+
+
+
+                                            </tr>
+                                            <tbody >
+                                                <ui:repeat var="item" value="#{mbVidrios.all}" varStatus="status">
+                                                    <h:panelGroup>
+                                                        <tr>
+                                                            <td>#{item.idvidrios}</td>
+
+                                                            <td>#{item.calibre}</td>
+                                                            <td>#{item.preciocost}</td>
+
+
+                                                            <td>  <p:commandButton value="Editar datos" actionListener="#{mbVidrios.cargarVidriosEditar(item.idvidrios)}"/></td>
+                                                        </tr>
+                                                    </h:panelGroup>
+
+
+                                                </ui:repeat>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+
+
+                             
+
+                            </p:layoutUnit>
+                        </p:layout>
                     </div>
-                </div>
-                    </h:form>
-                
-                
-               <h:form id="frmEditarVidrios">
-                    <p:dialog header="Datos del Vidrio" widgetVar="dialogoEditarVidrios" modal="true">
-                        <h:panelGrid id="panelEditarVidrios" columns="3">
-                            <p:outputLabel value="Nombre" for="txtNombre"/>
-                            <p:inputText id="txtNombre" label="Nombre" size="50" value="#{mbVidrios.vidrios.calibre}">
-                                <f:validator validatorId="validatorVacio"/>
-                            </p:inputText>
-                            <p:message for="txtNombre"/>
-                            <p:outputLabel value="Precio " for="txtPrecio"/>
-                            <p:inputText id="txtPrecio" label="txtPrecio" size="50" value="#{mbVidrios.vidrios.preciocost}">
-                                <f:validator validatorId="validatorVacio"/>
-                            </p:inputText>
-                            <p:message for="txtPrecio"/>
-                           <h:panelGroup></h:panelGroup>
-                           <p:commandButton value="Guardar cambios" ajax="false" actionListener="#{mbVidrios.actualizar()}"/>
-                        </h:panelGrid>
-                    </p:dialog>
                 </h:form>
+                   <h:form id="frmEditarVidrios">
+                                    <p:dialog header="Datos del Vidrio" widgetVar="dialogoEditarVidrios" modal="true">
+                                        <h:panelGrid id="panelEditarVidrios" columns="3">
+                                            <p:outputLabel value="Nombre" for="txtNombre"/>
+                                            <p:inputText id="txtNombre" label="Nombre" size="50" value="#{mbVidrios.vidrios.calibre}">
+                                                <f:validator validatorId="validatorVacio"/>
+                                            </p:inputText>
+                                            <p:message for="txtNombre"/>
+                                            <p:outputLabel value="Precio " for="txtPrecio"/>
+                                            <p:inputText id="txtPrecio" label="txtPrecio" size="50" value="#{mbVidrios.vidrios.preciocost}">
+                                                <f:validator validatorId="validatorVacio"/>
+                                            </p:inputText>
+                                            <p:message for="txtPrecio"/>
+                                            <h:panelGroup></h:panelGroup>
+                                            <p:commandButton value="Guardar cambios" ajax="false" actionListener="#{mbVidrios.actualizar()}"/>
+                                        </h:panelGrid>
+                                    </p:dialog>
+                                </h:form>
             </ui:define>
 
             <ui:define name="bottom">
-          
+
             </ui:define>
 
         </ui:composition>

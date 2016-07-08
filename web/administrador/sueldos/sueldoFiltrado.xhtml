@@ -11,11 +11,12 @@
         <ui:composition template="./../../layaut/TemplateAdmin.xhtml">
 
             <ui:define name="content">
+                <div class="container">
                 <h1 style="color: #fff;">Lista de Sueldos Empleados</h1>
                 <hr />
                 <h:form id="frmListaTUsuario">
                     <p:growl id="mensajeGeneral" showDetail="true" sticky="false" />
-                    <p:dataTable id="tablaListaTUsuario" var="item" value="#{beanSueldo.all}" paginator="true" rows="30" selection="#{beanSueldo.sueldo}" selectionMode="single" rowKey="#{item.idsueldo}" filteredValue="#{beanSueldo.listaSueldoFiltrado}">
+                    <p:dataTable id="tablaListaTUsuario" var="item" value="#{beanSueldo.all}" paginator="true" rows="13" selection="#{beanSueldo.sueldo}" selectionMode="single" rowKey="#{item.idsueldo}" filteredValue="#{beanSueldo.listaSueldoFiltrado}">
                         
                         
                         <f:facet name="header">
@@ -47,7 +48,7 @@
                     
              
                 </h:form>
-          
+          </div>
             </ui:define>
 
             <ui:define name="bottom">

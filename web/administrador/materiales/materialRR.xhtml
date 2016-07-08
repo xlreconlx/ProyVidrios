@@ -11,79 +11,129 @@
         <ui:composition template="./../../layaut/TemplateAdmin.xhtml">
 
             <ui:define name="top">
-                <div class="container" style="margin-top: 30px;">
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6 col-xs-12 col-sm-6">
-                            <div id="imprimeDiv">
-                                <p:outputLabel value="hola" rendered="false"></p:outputLabel>
+                <h:form>
+                    <div class="container" style="margin-top: 30px;">
+                        <div class="row">
 
-                                <div  class="panel panel-default div2">
-                                    <div class="panel-heading color">Vidrios</div>
-                                    <div class="panel-body">
-                                        <h:form  styleClass="form-group" >
-
-      <h4><a href="http://localhost:8080/ProyVidrios/faces/administrador/vidrios/registrarVidrios.xhtml" style="color:#419641">Registrar Vidrio</a></h4>
-      <h4><a href="http://localhost:8080/ProyVidrios/faces/administrador/vidrios/listaVidrios.xhtml" style="color:#419641;">Lista Vidrios</a></h4>
-      <h4><a href="http://localhost:8080/ProyVidrios/faces/administrador/vidrios/vidriosFiltrados.xhtml" style="color:#419641;">Lista Vidrio Filtrado</a></h4>
+                            <p:layout fullPage="true" >
 
 
 
-                                        </h:form>
+                             <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true" style="background-color: #c9302c;">
+                            
+                                    <center> <h1>MATERIALES</h1></center>  
+                 
+                                </p:layoutUnit>
+
+                                <p:layoutUnit position="west" size="245" header="Menu" collapsible="true">
+                                      <p:menu style="width: 230px;">
+                                        <p:submenu label="Vidrios" style="background-color: #419641;">
+                                            <p:menuitem value="Registrar Vidrios" outcome="/administrador/vidrios/registrarVidrios.xhtml" />
+                                            <p:menuitem value="Lista de Vidrios" outcome="/administrador/vidrios/listaVidrios.xhtml" />
+                                            <p:menuitem value="Lista Filtrada" outcome="/administrador/vidrios/vidriosFiltrados.xhtml"/>
+
+
+                                        </p:submenu>
+                                        <p:submenu label="Ventanas" style="background-color: #c9302c;">
+                                            <p:menuitem value="Registrar"  outcome="/administrador/materiales/registrarMateriales.xhtml"/>
+                                            <p:menuitem value="Lista Materiales" outcome="/administrador/materiales/listaMateriales.xhtml"  />
+                                            <p:menuitem value="Lista Filtrada" outcome="/administrador/materiales/materialesFiltrados.xhtml" />
+
+                                        </p:submenu>
+                                        <p:submenu label="Puertas" style="background-color: #ec971f;">
+                                            <p:menuitem value="Registrar Puertas" outcome="/administrador/puertas/registrarPuerta.xhtml" />
+                                            <p:menuitem value="Lista Puertas" outcome="/administrador/puertas/listaPuertas.xhtml"/>
+                                            <p:menuitem value="Lista Filtrada" outcome="/administrador/puertas/puertasFiltrado.xhtml" />
+
+                                        </p:submenu>
+                                        <p:submenu label="Vitrinas" style="background-color: #c1e2b3;">
+                                            <p:menuitem value="Registrar Vitrina" outcome="/administrador/vitrinas/registrarVitrinas.xhtml" />
+                                            <p:menuitem value="Lista Vitrina" outcome="/administrador/vitrinas/listaVitrinas.xhtml"/>
+                                            <p:menuitem value="Lista Filtrada" outcome="/administrador/vitrinas/vitrinasFiltrados.xhtml" />
+
+                                        </p:submenu>
+
+                                    </p:menu>
+                                </p:layoutUnit>
+
+                                <p:layoutUnit position="center" style="background-color: #045491;">
+                                    <div class="col-lg-6 col-md-6 col-xs-12 col-sm-6" >
+                                        <div id="imprimeDiv">
+                                            <p:outputLabel value="hola" rendered="false"></p:outputLabel>
+
+                                            <div  class="panel panel-default div2">
+                                                <div class="panel-heading" style="background-color: #419641;">Vidrios</div>
+                                                <div class="panel-body">
+                                                    <h:form  styleClass="form-group" >
+
+                                                        <h4><a href="" style="color:#419641">Registrar Vidrio</a></h4>
+                                                        <h4><a href="" style="color:#419641;">Lista Vidrios</a></h4>
+                                                        <h4><a href="" style="color:#419641;">Lista Vidrio Filtrado</a></h4>
+
+
+
+                                                    </h:form>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="panel panel-default div2">
+                                                <div class="panel-heading" style="background-color: #c9302c;">Ventanas</div>
+                                                <div class="panel-body">
+                                                    <h:form  styleClass="form-group" >
+
+                                                        <h4><a href="" style="color:#ec971f;">Registrar Materiales Ventanas</a></h4>
+                                                        <h4><a href="" style="color:#ec971f;">Lista Materiales Ventanas</a></h4>
+                                                        <h4><a href="" style="color:#ec971f;">Lista Materiales VentanaFiltrado</a></h4>
+
+
+                                                    </h:form>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
+                                    <div class="col-lg-6 col-md-6 col-xs-12 col-sm-6" >
+                                        <div class="panel panel-default div2">
+                                            <div class="panel-heading" style="background-color: #ec971f;">Puertas</div>
+                                            <div class="panel-body">
+                                                <h:form  styleClass="form-group" >
+                                                    <p:growl id="growl" showDetail="true" sticky="true" /> 
+                                                    <h4><a href="" style="color:#00B0FF;">Registrar Materiales Puerta</a></h4>
+                                                    <h4><a href="" style="color:#00B0FF;">Lista Materiales Puerta</a></h4>
+                                                    <h4><a href="" style="color:#00B0FF;">Lista Puerta Filtrado</a></h4>
 
 
-                                <div class="panel panel-default div2">
-                                    <div class="panel-heading color">Ventanas</div>
-                                    <div class="panel-body">
-                                        <h:form  styleClass="form-group" >
+                                                </h:form>
+                                            </div>
+                                        </div>
+                                  
+                                         <div class="panel panel-default div2"> 
+                                 
+                                            <div class="panel-heading" style="background-color: #c1e2b3;">Vitrinas</div>
+                                            <div class="panel-body">
+                                                <h:form  styleClass="form-group" >
+                                                    <p:growl id="growl" showDetail="true" sticky="true" /> 
+                                                    <h4><a href="" style="color:#c9302c;">Registrar Materiales Vitrinas</a></h4>
+                                                    <h4><a href="" style="color:#c9302c;">Lista Materiales Vitrinas</a></h4>
+                                                    <h4><a href="" style="color:#c9302c;">Lista Materiales Vitrinas Filtrado</a></h4>
 
-                        <h4><a href="http://localhost:8080/ProyVidrios/faces/administrador/materiales/registrarMateriales.xhtml" style="color:#ec971f;">Registrar Materiales Ventanas</a></h4>
-                       <h4><a href="http://localhost:8080/ProyVidrios/faces/administrador/materiales/listaMateriales.xhtml" style="color:#ec971f;">Lista Materiales Ventanas</a></h4>
-                       <h4><a href="http://localhost:8080/ProyVidrios/faces/administrador/materiales/materialesFiltardos.xhtml" style="color:#ec971f;">Lista Materiales VentanaFiltrado</a></h4>
+
+                                                </h:form>
+                                            </div>
+                                        </div>
+                                
+                                          </div>
+                                </p:layoutUnit>
+
+                            </p:layout>
 
 
-                                        </h:form>
-                                    </div>
-                                </div>
-                            </div>
+
+
+
                         </div>
-                        <div class="col-lg-6 col-md-6 col-xs-12 col-sm-6">
-                            <div class="panel panel-default div2">
-                                <div class="panel-heading color">Puertas</div>
-                                <div class="panel-body">
-                                    <h:form  styleClass="form-group" >
-                                        <p:growl id="growl" showDetail="true" sticky="true" /> 
-                     <h4><a href="http://localhost:8080/ProyVidrios/faces/administrador/puertas/registrarPuerta.xhtml" style="color:#00B0FF;">Registrar Materiales Puerta</a></h4>
-                     <h4><a href="http://localhost:8080/ProyVidrios/faces/administrador/puertas/listaPuertas.xhtml" style="color:#00B0FF;">Lista Materiales Puerta</a></h4>
-                     <h4><a href="http://localhost:8080/ProyVidrios/faces/administrador/puertas/puertasFiltrado.xhtml" style="color:#00B0FF;">Lista Puerta Filtrado</a></h4>
-
-
-                                    </h:form>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-xs-12 col-sm-6">
-                            <div class="panel panel-default div2">
-                                <div class="panel-heading color">Vitrinas</div>
-                                <div class="panel-body">
-                                    <h:form  styleClass="form-group" >
-                                        <p:growl id="growl" showDetail="true" sticky="true" /> 
-                       <h4><a href="http://localhost:8080/ProyVidrios/faces/administrador/vitrinas/registrarVitrinas.xhtml" style="color:#c9302c;">Registrar Materiales Vitrinas</a></h4>
-                        <h4><a href="http://localhost:8080/ProyVidrios/faces/administrador/vitrinas/listaVitrinas.xhtml" style="color:#c9302c;">Lista Materiales Vitrinas</a></h4>
-                       <h4><a href="http://localhost:8080/ProyVidrios/faces/administrador/vitrinas/vitrinasFiltrados.xhtml" style="color:#c9302c;">Lista Materiales Vitrinas Filtrado</a></h4>
-
-
-                                    </h:form>
-                                </div>
-                            </div>
-                        </div>
-
-
-
-
                     </div>
-                </div>
+                </h:form>
             </ui:define>
 
             <ui:define name="bottom">
