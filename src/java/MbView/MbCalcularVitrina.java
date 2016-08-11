@@ -45,6 +45,7 @@ public class MbCalcularVitrina {
     private long precioTotal;
     private String nombreProducto;
     private int tipoVitrina;
+     private int modelo;
     private int tipoEntrepanos;
     private double recorteAncho;
     private double recorteAlto;
@@ -97,7 +98,7 @@ public class MbCalcularVitrina {
         this.tipoEntrepanos = 0;
         this.precioTotal = 0;
         this.lista = new ArrayList<>();
-        this.tipoVitrina = 0;
+     
             this.canti=0;
     }
 
@@ -174,10 +175,12 @@ public class MbCalcularVitrina {
                 this.precioVidrio = this.precioVidrio + vidrioEntrepano;
                 this.precioVidrio = this.precioVidrio + (this.precioVidrio / 2);
 
-                int espacios = String.valueOf(this.precioVidrio).length();
-                this.precioVidrio = Integer.valueOf(String.valueOf(this.precioVidrio).substring(0, espacios - 4));
-                //        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Correcto:", "El precio del vidrio es: " + String.valueOf(this.precioVidrio).substring(0, espacios-4)));
-
+                 int espacios1 = String.valueOf(this.precioVidrio).length();
+                if(String.valueOf(this.precioVidrio).length()>10){
+                this.precioVidrio = Integer.valueOf(String.valueOf(this.precioVidrio).substring(0, espacios1 - 5));
+              }else{
+                 this.precioVidrio = Integer.valueOf(String.valueOf(this.precioVidrio).substring(0, espacios1 - 4));
+                }
             } else {
                 if (this.idVidrio == 0) {
                     this.precioVidrio = 0;
@@ -759,6 +762,14 @@ public class MbCalcularVitrina {
 
     public void setPrecioTotalCantidad(long precioTotalCantidad) {
         this.precioTotalCantidad = precioTotalCantidad;
+    }
+
+    public int getModelo() {
+        return modelo;
+    }
+
+    public void setModelo(int modelo) {
+        this.modelo = modelo;
     }
 
 }

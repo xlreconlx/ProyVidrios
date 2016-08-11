@@ -461,7 +461,7 @@ public class MbCotizacion {
                 this.precioVidrio = this.precioVidrio * (material.getAlto() * material.getAncho());
 
                 // this.precioVidrio=this.precioVidrio+(this.precioVidrio*50/100);
-                this.precioVidrio = this.precioVidrio + (this.precioVidrio / 2)+ this.manObra;
+                this.precioVidrio = this.precioVidrio + (this.precioVidrio / 2);
                 int espacios = String.valueOf(this.precioVidrio).length();
                 this.precioVidrio = Integer.valueOf(String.valueOf(this.precioVidrio).substring(0, espacios - 4));
             }

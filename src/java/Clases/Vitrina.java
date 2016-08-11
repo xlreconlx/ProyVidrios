@@ -20,9 +20,10 @@ import org.primefaces.context.RequestContext;
  * @author William Sanchez
  */
 public class Vitrina {
+
     private int alto = 0;
     private int ancho = 0;
-    private int fondo= 0;
+    private int fondo = 0;
     private long sumaTotal;
     private long subTotal;
     private int cuartoCirculo;
@@ -33,12 +34,12 @@ public class Vitrina {
     private int naveDivisionBano;
     private int carrileras;
     private int rodamientosDucha;
-    
+
     private int perfilEsquineroUna;
     private int tubularUnaAleta;
     private int rodamientoEconomico;
     private int anclajeA15;
-    
+
     private int precioCuartoCirculo;
     private int precioAnguloMedia;
     private int precioNaveDivicionBano;
@@ -47,15 +48,13 @@ public class Vitrina {
     private int precioPerfilEsquineroUna;
     private int precioTubularUna;
     private int precioEmpaque;
-   
-    
+
     private Vitrinas vitrinas;
-    
-    
-    
-    public Vitrina(String ancho, String alto, String fondo, int preTrabajo, int preDescuento,int preCuartoCirculo, int preAnguloMedia,
-             int preAcoples,int preTianas, int preRodamientosPiso, int preNaveDvisionBano,int preCarrileras,int preRodamientoDucha,int preEmpaque,int tipoVitrinas, int prePerfilEsquineroUna, int preTubularUna,int preRodamientoEco,int preAnclaajeA15){
-           switch (alto.substring(2)) {
+
+    public Vitrina(String ancho, String alto, String fondo, int preTrabajo, int preDescuento, int preCuartoCirculo, int preAnguloMedia,
+            int preAcoples, int preTianas, int preRodamientosPiso, int preNaveDvisionBano, int preCarrileras, int preRodamientoDucha,
+            int preEmpaque, int tipoVitrinas, int prePerfilEsquineroUna, int preTubularUna, int preRodamientoEco, int preAnclaajeA15) {
+        switch (alto.substring(2)) {
             case "1":
                 this.alto = Integer.valueOf(alto) + 9;
                 break;
@@ -120,7 +119,7 @@ public class Vitrina {
                 this.ancho = Integer.valueOf(ancho);
                 break;
         }
-         switch (fondo.substring(2)) {
+        switch (fondo.substring(2)) {
             case "1":
                 this.fondo = Integer.valueOf(fondo) + 9;
                 break;
@@ -154,28 +153,26 @@ public class Vitrina {
         }
 
         switch (tipoVitrinas) {
-           
-               case 1:
 
-                this.cuartoCirculo = this.alto * 4 + this.ancho * 4 +this.fondo * 4;
-                this.anguloMedia = this.alto *6 + this.ancho *6+ this.fondo * 8;
-                this.carrileras = this.ancho *2;
-                this.naveDivisionBano= this.ancho *2;
-                this.acoples = ( preAcoples *100)*8;
-                this.tianas= (preTianas *100)*8;
-                this.rodamientosPiso = (preRodamientosPiso *100)*4;
-                this.rodamientosDucha = (preRodamientoDucha *100) *4;
-                this.precioCuartoCirculo=this.cuartoCirculo*preCuartoCirculo;
-                this.precioAnguloMedia=this.anguloMedia*preAnguloMedia;
-                this.precioCarrileras=this.carrileras*preCarrileras;
-                this.precioNaveDivicionBano=this.naveDivisionBano*preNaveDvisionBano;
-                 this.empaque=(this.ancho * 2 )*preEmpaque;
-               
+            case 1:
+
+                this.cuartoCirculo = this.alto * 4 + this.ancho * 4 + this.fondo * 4;
+                this.anguloMedia = this.alto * 6 + this.ancho * 6 + this.fondo * 8;
+                this.carrileras = this.ancho * 2;
+                this.naveDivisionBano = this.ancho * 2;
+                this.acoples = (preAcoples * 100) * 8;
+                this.tianas = (preTianas * 100) * 8;
+                this.rodamientosPiso = (preRodamientosPiso * 100) * 4;
+                this.rodamientosDucha = (preRodamientoDucha * 100) * 4;
+                this.precioCuartoCirculo = this.cuartoCirculo * preCuartoCirculo;
+                this.precioAnguloMedia = this.anguloMedia * preAnguloMedia;
+                this.precioCarrileras = this.carrileras * preCarrileras;
+                this.precioNaveDivicionBano = this.naveDivisionBano * preNaveDvisionBano;
+                this.empaque = (this.ancho * 2) * preEmpaque;
 
                 this.sumaTotal = this.precioCuartoCirculo + this.precioAnguloMedia
-                         + this.acoples + this.tianas + this.precioCarrileras + this.precioNaveDivicionBano
+                        + this.acoples + this.tianas + this.precioCarrileras + this.precioNaveDivicionBano
                         + this.rodamientosPiso + this.rodamientosDucha;
-                        
 
                 this.subTotal = this.sumaTotal;
 
@@ -185,31 +182,29 @@ public class Vitrina {
                 this.sumaTotal = recortar(String.valueOf(sumaTotal));
 
                 break;
-                   
-                         case 2:
 
-                this.perfilEsquineroUna = ( this.ancho * 2) +(this.fondo * 2);
-                this.tubularUnaAleta = (this.alto *4) + (this.ancho *2)+ (this.fondo * 2);
+            case 2:
+
+                this.perfilEsquineroUna = this.ancho * 2 + this.fondo * 2;
+                this.tubularUnaAleta = this.alto * 4 + this.ancho * 2 + this.fondo * 2;
                 this.carrileras = this.ancho;
-                this.naveDivisionBano= this.ancho ;
-               this.anguloMedia= ((this.alto * 6)+(this.ancho * 6)+(this.fondo *8));
-                this.tianas= (preTianas *100)*8;
-                this.rodamientoEconomico = (preRodamientoEco *100)*4;
-                this.anclajeA15=(preAnclaajeA15 *100)*8;
-                 this.empaque=(this.ancho * 2)*preEmpaque;
-                this.precioPerfilEsquineroUna=this.perfilEsquineroUna*prePerfilEsquineroUna;
-                this.precioTubularUna=tubularUnaAleta*preTubularUna;
-                this.precioAnguloMedia=this.anguloMedia*preAnguloMedia;
-                this.precioCarrileras=this.carrileras*preCarrileras;
-                this.precioNaveDivicionBano=this.naveDivisionBano*preNaveDvisionBano;
-                this.precioEmpaque= empaque=this.precioEmpaque;
-                
-               
+                this.naveDivisionBano = this.ancho;
+                this.anguloMedia = this.alto * 6 + this.ancho * 6 + this.fondo * 8;
+                this.tianas = (preTianas * 100) * 8;
+                this.rodamientoEconomico = (preRodamientoEco * 100) * 4;
+                this.anclajeA15 = (preAnclaajeA15 * 100) * 8;
+                this.empaque = this.ancho * 2;
+
+                this.precioPerfilEsquineroUna = this.perfilEsquineroUna * prePerfilEsquineroUna;
+                this.precioTubularUna = tubularUnaAleta * preTubularUna;
+                this.precioAnguloMedia = this.anguloMedia * preAnguloMedia;
+                this.precioCarrileras = this.carrileras * preCarrileras;
+                this.precioNaveDivicionBano = this.naveDivisionBano * preNaveDvisionBano;
+                this.precioEmpaque = this.empaque * preEmpaque;
 
                 this.sumaTotal = this.precioPerfilEsquineroUna + this.precioTubularUna
-                         + this.precioCarrileras + this.precioNaveDivicionBano + this.precioAnguloMedia + this.tianas
-                        + this.rodamientoEconomico + this.anclajeA15+ this.precioEmpaque;
-                        
+                        + this.precioCarrileras + this.precioNaveDivicionBano + this.precioAnguloMedia + this.tianas
+                        + this.rodamientoEconomico + this.anclajeA15 + this.precioEmpaque;
 
                 this.subTotal = this.sumaTotal;
 
@@ -219,31 +214,28 @@ public class Vitrina {
                 this.sumaTotal = recortar(String.valueOf(sumaTotal));
 
                 break;
-              
-                                         case 3:
 
-                this.perfilEsquineroUna = ( this.ancho * 2) +(this.fondo * 2);
-                this.tubularUnaAleta = (this.alto *6) + (this.ancho *2)+ (this.fondo * 2);
+            case 3:
+
+                this.perfilEsquineroUna = this.ancho * 2 + this.fondo * 2;
+                this.tubularUnaAleta = this.alto * 6 + this.ancho * 2 + this.fondo * 2;
                 this.carrileras = this.ancho;
-                this.naveDivisionBano= this.ancho ;
-               this.anguloMedia= ((this.alto * 6)+(this.ancho * 6)+(this.fondo *8));
-                this.tianas= (preTianas *100)*16;
-                this.rodamientoEconomico = (preRodamientoEco *100)*4;
-                this.anclajeA15=(preAnclaajeA15 *100)*8;
-                 this.empaque=(this.ancho * 2)*preEmpaque;
-                this.precioPerfilEsquineroUna=this.perfilEsquineroUna*prePerfilEsquineroUna;
-                this.precioTubularUna=tubularUnaAleta*preTubularUna;
-                this.precioAnguloMedia=this.anguloMedia*preAnguloMedia;
-                this.precioCarrileras=this.carrileras*preCarrileras;
-                this.precioNaveDivicionBano=this.naveDivisionBano*preNaveDvisionBano;
-                this.precioEmpaque= empaque=this.precioEmpaque;
-                
-               
+                this.naveDivisionBano = this.ancho;
+                this.anguloMedia = this.alto * 6 + this.ancho * 6 + this.fondo * 8;
+                this.tianas = (preTianas * 100) * 16;
+                this.rodamientoEconomico = (preRodamientoEco * 100) * 4;
+                this.anclajeA15 = (preAnclaajeA15 * 100) * 8;
+                this.empaque = (this.ancho * 2) * preEmpaque;
+                this.precioPerfilEsquineroUna = this.perfilEsquineroUna * prePerfilEsquineroUna;
+                this.precioTubularUna = tubularUnaAleta * preTubularUna;
+                this.precioAnguloMedia = this.anguloMedia * preAnguloMedia;
+                this.precioCarrileras = this.carrileras * preCarrileras;
+                this.precioNaveDivicionBano = this.naveDivisionBano * preNaveDvisionBano;
+                this.precioEmpaque = empaque = this.precioEmpaque;
 
                 this.sumaTotal = this.precioPerfilEsquineroUna + this.precioTubularUna
-                         + this.precioCarrileras + this.precioNaveDivicionBano + this.precioAnguloMedia + this.tianas
-                        + this.rodamientoEconomico + this.anclajeA15+ this.precioEmpaque;
-                        
+                        + this.precioCarrileras + this.precioNaveDivicionBano + this.precioAnguloMedia + this.tianas
+                        + this.rodamientoEconomico + this.anclajeA15 + this.precioEmpaque;
 
                 this.subTotal = this.sumaTotal;
 
@@ -253,19 +245,18 @@ public class Vitrina {
                 this.sumaTotal = recortar(String.valueOf(sumaTotal));
 
                 break;
-              
-        
+
         }
-   
-  }
-    
-    public Vitrina(){
-        
+
     }
+
+    public Vitrina() {
+
+    }
+
     public final int recortar(String numero) {
         int espacios = numero.length();
         return Integer.valueOf(numero.substring(0, espacios - 2));
-  
 
     }
 
@@ -476,6 +467,5 @@ public class Vitrina {
     public void setPrecioEmpaque(int precioEmpaque) {
         this.precioEmpaque = precioEmpaque;
     }
-    
 
 }

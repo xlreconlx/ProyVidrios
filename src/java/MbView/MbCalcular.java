@@ -174,7 +174,7 @@ public class MbCalcular {
                  this.precioVidrio = Integer.valueOf(String.valueOf(this.precioVidrio).substring(0, espacios1 - 4));
                 }
                 
-               this.precioVidrio = this.precioVidrio + (this.precioVidrio / 2)+ this.manObra;
+               this.precioVidrio = this.precioVidrio + (this.precioVidrio / 2);
             
 //                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Correcto:", "El precio vidrio mas ganancia : " + this.precioVidrio));
 //          
@@ -190,7 +190,7 @@ public class MbCalcular {
 
             if (this.tipoVentana == 4) {
                 this.nombreProducto = "Vidrio " + this.alto + " * " + this.ancho;
-                this.precioTotal = this.precioVidrio;
+                this.precioTotal = this.precioVidrio + manObra;
                      this.precioTotalCantidad= this.precioTotal*this.canti;
                 this.mensajeCanti=String.valueOf(this.canti);
             } else {
