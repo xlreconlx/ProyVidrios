@@ -164,9 +164,9 @@ public class MbCotizacion {
                     vitrina = new Vitrina(this.ancho, this.alto, this.fondo, this.manObra, this.ganancia,
                             0, this.listaVitrinas.get(1).getPreciocot(),
                             0, this.listaVitrinas.get(4).getPreciocot(), 0,
-                            this.listaVitrinas.get(6).getPreciocot(), 0,
+                            this.listaVitrinas.get(6).getPreciocot(), 0,0,
                             this.listaVitrinas.get(8).getPreciocot(),
-                            0, 2, this.listaVitrinas.get(9).getPreciocot(), this.listaVitrinas.get(10).getPreciocot(),
+                             2, this.listaVitrinas.get(9).getPreciocot(), this.listaVitrinas.get(10).getPreciocot(),
                             this.listaVitrinas.get(11).getPreciocot(), this.listaVitrinas.get(12).getPreciocot());
 
                 } else {
@@ -175,9 +175,9 @@ public class MbCotizacion {
                         vitrina = new Vitrina(this.ancho, this.alto, this.fondo, this.manObra, this.ganancia,
                                 0, this.listaVitrinas.get(1).getPreciocot(),
                                 0, this.listaVitrinas.get(4).getPreciocot(), 0,
-                                this.listaVitrinas.get(6).getPreciocot(), 0,
+                                this.listaVitrinas.get(6).getPreciocot(), 0,0,
                                 this.listaVitrinas.get(8).getPreciocot(),
-                                0, 3, this.listaVitrinas.get(9).getPreciocot(), this.listaVitrinas.get(10).getPreciocot(),
+                                 3, this.listaVitrinas.get(9).getPreciocot(), this.listaVitrinas.get(10).getPreciocot(),
                                 this.listaVitrinas.get(11).getPreciocot(), this.listaVitrinas.get(12).getPreciocot());
                     }
                 }

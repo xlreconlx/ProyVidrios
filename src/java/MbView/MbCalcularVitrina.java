@@ -130,9 +130,9 @@ public class MbCalcularVitrina {
                     vitrina = new Vitrina(this.ancho, this.alto, this.fondo, this.manObra, this.ganancia,
                             0, this.lista.get(1).getPreciocot(),
                             0, this.lista.get(4).getPreciocot(), 0,
-                            this.lista.get(6).getPreciocot(), 0,
+                            this.lista.get(6).getPreciocot(), 0,0,
                             this.lista.get(8).getPreciocot(),
-                            0, this.tipoVitrina, this.lista.get(9).getPreciocot(), this.lista.get(10).getPreciocot(),
+                             this.tipoVitrina, this.lista.get(9).getPreciocot(), this.lista.get(10).getPreciocot(),
                             this.lista.get(11).getPreciocot(), this.lista.get(12).getPreciocot());
 
                 } else {
@@ -140,9 +140,9 @@ public class MbCalcularVitrina {
                         vitrina = new Vitrina(this.ancho, this.alto, this.fondo, this.manObra, this.ganancia,
                                 0, this.lista.get(1).getPreciocot(),
                                 0, this.lista.get(4).getPreciocot(), 0,
-                                this.lista.get(6).getPreciocot(), 0,
+                                this.lista.get(6).getPreciocot(), 0,0,
                                 this.lista.get(8).getPreciocot(),
-                                0, this.tipoVitrina, this.lista.get(9).getPreciocot(), this.lista.get(10).getPreciocot(),
+                                 this.tipoVitrina, this.lista.get(9).getPreciocot(), this.lista.get(10).getPreciocot(),
                                 this.lista.get(11).getPreciocot(), this.lista.get(12).getPreciocot());
                     }
 
@@ -307,6 +307,7 @@ public class MbCalcularVitrina {
             this.idVidrio = 0;
             this.tipoEntrepanos = 0;
             this.tipoVitrina = 0;
+              this.lista = new ArrayList<>();
 
         } catch (Exception ex) {
             if (this.transaccion != null) {
